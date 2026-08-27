@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>P.J. Blackwood | Offizielle Autoren-Webseite</title>
+    <title>P. J. Blackwood | Kosmischer Horror</title>
     <style>
         :root {
-            --bg-color: #06080c;
-            --card-bg: rgba(16, 20, 29, 0.90);
-            --text-main: #c5c6c7;
+            --bg-color: #050505;
+            --surface-color: #0e0e0e;
+            --card-color: #141414;
+            --text-main: #d1d1d1;
             --text-heading: #ffffff;
-            --accent-bordeaux: #800020;
-            --accent-red-bright: #a81c37;
-            --text-muted: #94a3b8;
-            --border-color: #1f2833;
+            --accent-gray: #71717a; /* Ersetzt das Rot durch ein edles Grau */
+            --accent-hover: #a1a1aa;
+            --border-color: #262626;
         }
 
         * {
@@ -25,65 +25,45 @@
         body {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background-color: var(--bg-color);
-            /* Hintergrundbild Skeldvik.jpg mit Abdunklung */
-            background-image: linear-gradient(rgba(6, 8, 12, 0.88), rgba(6, 8, 12, 0.94)), url('Skeldvik.jpg');
+            background-image: linear-gradient(rgba(5, 5, 5, 0.92), rgba(5, 5, 5, 0.97)), url('Skeldvik.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             color: var(--text-main);
-            line-height: 1.8;
+            line-height: 1.6;
             min-height: 100vh;
         }
 
-        /* HEADER & NAVIGATION (Stephen King Style) */
-        header.site-header {
+        /* Navigation */
+        nav {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(6, 8, 12, 0.96);
+            background: rgba(5, 5, 5, 0.95);
             border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 3rem;
             z-index: 1000;
             backdrop-filter: blur(10px);
         }
 
-        .header-top {
-            text-align: center;
-            padding: 1.2rem 1rem 0.5rem 1rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .author-logo {
-            font-family: 'Trajan Pro', Georgia, serif;
-            font-size: 1.8rem;
+        .nav-logo {
+            font-family: 'Georgia', serif;
+            font-size: 1.3rem;
             color: var(--text-heading);
-            letter-spacing: 4px;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
-
-        .author-subtitle {
-            font-size: 0.85rem;
             letter-spacing: 3px;
-            color: var(--accent-bordeaux);
+            text-decoration: none;
+            font-weight: bold;
             text-transform: uppercase;
-            margin-top: 0.2rem;
-            font-weight: 700;
-        }
-
-        nav {
-            display: flex;
-            justify-content: center;
-            padding: 0.8rem 1rem;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             list-style: none;
-            flex-wrap: wrap;
-            justify-content: center;
         }
 
         .nav-links a {
@@ -92,44 +72,54 @@
             font-size: 0.9rem;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            font-weight: 600;
             transition: color 0.3s;
+            font-weight: 600;
         }
 
         .nav-links a:hover {
-            color: var(--accent-red-bright);
+            color: var(--accent-hover);
         }
 
-        /* MAIN CONTAINER */
+        /* Container */
         .container {
-            max-width: 1050px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 10rem 1.5rem 4rem 1.5rem;
+            padding: 8rem 2rem 4rem 2rem;
         }
 
-        /* HERO SEKTION - AKTUELLES BILD / FEATURED BOOK */
-        .hero-card {
-            background-color: var(--card-bg);
+        /* Hero Spotlight Section */
+        .hero-spotlight {
+            background-color: var(--surface-color);
             border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 3rem;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
-            margin-bottom: 5rem;
-        }
-
-        .hero-content {
+            border-radius: 4px;
+            padding: 4rem;
             display: flex;
             flex-direction: column;
-            gap: 2.5rem;
+            gap: 3rem;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.9);
+            margin-bottom: 5rem;
+            position: relative;
+            overflow: hidden;
         }
 
-        @media (min-width: 768px) {
+        .hero-spotlight::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--accent-gray);
+        }
+
+        @media (min-width: 850px) {
             .hero-content {
-                flex-direction: row;
-                align-items: flex-start;
+                display: flex;
+                gap: 4rem;
+                align-items: center;
             }
             .hero-cover {
-                flex: 0 0 270px;
+                flex: 0 0 320px;
             }
             .hero-text {
                 flex: 1;
@@ -138,325 +128,384 @@
 
         .hero-cover img {
             width: 100%;
-            border-radius: 4px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.9);
-            border: 1px solid #2c3542;
+            border-radius: 2px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+            border: 1px solid var(--border-color);
         }
 
-        .release-badge {
+        .alert-badge {
             display: inline-block;
-            background-color: var(--accent-bordeaux);
-            color: #ffffff;
-            padding: 0.3rem 0.9rem;
-            font-size: 0.85rem;
+            background-color: var(--accent-gray);
+            color: #fff;
+            padding: 0.4rem 1rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            border-radius: 3px;
-            margin-bottom: 1rem;
             font-weight: bold;
+            margin-bottom: 1.5rem;
         }
 
-        h1.book-title {
-            font-family: 'Trajan Pro', Georgia, serif;
-            font-size: 3rem;
+        h1 {
+            font-family: 'Georgia', serif;
+            font-size: 3.2rem;
             color: var(--text-heading);
             margin-bottom: 0.5rem;
-            letter-spacing: 3px;
-            line-height: 1.1;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
-        .book-tagline {
+        .hero-subtitle {
             font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            font-style: italic;
+            color: #888;
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
-        .hero-text p {
+        .hero-description p {
             margin-bottom: 1.2rem;
-            color: #b3b3b3;
+            color: #b0b0b0;
+            font-size: 1.05rem;
         }
 
-        .btn-status {
-            display: inline-block;
-            margin-top: 1rem;
-            padding: 0.8rem 1.8rem;
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
             background: transparent;
-            border: 2px solid var(--accent-bordeaux);
             color: var(--text-heading);
+            border: 2px solid var(--text-heading);
+            padding: 0.9rem 2.2rem;
+            border-radius: 2px;
+            text-decoration: none;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 1px;
-            border-radius: 4px;
-            font-size: 0.9rem;
+            transition: all 0.3s;
+            font-size: 0.85rem;
         }
 
-        /* SEKTIONEN TYPOGRAFIE */
+        .btn:hover {
+            background: var(--text-heading);
+            color: var(--bg-color);
+        }
+
+        .btn-primary {
+            background: var(--accent-gray);
+            border-color: var(--accent-gray);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            border-color: var(--accent-hover);
+            color: #fff;
+        }
+
+        /* Section Global Styles */
         section {
-            margin-bottom: 5rem;
+            margin-bottom: 6rem;
         }
 
         .section-title {
-            font-family: 'Trajan Pro', Georgia, serif;
-            font-size: 2rem;
+            font-family: 'Georgia', serif;
+            font-size: 2.2rem;
             color: var(--text-heading);
-            margin-bottom: 2rem;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.8rem;
+            margin-bottom: 2.5rem;
             letter-spacing: 2px;
             text-transform: uppercase;
+            border-left: 4px solid var(--accent-gray);
+            padding-left: 1rem;
         }
 
-        /* BÜCHER & WERKE (BIBLIOGRAPHIE) GRID */
-        .works-grid {
+        /* Bibliography / Trilogy Grid */
+        .books-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
 
-        .work-card {
-            background: var(--card-bg);
+        .book-card {
+            background-color: var(--card-color);
             border: 1px solid var(--border-color);
-            padding: 2rem;
-            border-radius: 6px;
+            padding: 2.5rem 2rem;
+            border-radius: 4px;
+            transition: transform 0.3s, border-color 0.3s;
         }
 
-        .work-status {
-            color: var(--accent-red-bright);
-            font-size: 0.85rem;
+        .book-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gray);
+        }
+
+        .book-card span {
+            font-size: 0.8rem;
+            color: var(--accent-gray);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        .book-card h3 {
+            font-family: 'Georgia', serif;
+            font-size: 1.6rem;
+            color: var(--text-heading);
+            margin: 0.8rem 0 1rem 0;
+            letter-spacing: 1px;
+        }
+
+        .book-card p {
+            color: #999;
+            font-size: 0.95rem;
+        }
+
+        /* News Ticker */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .news-card {
+            background: var(--card-color);
+            border: 1px solid var(--border-color);
+            padding: 2.5rem;
+            border-radius: 4px;
+        }
+
+        .news-date {
+            font-size: 0.8rem;
+            color: var(--accent-gray);
+            margin-bottom: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: bold;
-            margin-bottom: 0.5rem;
         }
 
-        .work-card h3 {
-            font-family: 'Trajan Pro', Georgia, serif;
+        .news-card h3 {
             color: var(--text-heading);
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             margin-bottom: 1rem;
+            font-family: 'Georgia', serif;
         }
 
-        /* NEUIGKEITEN & AKTUELLES */
-        .news-list {
+        .news-card p {
+            color: #a0a0a0;
+        }
+
+        /* Author Section */
+        .author-box {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            padding: 4rem;
+            border-radius: 4px;
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
         }
 
-        .news-item {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 2rem;
-            border-radius: 6px;
-            border-left: 4px solid var(--accent-bordeaux);
-        }
-
-        .news-date {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.3rem;
-        }
-
-        .news-item h3 {
-            color: var(--text-heading);
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* ÜBER DEN AUTOR */
-        .about-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 3rem;
-            border-radius: 6px;
-        }
-
-        .about-card p {
-            margin-bottom: 1.3rem;
+        .author-box p {
+            color: #b0b0b0;
             font-size: 1.05rem;
-            color: #c5c6c7;
+            line-height: 1.8;
         }
 
-        .about-card p:last-child {
-            margin-bottom: 0;
-        }
-
-        /* KONTAKT & NEWSLETTER */
-        .contact-box {
-            background: linear-gradient(135deg, rgba(16, 20, 29, 0.95), rgba(8, 10, 15, 0.98));
-            border: 1px solid var(--border-color);
-            padding: 3rem 2rem;
-            border-radius: 8px;
+        /* Newsletter Section */
+        .newsletter-section {
+            background: linear-gradient(145deg, #0e0e0e, #18181b);
+            border: 1px solid var(--accent-gray);
+            padding: 4rem 2rem;
+            border-radius: 4px;
             text-align: center;
         }
 
-        .contact-box h3 {
-            font-family: 'Trajan Pro', Georgia, serif;
+        .newsletter-section h3 {
+            font-family: 'Georgia', serif;
+            font-size: 2.2rem;
             color: var(--text-heading);
-            font-size: 1.8rem;
             margin-bottom: 1rem;
+            letter-spacing: 1px;
         }
 
-        .email-link {
-            display: inline-block;
-            color: var(--accent-red-bright);
-            font-size: 1.2rem;
-            font-weight: bold;
+        .newsletter-section p {
+            color: #a0a0a0;
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+            font-size: 1.05rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .newsletter-form input {
+            padding: 1rem 1.2rem;
+            width: 320px;
+            border-radius: 2px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-color);
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+            border-color: var(--accent-gray);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            border-top: 1px solid var(--border-color);
+            background: rgba(3, 3, 3, 0.95);
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .social-footer {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-footer a {
+            color: var(--text-main);
             text-decoration: none;
-            margin: 1rem 0 2rem 0;
-            letter-spacing: 1px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 0.85rem;
+            font-weight: 600;
             transition: color 0.3s;
         }
 
-        .email-link:hover {
-            color: #ffffff;
-        }
-
-        .social-placeholders {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 1rem;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        .social-placeholders span {
-            border: 1px dashed var(--border-color);
-            padding: 0.4rem 1rem;
-            border-radius: 4px;
-        }
-
-        /* FOOTER */
-        footer {
-            text-align: center;
-            padding: 3rem 1.5rem;
-            border-top: 1px solid var(--border-color);
-            background: rgba(6, 8, 12, 0.95);
-            font-size: 0.85rem;
-            color: #666;
+        .social-footer a:hover {
+            color: var(--accent-hover);
         }
     </style>
 </head>
 <body>
 
-    <!-- HEADER / NAVIGATION (im Stephen King Stil) -->
-    <header class="site-header">
-        <div class="header-top">
-            <a href="#" class="author-logo">P.J. Blackwood</a>
-            <div class="author-subtitle">Kosmischer Horror &bull; Atmosphärische Mystery</div>
-        </div>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="#hauptwerk">Debütroman</a></li>
-                <li><a href="#werke">Werke</a></li>
-                <li><a href="#aktuelles">Aktuelles</a></li>
-                <li><a href="#autor">Über den Autor</a></li>
-                <li><a href="#kontakt">Kontakt</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="nav-logo">P. J. Blackwood</a>
+        <ul class="nav-links">
+            <li><a href="#buecher">Bücher</a></li>
+            <li><a href="#aktuelles">Aktuelles</a></li>
+            <li><a href="#autor">Über den Autor</a></li>
+            <li><a href="#newsletter">Newsletter</a></li>
+        </ul>
+    </nav>
 
     <div class="container">
 
-        <!-- HERO SEKTION: HAUPTWERK (SKELDVIK) -->
-        <section class="hero-card" id="hauptwerk">
+        <!-- Hero Spotlight: Hauptwerk SKELDVIK -->
+        <header class="hero-spotlight" id="buecher">
             <div class="hero-content">
                 <div class="hero-cover">
-                    <!-- Erwartet die Datei cover.jpg -->
-                    <img src="cover.jpg" alt="SKELDVIK Buchcover" onerror="this.style.display='none'">
+                    <img src="cover.jpg" alt="SKELDVIK Buchcover">
                 </div>
                 <div class="hero-text">
-                    <span class="release-badge">Veröffentlichung: HERBST 2026</span>
-                    <h1 class="book-title">SKELDVIK</h1>
-                    <div class="book-tagline">Das Schweigen wird immer lauter</div>
+                    <span class="alert-badge">Kosmischer Horror</span>
+                    <h1>SKELDVIK</h1>
+                    <div class="hero-subtitle">Das Schweigen wird immer lauter</div>
                     
-                    <p>Ein anonymer Brief führt den Privatdetektiv Elias Johann Vane in das abgelegene Küstendorf Skeldvik. Der Umschlag ist feucht vom Salzwasser, der Absender fehlt, und die Nachricht besteht aus nur wenigen Zeilen:</p>
-                    <p><em>„Fragen Sie nach dem Leuchtturm. Das Schweigen wird jeden Tag lauter.“</em></p>
-                    <p>In Skeldvik scheint nichts zu stimmen. Namen verschwinden aus alten Registern. Fotografien zeigen Menschen, an die sich niemand erinnert. Karten widersprechen der Wirklichkeit, und die Bewohner meiden Fragen, auf die es keine Antworten geben dürfte.</p>
+                    <div class="hero-description">
+                        <p>Ein anonymer Brief führt den Privatdetektiv Elias Johann Vane in das abgelegene Küstendorf Skeldvik. Der Umschlag ist feucht vom Salzwasser, der Absender fehlt, und die Nachricht besteht aus nur wenigen Zeilen.</p>
+                        <p>In Skeldvik scheint nichts zu stimmen. Namen verschwinden aus Registern, Fotografien zeigen Menschen, an die sich niemand erinnert. Ein packender Debütroman an der Grenze des begreifbaren Horrors.</p>
+                    </div>
 
-                    <div class="btn-status">In Vorbereitung für Herbst 2026</div>
+                    <div class="btn-group">
+                        <a href="HIER_AMAZON_LINK_EINTRAGEN" class="btn btn-primary" target="_blank">Bei Amazon kaufen</a>
+                        <a href="HIER_TREDITION_LINK_EINTRAGEN" class="btn" target="_blank">Bei Tredition kaufen</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Bibliographie / Trilogie Sektion -->
+        <section>
+            <h2 class="section-title">Die Archive von Skeldvik</h2>
+            <div class="books-grid">
+                <div class="book-card">
+                    <span>Band 1</span>
+                    <h3>VAAR</h3>
+                    <p>Der Auftakt der Trilogie. Die Nebel über dem Fjord lüften sich – und geben den Blick frei auf das, was im Verborgenen wartet.</p>
+                </div>
+                <div class="book-card">
+                    <span>Band 2</span>
+                    <h3>DIE GLOCKE</h3>
+                    <p>Ein unheilvoller Klang durchbricht die Stille des Küstendorfes. Die Ermittlungen führen tiefer in den Abgrund.</p>
+                </div>
+                <div class="book-card">
+                    <span>Band 3</span>
+                    <h3>DAS RIFF</h3>
+                    <p>Das fulminante Finale der Reihe. Wenn die Realität bricht, gibt es keinen sicheren Hafen mehr.</p>
                 </div>
             </div>
         </section>
 
-        <!-- SEKTION 2: BÜCHER & WERKE (BIBLIOGRAPHIE) -->
-        <section id="werke">
-            <h2 class="section-title">Werke & Projekte</h2>
-            <div class="works-grid">
-                
-                <div class="work-card">
-                    <div class="work-status">Debütroman &bull; Herbst 2026</div>
-                    <h3>SKELDVIK</h3>
-                    <p>Ein atmosphärischer Mystery-Roman über Erinnerung, Wahrheit und den Moment, in dem das Unbekannte beginnt, die vertraute Welt zu verändern. Der Auftakt einer literarischen Reise in die Grenzbereiche der Wirklichkeit.</p>
-                </div>
-
-                <div class="work-card">
-                    <div class="work-status">In Arbeit &bull; Novellen-Trilogie</div>
-                    <h3>Die Archive von SKELDVIK</h3>
-                    <p>Eine 3-bändige Novellen-Reihe, die tiefer in die verborgenen Geschichten, die vergessenen Dokumente und die düsteren Ereignisse rund um das Fjorddorf eintaucht.</p>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- SEKTION 3: AKTUELLES / NEWS -->
+        <!-- News Ticker -->
         <section id="aktuelles">
-            <h2 class="section-title">Aktuelles</h2>
-            <div class="news-list">
-                
-                <div class="news-item">
-                    <div class="news-date">Projekt-Update</div>
-                    <h3>Arbeit an der Trilogie „Die Archive von SKELDVIK“</h3>
-                    <p>Parallel zu den Vorbereitungen für den Debütroman läuft aktuell die Arbeit an einer 3-bändigen Novellen-Reihe, welche die Mythologie rund um Skeldvik weiter ausbauen wird.</p>
+            <h2 class="section-title">Updates & Notizen</h2>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-date">Aktueller Status</div>
+                    <h3>Arbeit an der Trilogie</h3>
+                    <p>Mit Hochdruck wird an den Bänden der Archive von Skeldvik gearbeitet, um die psychologischen Untiefen perfekt zu inszenieren.</p>
                 </div>
-
-                <div class="news-item">
-                    <div class="news-date">Ankündigung</div>
-                    <h3>Veröffentlichungstermin für SKELDVIK steht fest</h3>
-                    <p>Der Debütroman „SKELDVIK“ wird im **Herbst 2026** offiziell erscheinen. Weitere Informationen zu Vorbestellungen folgen in Kürze.</p>
+                <div class="news-card">
+                    <div class="news-date">Hintergrund</div>
+                    <h3>Die Psychologie des Schreckens</h3>
+                    <p>Ein Blick hinter die Kulissen: Warum kosmischer Horror mehr im Kopf des Lesers entsteht als auf den bedruckten Seiten.</p>
                 </div>
-
+                <div class="news-card">
+                    <div class="news-date">Release & Ausblick</div>
+                    <h3>Demnächst im Handel</h3>
+                    <p>Sobald die finalen Manuskripte bereitstehen, folgen exklusive Vorab-Leseproben und Veröffentlichungstermine.</p>
+                </div>
             </div>
         </section>
 
-        <!-- SEKTION 4: ÜBER DEN AUTOR -->
+        <!-- Über den Autor -->
         <section id="autor">
-            <h2 class="section-title">Über den Autor</h2>
-            <div class="about-card">
-                <p><strong>P. J. Blackwood</strong> ist das Pseudonym eines deutschen Autors, der sich auf atmosphärische Mystery-Romane mit Elementen des kosmischen Horrors spezialisiert.</p>
-                
+            <h2 class="section-title">Über P. J. Blackwood</h2>
+            <div class="author-box">
+                <p>P. J. Blackwood ist das Pseudonym eines deutschen Autors, der sich auf atmosphärische Mystery-Romane mit Elementen des kosmischen Horrors spezialisiert.</p>
                 <p>Im Mittelpunkt seiner Geschichten stehen nicht klassische Horrorfiguren oder spektakuläre Schockeffekte, sondern die schleichende Erkenntnis, dass die Wirklichkeit mehr verbirgt, als der Mensch begreifen kann. Seine Romane verbinden sorgfältig aufgebaute Ermittlungen mit psychologischer Spannung, geheimnisvollen Schauplätzen und einer dichten, unheimlichen Atmosphäre.</p>
-                
                 <p>Die literarische Inspiration reicht von den Werken H. P. Lovecrafts bis zu klassischen Mystery- und Detektivgeschichten. Daraus entwickelt P. J. Blackwood jedoch einen eigenständigen Stil, der den kosmischen Horror vor allem durch Erinnerung, Wahrnehmung und die Auflösung scheinbar sicherer Gewissheiten erfahrbar macht.</p>
-                
-                <p>Mit <strong>SKELDVIK</strong> veröffentlicht P. J. Blackwood seinen Debütroman – den Auftakt einer literarischen Reise in die Grenzbereiche zwischen Wirklichkeit, Erinnerung und dem Unbekannten.</p>
             </div>
         </section>
 
-        <!-- SEKTION 5: KONTAKT & SOCIAL MEDIA -->
-        <section id="kontakt">
-            <div class="contact-box">
-                <h3>Kontakt & Anfragen</h3>
-                <p>Für Anfragen, Rezensionsexemplare oder Leserpost erreichen Sie den Autor direkt per E-Mail:</p>
-                
-                <a href="mailto:P.J.BLACKWOOD@GMX.DE" class="email-link">P.J.BLACKWOOD@GMX.DE</a>
-
-                <div class="social-placeholders">
-                    <span>TikTok (demnächst)</span>
-                    <span>Instagram (demnächst)</span>
-                </div>
+        <!-- Newsletter Sektion -->
+        <section id="newsletter">
+            <div class="newsletter-section">
+                <h3>Der innere Kreis</h3>
+                <p>Melden Sie sich an und verpassen Sie keine Neuerscheinung, Hintergrundstory oder Leseprobe aus den Archiven von Skeldvik.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Vielen Dank für Ihre Anmeldung!');">
+                    <input type="email" placeholder="Ihre E-Mail-Adresse eingeben..." required>
+                    <button type="submit" class="btn btn-primary">Anmelden</button>
+                </form>
             </div>
         </section>
 
     </div>
 
-    <!-- FOOTER -->
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 P.J. Blackwood. Alle Rechte vorbehalten.</p>
+        <div class="social-footer">
+            <a href="HIER_TIKTOK_LINK" target="_blank">TikTok</a>
+            <a href="HIER_INSTAGRAM_LINK" target="_blank">Instagram</a>
+            <a href="mailto:IHRE_MAIL@domain.com">Kontakt</a>
+        </div>
+        <p>&copy; 2026 P. J. Blackwood. Alle Rechte vorbehalten.</p>
     </footer>
 
 </body>
