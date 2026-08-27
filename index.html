@@ -11,7 +11,7 @@
             --card-color: #141414;
             --text-main: #d1d1d1;
             --text-heading: #ffffff;
-            --accent-gray: #71717a; /* Ersetzt das Rot durch ein edles Grau */
+            --accent-gray: #71717a; /* Edles Grau */
             --accent-hover: #a1a1aa;
             --border-color: #262626;
         }
@@ -133,18 +133,6 @@
             border: 1px solid var(--border-color);
         }
 
-        .alert-badge {
-            display: inline-block;
-            background-color: var(--accent-gray);
-            color: #fff;
-            padding: 0.4rem 1rem;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: bold;
-            margin-bottom: 1.5rem;
-        }
-
         h1 {
             font-family: 'Georgia', serif;
             font-size: 3.2rem;
@@ -156,7 +144,7 @@
 
         .hero-subtitle {
             font-size: 1.1rem;
-            color: #888;
+            color: var(--accent-gray);
             margin-bottom: 2rem;
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -413,9 +401,8 @@
                     <img src="cover.jpg" alt="SKELDVIK Buchcover">
                 </div>
                 <div class="hero-text">
-                    <span class="alert-badge">Kosmischer Horror</span>
-                    <h1>SKELDVIK</h1>
-                    <div class="hero-subtitle">Das Schweigen wird immer lauter</div>
+                    <h1>P. J. Blackwood</h1>
+                    <div class="hero-subtitle">Kosmischer Horror</div>
                     
                     <div class="hero-description">
                         <p>Ein anonymer Brief führt den Privatdetektiv Elias Johann Vane in das abgelegene Küstendorf Skeldvik. Der Umschlag ist feucht vom Salzwasser, der Absender fehlt, und die Nachricht besteht aus nur wenigen Zeilen.</p>
