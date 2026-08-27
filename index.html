@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>P.J. Blackwood | Offizielle Autoren-Webseite</title>
     <style>
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 140px; /* Verhindert, dass der fixe Header den Inhalt verdeckt */
+        }
+
         :root {
             --bg-color: #06080c;
             --card-bg: rgba(16, 20, 29, 0.90);
@@ -25,7 +30,6 @@
         body {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background-color: var(--bg-color);
-            /* Hintergrundbild Skeldvik.jpg mit Abdunklung */
             background-image: linear-gradient(rgba(6, 8, 12, 0.88), rgba(6, 8, 12, 0.94)), url('Skeldvik.jpg');
             background-size: cover;
             background-position: center;
