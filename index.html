@@ -7,7 +7,7 @@
     <style>
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 140px; /* Verhindert, dass der fixe Header den Inhalt verdeckt */
+            scroll-padding-top: 140px;
         }
 
         :root {
@@ -39,7 +39,6 @@
             min-height: 100vh;
         }
 
-        /* HEADER & NAVIGATION (Stephen King Style) */
         header.site-header {
             position: fixed;
             top: 0;
@@ -104,14 +103,12 @@
             color: var(--accent-red-bright);
         }
 
-        /* MAIN CONTAINER */
         .container {
             max-width: 1050px;
             margin: 0 auto;
             padding: 10rem 1.5rem 4rem 1.5rem;
         }
 
-        /* HERO SEKTION - AKTUELLES BILD / FEATURED BOOK */
         .hero-card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -195,7 +192,6 @@
             font-size: 0.9rem;
         }
 
-        /* SEKTIONEN TYPOGRAFIE */
         section {
             margin-bottom: 5rem;
         }
@@ -211,7 +207,6 @@
             text-transform: uppercase;
         }
 
-        /* BÜCHER & WERKE (BIBLIOGRAPHIE) GRID */
         .works-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -241,7 +236,6 @@
             margin-bottom: 1rem;
         }
 
-        /* NEUIGKEITEN & AKTUELLES */
         .news-list {
             display: flex;
             flex-direction: column;
@@ -270,7 +264,6 @@
             margin-bottom: 0.5rem;
         }
 
-        /* ÜBER DEN AUTOR */
         .about-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -288,7 +281,6 @@
             margin-bottom: 0;
         }
 
-        /* KONTAKT & NEWSLETTER */
         .contact-box {
             background: linear-gradient(135deg, rgba(16, 20, 29, 0.95), rgba(8, 10, 15, 0.98));
             border: 1px solid var(--border-color);
@@ -334,7 +326,6 @@
             border-radius: 4px;
         }
 
-        /* FOOTER */
         footer {
             text-align: center;
             padding: 3rem 1.5rem;
@@ -347,11 +338,10 @@
 </head>
 <body>
 
-    <!-- HEADER / NAVIGATION (im Stephen King Stil) -->
     <header class="site-header">
         <div class="header-top">
             <a href="#" class="author-logo">P.J. Blackwood</a>
-            <div class="author-subtitle">Kosmischer Horror<
+            <div class="author-subtitle"><span style="color: var(--text-muted);">•</span> Kosmischer Horror</div>
         </div>
         <nav>
             <ul class="nav-links">
@@ -366,11 +356,9 @@
 
     <div class="container">
 
-        <!-- HERO SEKTION: HAUPTWERK (SKELDVIK) -->
         <section class="hero-card" id="hauptwerk">
             <div class="hero-content">
                 <div class="hero-cover">
-                    <!-- Erwartet die Datei cover.jpg -->
                     <img src="cover.jpg" alt="SKELDVIK Buchcover" onerror="this.style.display='none'">
                 </div>
                 <div class="hero-text">
@@ -387,7 +375,6 @@
             </div>
         </section>
 
-        <!-- SEKTION 2: BÜCHER & WERKE (BIBLIOGRAPHIE) -->
         <section id="werke">
             <h2 class="section-title">Werke & Projekte</h2>
             <div class="works-grid">
@@ -395,7 +382,7 @@
                 <div class="work-card">
                     <div class="work-status">Debütroman &bull; Herbst 2026</div>
                     <h3>SKELDVIK</h3>
-                    <p>Ein atmosphärischer Mystery-Roman über Erinnerung, Wahrheit und den Moment, in dem das Unbekannte beginnt, die vertraute Welt zu verändern. Der Auftakt einer literarischen Reise in die Grenzbereiche der Wirklichkeit.</p>
+                    <p>Ein Roman über Erinnerung, Wahrheit und den Moment, in dem das Unbekannte beginnt, die vertraute Welt zu verändern. Der Auftakt einer literarischen Reise in die Grenzbereiche der Wirklichkeit.</p>
                 </div>
 
                 <div class="work-card">
@@ -407,7 +394,6 @@
             </div>
         </section>
 
-        <!-- SEKTION 3: AKTUELLES / NEWS -->
         <section id="aktuelles">
             <h2 class="section-title">Aktuelles</h2>
             <div class="news-list">
@@ -427,21 +413,19 @@
             </div>
         </section>
 
-        <!-- SEKTION 4: ÜBER DEN AUTOR -->
         <section id="autor">
             <h2 class="section-title">Über den Autor</h2>
             <div class="about-card">
-                <p><strong>P. J. Blackwood</strong> ist das Pseudonym eines deutschen Autors, der sich auf atmosphärische Mystery-Romane mit Elementen des kosmischen Horrors spezialisiert.</p>
+                <p><strong>P. J. Blackwood</strong> ist das Pseudonym eines deutschen Autors, der sich auf Romane mit Elementen des kosmischen Horrors spezialisiert.</p>
                 
                 <p>Im Mittelpunkt seiner Geschichten stehen nicht klassische Horrorfiguren oder spektakuläre Schockeffekte, sondern die schleichende Erkenntnis, dass die Wirklichkeit mehr verbirgt, als der Mensch begreifen kann. Seine Romane verbinden sorgfältig aufgebaute Ermittlungen mit psychologischer Spannung, geheimnisvollen Schauplätzen und einer dichten, unheimlichen Atmosphäre.</p>
                 
-                <p>Die literarische Inspiration reicht von den Werken H. P. Lovecrafts bis zu klassischen Mystery- und Detektivgeschichten. Daraus entwickelt P. J. Blackwood jedoch einen eigenständigen Stil, der den kosmischen Horror vor allem durch Erinnerung, Wahrnehmung und die Auflösung scheinbar sicherer Gewissheiten erfahrbar macht.</p>
+                <p>Die literarische Inspiration reicht von den Werken H. P. Lovecrafts bis zu klassischen Detektivgeschichten. Daraus entwickelt P. J. Blackwood jedoch einen eigenständigen Stil, der den kosmischen Horror vor allem durch Erinnerung, Wahrnehmung und die Auflösung scheinbar sicherer Gewissheiten erfahrbar macht.</p>
                 
                 <p>Mit <strong>SKELDVIK</strong> veröffentlicht P. J. Blackwood seinen Debütroman – den Auftakt einer literarischen Reise in die Grenzbereiche zwischen Wirklichkeit, Erinnerung und dem Unbekannten.</p>
             </div>
         </section>
 
-        <!-- SEKTION 5: KONTAKT & SOCIAL MEDIA -->
         <section id="kontakt">
             <div class="contact-box">
                 <h3>Kontakt & Anfragen</h3>
@@ -458,7 +442,6 @@
 
     </div>
 
-    <!-- FOOTER -->
     <footer>
         <p>&copy; 2026 P.J. Blackwood. Alle Rechte vorbehalten.</p>
     </footer>
