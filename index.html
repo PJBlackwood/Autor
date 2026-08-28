@@ -976,8 +976,9 @@
 
             perspective: 1200px;
 
-            /* Buchcover breiter dargestellt */
-            width: min(360px, 88vw);
+            /* Buchcover deutlich breiter dargestellt */
+            width: 430px;
+            max-width: 100%;
         }
 
 
@@ -1008,6 +1009,7 @@
         .hero-cover img {
             width: 100%;
             height: auto;
+            max-width: none;
             object-fit: contain;
 
             border-radius: 4px;
@@ -1937,9 +1939,9 @@
                 flex:
                     0
                     0
-                    360px;
+                    430px;
 
-                width: 360px;
+                width: 430px;
             }
 
 
@@ -2105,6 +2107,11 @@
             .hero-card,
             .about-card {
                 padding: 1.6rem;
+            }
+
+            .hero-cover {
+                width: min(360px, 92vw);
+                max-width: 100%;
             }
 
 
