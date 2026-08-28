@@ -153,7 +153,7 @@
                 url("assets/skeldvik-background.png");
 
             background-size: cover;
-            background-position: center;
+            background-position: 68% center;
             background-repeat: no-repeat;
 
             transform: scale(1.02);
@@ -597,7 +597,7 @@
                 url("assets/skeldvik-background.png");
 
             background-size: cover;
-            background-position: center;
+            background-position: 68% center;
             background-repeat: no-repeat;
         }
 
@@ -1952,6 +1952,21 @@
 
 
         /* =========================================================
+           SEHR BREITE BILDSCHIRME
+           Dorf und Leuchtturm bleiben gemeinsam im Bild.
+        ========================================================= */
+
+        @media (min-width: 1500px) {
+
+            .page-background,
+            .cinematic-hero {
+                background-position: 62% center;
+            }
+
+        }
+
+
+        /* =========================================================
            TABLET / SMARTPHONE
         ========================================================= */
 
@@ -1963,7 +1978,7 @@
 
 
             .page-background {
-                background-position: 58% center;
+                background-position: 82% center;
             }
 
 
@@ -2075,7 +2090,7 @@
                     65px;
 
                 background-position:
-                    58% center;
+                    82% center;
             }
 
 
