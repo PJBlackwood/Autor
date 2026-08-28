@@ -2418,6 +2418,58 @@
             }
         }
 
+    
+        /* =========================================================
+           FEINPOSITION STARTSEITEN-TEXTE
+           Nur der komplette Textblock wird nach oben versetzt.
+           Das Hintergrundbild und der Leuchtturm bleiben exakt
+           an ihrer bisherigen Position.
+
+           Referenz aus der markierten Vorlage:
+           - P.J. BLACKWOOD -> Höhe der grünen Linie
+           - SKELDVIK       -> Höhe der orangenen Linie
+           - alle folgenden Texte wandern im gleichen Abstand mit
+        ========================================================= */
+
+        .cinematic-inner {
+            padding-top: 0 !important;
+            transform: translateY(-152px);
+        }
+
+
+        /* Auf sehr großen Monitoren nur minimal weiter nach oben */
+        @media (min-width: 1500px) {
+
+            .cinematic-inner {
+                padding-top: 0 !important;
+                transform: translateY(-158px);
+            }
+
+        }
+
+
+        /* Tablet: gleiche Anordnung, aber etwas weniger Verschiebung */
+        @media (max-width: 760px) {
+
+            .cinematic-inner {
+                padding-top: 0 !important;
+                transform: translateY(-90px);
+            }
+
+        }
+
+
+        /* Kleine Smartphones */
+        @media (max-width: 420px) {
+
+            .cinematic-inner {
+                padding-top: 0 !important;
+                transform: translateY(-65px);
+            }
+
+        }
+
+
     </style>
 
 </head>
