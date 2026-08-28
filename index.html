@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>P.J. Blackwood | Offizielle Autoren-Webseite</title>
+
+    <meta name="description" content="Die offizielle Autoren-Webseite von P.J. Blackwood. SKELDVIK – atmosphärische Mystery, kosmischer Horror und die verborgenen Geschichten rund um das Fjorddorf.">
+    <meta name="author" content="P.J. Blackwood">
+    <meta name="theme-color" content="#06080c">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="P.J. Blackwood | Offizielle Autoren-Webseite">
+    <meta property="og:description" content="SKELDVIK – kosmischer Horror, atmosphärische Mystery und Geschichten aus den Grenzbereichen der Wirklichkeit.">
+    <meta property="og:locale" content="de_DE">
+
+    <style>
+        :root {
+            --bg-color: #06080c;
+            --card-bg: rgba(16, 20, 29, 0.90);
+            --text-main: #c5c6c7;
+            --text-heading: #ffffff;
+            --accent-bordeaux: #800020;
+            --accent-red-bright: #a81c37;
+            --text-muted: #94a3b8;
+            --border-color: #1f2833;
+            --header-height: 146px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: calc(var(--header-height) + 20px);
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            background-image:
+                linear-gradient(rgba(6, 8, 12, 0.88), rgba(6, 8, 12, 0.94)),
+                url("Skeldvik.jpg");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: var(--text-main);
+            line-height: 1.8;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Dezente atmosphärische Licht-/Nebelschicht */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+            background:
+                radial-gradient(circle at 20% 15%, rgba(148, 163, 184, 0.06), transparent 32%),
+                radial-gradient(circle at 82% 35%, rgba(128, 0, 32, 0.035), transparent 28%);
+        }
+
+        a,
+        button {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .skip-link {
+            position: fixed;
+            top: -100px;
+            left: 1rem;
+            z-index: 5000;
+            background: var(--text-heading);
+            color: var(--bg-color);
+            padding: 0.7rem 1rem;
+            text-decoration: none;
+            border-radius: 0 0 4px 4px;
+            font-weight: 700;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* HEADER & NAVIGATION */
+        header.site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(6, 8, 12, 0.96);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+        }
+
+        .header-top {
+            text-align: center;
+            padding: 1.2rem 1rem 0.5rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .author-logo {
+            font-family: "Trajan Pro", Georgia, serif;
+            font-size: 1.8rem;
+            color: var(--text-heading);
+            letter-spacing: 4px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: opacity 0.3s ease;
+        }
+
+        .author-logo:hover {
+            opacity: 0.82;
+        }
+
+        .author-subtitle {
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            color: var(--accent-bordeaux);
+            text-transform: uppercase;
+            margin-top: 0.2rem;
+            font-weight: 700;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.8rem 1rem;
+            position: relative;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: color 0.3s ease, opacity 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: -7px;
+            width: 0;
+            height: 1px;
+            background: var(--accent-red-bright);
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent-red-bright);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            border: 1px solid var(--border-color);
+            background: transparent;
+            color: var(--text-heading);
+            width: 44px;
+            height: 40px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.35rem;
+            line-height: 1;
+        }
+
+        /* MAIN CONTAINER */
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 10rem 1.5rem 4rem 1.5rem;
+        }
+
+        section {
+            margin-bottom: 5rem;
+            scroll-margin-top: calc(var(--header-height) + 20px);
+        }
+
+        /* HERO SEKTION */
+        .hero-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+            margin-bottom: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(135deg, rgba(255,255,255,0.02), transparent 35%, rgba(128,0,32,0.025));
+        }
+
+        .hero-content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            z-index: 1;
+        }
+
+        .hero-cover {
+            align-self: center;
+        }
+
+        .hero-cover img {
+            width: 100%;
+            display: block;
+            border-radius: 4px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.9);
+            border: 1px solid #2c3542;
+            transition: transform 0.45s ease, box-shadow 0.45s ease;
+        }
+
+        .hero-cover img:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 38px rgba(0,0,0,0.95);
+        }
+
+        .release-badge {
+            display: inline-block;
+            background-color: var(--accent-bordeaux);
+            color: #ffffff;
+            padding: 0.3rem 0.9rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 3px;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        h1.book-title {
+            font-family: "Trajan Pro", Georgia, serif;
+            font-size: clamp(2.4rem, 6vw, 3rem);
+            color: var(--text-heading);
+            margin-bottom: 0.5rem;
+            letter-spacing: 3px;
+            line-height: 1.1;
+        }
+
+        .book-tagline {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .hero-text p {
+            margin-bottom: 1.2rem;
+            color: #b3b3b3;
+        }
+
+        .hero-quote {
+            border-left: 3px solid var(--accent-bordeaux);
+            padding: 0.15rem 0 0.15rem 1.1rem;
+            margin: 1.4rem 0;
+            color: #d4d4d4;
+            font-style: italic;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 0.9rem;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .btn-status,
+        .btn-secondary {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            text-decoration: none;
+        }
+
+        .btn-status {
+            background: transparent;
+            border: 2px solid var(--accent-bordeaux);
+            color: var(--text-heading);
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            transition: border-color 0.3s ease, color 0.3s ease, background 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            color: #ffffff;
+            border-color: var(--accent-bordeaux);
+            background: rgba(128, 0, 32, 0.08);
+        }
+
+        /* SEKTIONEN TYPOGRAFIE */
+        .section-title {
+            font-family: "Trajan Pro", Georgia, serif;
+            font-size: 2rem;
+            color: var(--text-heading);
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .section-intro {
+            max-width: 760px;
+            color: var(--text-muted);
+            margin: -0.8rem 0 2rem;
+        }
+
+        /* BÜCHER & WERKE */
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .work-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 6px;
+            min-height: 100%;
+            transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .work-card:hover {
+            transform: translateY(-3px);
+            border-color: #313d4d;
+            box-shadow: 0 16px 30px rgba(0,0,0,0.25);
+        }
+
+        .work-status {
+            color: var(--accent-red-bright);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .work-card h3 {
+            font-family: "Trajan Pro", Georgia, serif;
+            color: var(--text-heading);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        /* NEUIGKEITEN & AKTUELLES */
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .news-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 6px;
+            border-left: 4px solid var(--accent-bordeaux);
+        }
+
+        .news-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.3rem;
+        }
+
+        .news-item h3 {
+            color: var(--text-heading);
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ÜBER DEN AUTOR */
+        .about-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 3rem;
+            border-radius: 6px;
+        }
+
+        .about-card p {
+            margin-bottom: 1.3rem;
+            font-size: 1.05rem;
+            color: #c5c6c7;
+        }
+
+        .about-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* KONTAKT */
+        .contact-box {
+            background: linear-gradient(135deg, rgba(16, 20, 29, 0.95), rgba(8, 10, 15, 0.98));
+            border: 1px solid var(--border-color);
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .contact-box h3 {
+            font-family: "Trajan Pro", Georgia, serif;
+            color: var(--text-heading);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .email-link {
+            display: inline-block;
+            color: var(--accent-red-bright);
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            margin: 1rem 0 2rem 0;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+            overflow-wrap: anywhere;
+        }
+
+        .email-link:hover {
+            color: #ffffff;
+        }
+
+        .social-placeholders {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            flex-wrap: wrap;
+        }
+
+        .social-placeholders span {
+            border: 1px dashed var(--border-color);
+            padding: 0.4rem 1rem;
+            border-radius: 4px;
+        }
+
+        /* RECHTLICHES */
+        .legal-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 2rem;
+        }
+
+        .legal-card {
+            background: rgba(16, 20, 29, 0.75);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 2rem;
+        }
+
+        .legal-card h3 {
+            font-family: "Trajan Pro", Georgia, serif;
+            color: var(--text-heading);
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .legal-card p {
+            color: var(--text-muted);
+            margin-bottom: 0.8rem;
+        }
+
+        .legal-note {
+            font-size: 0.88rem;
+            color: #7e8795;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 3rem 1.5rem;
+            border-top: 1px solid var(--border-color);
+            background: rgba(6, 8, 12, 0.95);
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .footer-links {
+            margin-top: 0.7rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #7f8791;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-red-bright);
+        }
+
+        /* Dezente Scroll-Einblendung */
+        .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.75s ease, transform 0.75s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--accent-red-bright);
+            outline-offset: 4px;
+        }
+
+        @media (min-width: 768px) {
+            .hero-content {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+
+            .hero-cover {
+                flex: 0 0 270px;
+            }
+
+            .hero-text {
+                flex: 1;
+            }
+        }
+
+        @media (max-width: 760px) {
+            :root {
+                --header-height: 126px;
+            }
+
+            body {
+                background-attachment: scroll;
+            }
+
+            .header-top {
+                padding: 0.85rem 4.2rem 0.45rem 1rem;
+                text-align: left;
+            }
+
+            .author-logo {
+                font-size: 1.25rem;
+                letter-spacing: 2.5px;
+            }
+
+            .author-subtitle {
+                font-size: 0.68rem;
+                letter-spacing: 1.8px;
+            }
+
+            nav {
+                min-height: 52px;
+                padding: 0.4rem 1rem;
+            }
+
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                right: 1rem;
+                top: -52px;
+            }
+
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 0;
+                padding: 0.5rem 0 0.8rem;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 0.8rem 0.4rem;
+                text-align: center;
+            }
+
+            .nav-links a::after {
+                bottom: 4px;
+            }
+
+            .container {
+                padding: 8.8rem 1rem 3rem;
+            }
+
+            .hero-card,
+            .about-card {
+                padding: 1.6rem;
+            }
+
+            .hero-actions {
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .btn-status,
+            .btn-secondary {
+                text-align: center;
+                width: 100%;
+            }
+
+            .section-title {
+                font-size: 1.55rem;
+            }
+
+            .works-grid,
+            .legal-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-box {
+                padding: 2rem 1.2rem;
+            }
+
+            .social-placeholders {
+                gap: 0.8rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .author-logo {
+                font-size: 1.05rem;
+            }
+
+            .author-subtitle {
+                font-size: 0.61rem;
+            }
+
+            h1.book-title {
+                letter-spacing: 2px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a class="skip-link" href="#hauptinhalt">Zum Inhalt springen</a>
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="site-header">
+        <div class="header-top">
+            <a href="#hauptwerk" class="author-logo" aria-label="P.J. Blackwood – Startseite">P.J. Blackwood</a>
+            <div class="author-subtitle">Kosmischer Horror &bull; Atmosphärische Mystery</div>
+        </div>
+
+        <nav aria-label="Hauptnavigation">
+            <button class="menu-toggle" id="menuToggle" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mainNav">☰</button>
+
+            <ul class="nav-links" id="mainNav">
+                <li><a href="#hauptwerk">Debütroman</a></li>
+                <li><a href="#werke">Werke</a></li>
+                <li><a href="#aktuelles">Aktuelles</a></li>
+                <li><a href="#autor">Über den Autor</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container" id="hauptinhalt">
+
+        <!-- HERO SEKTION: HAUPTWERK -->
+        <section class="hero-card reveal" id="hauptwerk">
+            <div class="hero-content">
+
+                <div class="hero-cover">
+                    <img src="cover.jpg" alt="Buchcover des Romans SKELDVIK von P.J. Blackwood" width="540" height="810">
+                </div>
+
+                <div class="hero-text">
+                    <span class="release-badge">Veröffentlichung: Herbst 2026</span>
+
+                    <h1 class="book-title">SKELDVIK</h1>
+
+                    <div class="book-tagline">Das Schweigen wird jeden Tag lauter.</div>
+
+                    <p>Ein anonymer Brief führt den Privatdetektiv Elias Johann Vane in das abgelegene Küstendorf Skeldvik. Der Umschlag ist feucht vom Salzwasser, der Absender fehlt, und die Nachricht besteht aus nur wenigen Zeilen.</p>
+
+                    <div class="hero-quote">»Fragen Sie nach dem Leuchtturm. Das Schweigen wird jeden Tag lauter.«</div>
+
+                    <p>In Skeldvik scheint nichts zu stimmen. Namen verschwinden aus alten Registern. Fotografien zeigen Menschen, an die sich niemand erinnert. Karten widersprechen der Wirklichkeit, und die Bewohner meiden Fragen, auf die es keine Antworten geben dürfte.</p>
+
+                    <div class="hero-actions">
+                        <span class="btn-status">In Vorbereitung für Herbst 2026</span>
+                        <a href="#aktuelles" class="btn-secondary">Neuigkeiten zum Buch</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SEKTION 2: BÜCHER & WERKE -->
+        <section id="werke" class="reveal">
+            <h2 class="section-title">Werke &amp; Projekte</h2>
+
+            <p class="section-intro">Romane und ausgewählte Projekte von P.J. Blackwood. Kommende Einzelbände der Novellen-Trilogie bleiben bis zu ihrer offiziellen Enthüllung unter Verschluss.</p>
+
+            <div class="works-grid">
+
+                <article class="work-card">
+                    <div class="work-status">Debütroman &bull; Herbst 2026</div>
+                    <h3>SKELDVIK</h3>
+                    <p>Ein atmosphärischer Mystery-Roman über Erinnerung, Wahrheit und den Moment, in dem das Unbekannte beginnt, die vertraute Welt zu verändern. Der Auftakt einer literarischen Reise in die Grenzbereiche der Wirklichkeit.</p>
+                </article>
+
+                <article class="work-card">
+                    <div class="work-status">In Arbeit &bull; Novellen-Trilogie</div>
+                    <h3>Die Archive von SKELDVIK</h3>
+                    <p>Eine dreibändige Novellen-Reihe, die tiefer in verborgene Geschichten, vergessene Dokumente und düstere Ereignisse rund um das Fjorddorf führt. Weitere Einzelheiten werden zu einem späteren Zeitpunkt enthüllt.</p>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- SEKTION 3: AKTUELLES / NEWS -->
+        <section id="aktuelles" class="reveal">
+            <h2 class="section-title">Aktuelles</h2>
+
+            <div class="news-list">
+
+                <article class="news-item">
+                    <div class="news-date">Projekt-Update</div>
+                    <h3>Arbeit an der Trilogie „Die Archive von SKELDVIK“</h3>
+                    <p>Parallel zu den Vorbereitungen für den Debütroman entsteht eine dreibändige Novellen-Reihe, die weitere verborgene Geschichten aus dem Umfeld Skeldviks öffnet. Titel und Cover der einzelnen Bände werden erst zu ihrer offiziellen Ankündigung veröffentlicht.</p>
+                </article>
+
+                <article class="news-item">
+                    <div class="news-date">Ankündigung</div>
+                    <h3>SKELDVIK erscheint im Herbst 2026</h3>
+                    <p>Der Debütroman <strong>SKELDVIK</strong> ist für Herbst 2026 vorgesehen. Informationen zur Veröffentlichung, zu Bezugsquellen und zu möglichen Leseaktionen werden hier bekanntgegeben.</p>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- SEKTION 4: ÜBER DEN AUTOR -->
+        <section id="autor" class="reveal">
+            <h2 class="section-title">Über den Autor</h2>
+
+            <div class="about-card">
+                <p><strong>P. J. Blackwood</strong> ist das Pseudonym eines deutschen Autors, der sich auf atmosphärische Mystery-Romane mit Elementen des kosmischen Horrors spezialisiert.</p>
+
+                <p>Im Mittelpunkt seiner Geschichten stehen nicht klassische Horrorfiguren oder spektakuläre Schockeffekte, sondern die schleichende Erkenntnis, dass die Wirklichkeit mehr verbirgt, als der Mensch begreifen kann. Seine Romane verbinden sorgfältig aufgebaute Ermittlungen mit psychologischer Spannung, geheimnisvollen Schauplätzen und einer dichten, unheimlichen Atmosphäre.</p>
+
+                <p>Die literarische Inspiration reicht von den Werken H. P. Lovecrafts bis zu klassischen Mystery- und Detektivgeschichten. Daraus entwickelt P. J. Blackwood einen eigenen Stil, der kosmischen Horror vor allem durch Erinnerung, Wahrnehmung und die Auflösung scheinbar sicherer Gewissheiten erfahrbar macht.</p>
+
+                <p>Mit <strong>SKELDVIK</strong> veröffentlicht P. J. Blackwood seinen Debütroman – eine Reise in die Grenzbereiche zwischen Wirklichkeit, Erinnerung und dem Unbekannten.</p>
+            </div>
+        </section>
+
+        <!-- SEKTION 5: KONTAKT & SOCIAL MEDIA -->
+        <section id="kontakt" class="reveal">
+            <div class="contact-box">
+                <h3>Kontakt &amp; Anfragen</h3>
+
+                <p>Für Anfragen, Rezensionsexemplare oder Leserpost erreichen Sie den Autor direkt per E-Mail:</p>
+
+                <a href="mailto:p.j.blackwood@gmx.de" class="email-link">p.j.blackwood@gmx.de</a>
+
+                <div class="social-placeholders" aria-label="Social Media">
+                    <span>TikTok &bull; demnächst</span>
+                    <span>Instagram &bull; demnächst</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- RECHTLICHES -->
+        <section id="rechtliches" class="reveal">
+            <h2 class="section-title">Rechtliches</h2>
+
+            <div class="legal-grid">
+
+                <div class="legal-card" id="impressum">
+                    <h3>Impressum</h3>
+                    <p><strong>P. J. Blackwood</strong></p>
+                    <p>[Vollständiger Name]<br>[Straße und Hausnummer]<br>[PLZ und Ort]</p>
+                    <p>E-Mail: <a href="mailto:p.j.blackwood@gmx.de" class="email-link" style="font-size:inherit; margin:0;">p.j.blackwood@gmx.de</a></p>
+                    <p class="legal-note">Bitte vor Veröffentlichung die gesetzlich erforderlichen Angaben vollständig ergänzen.</p>
+                </div>
+
+                <div class="legal-card" id="datenschutz">
+                    <h3>Datenschutz</h3>
+                    <p>Diese statische Website verwendet in dieser Fassung keine eigenen Analyse-, Marketing- oder Tracking-Cookies.</p>
+                    <p>Beim Hosting über GitHub Pages können technisch notwendige Verbindungs- und Serverdaten durch den Hostinganbieter verarbeitet werden.</p>
+                    <p class="legal-note">Die Datenschutzerklärung muss vor Veröffentlichung an die tatsächlich eingesetzten Dienste und Inhalte angepasst werden.</p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; <span id="currentYear">2026</span> P.J. Blackwood. Alle Rechte vorbehalten.</p>
+
+        <div class="footer-links">
+            <a href="#impressum">Impressum</a>
+            <span aria-hidden="true">&bull;</span>
+            <a href="#datenschutz">Datenschutz</a>
+            <span aria-hidden="true">&bull;</span>
+            <a href="mailto:p.j.blackwood@gmx.de">Kontakt</a>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById("menuToggle");
+        const mainNav = document.getElementById("mainNav");
+        const navLinks = [...document.querySelectorAll(".nav-links a")];
+
+        menuToggle.addEventListener("click", () => {
+            const isOpen = mainNav.classList.toggle("open");
+            menuToggle.setAttribute("aria-expanded", String(isOpen));
+            menuToggle.setAttribute("aria-label", isOpen ? "Menü schließen" : "Menü öffnen");
+            menuToggle.textContent = isOpen ? "×" : "☰";
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                mainNav.classList.remove("open");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.setAttribute("aria-label", "Menü öffnen");
+                menuToggle.textContent = "☰";
+            });
+        });
+
+        document.getElementById("currentYear").textContent = new Date().getFullYear();
+
+        const revealItems = document.querySelectorAll(".reveal");
+
+        if ("IntersectionObserver" in window) {
+            const revealObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.08 });
+
+            revealItems.forEach(item => revealObserver.observe(item));
+        } else {
+            revealItems.forEach(item => item.classList.add("visible"));
+        }
+
+        const trackedSections = [...document.querySelectorAll("main section[id]")];
+
+        if ("IntersectionObserver" in window) {
+            const navObserver = new IntersectionObserver(entries => {
+                const visible = entries
+                    .filter(entry => entry.isIntersecting)
+                    .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+                if (!visible) return;
+
+                navLinks.forEach(link => {
+                    const target = link.getAttribute("href");
+                    link.classList.toggle("active", target === "#" + visible.target.id);
+                });
+            }, {
+                rootMargin: "-25% 0px -60% 0px",
+                threshold: [0.01, 0.1, 0.25]
+            });
+
+            trackedSections.forEach(section => navObserver.observe(section));
+        }
+    </script>
+</body>
+</html>
