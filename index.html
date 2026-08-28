@@ -153,7 +153,7 @@
                 url("assets/skeldvik-background.png");
 
             background-size: cover;
-            background-position: 68% center;
+            background-position: right center;
             background-repeat: no-repeat;
 
             transform: scale(1.02);
@@ -589,34 +589,103 @@
                 1.5rem
                 80px;
 
-            background:
-                linear-gradient(
-                    rgba(4, 6, 10, 0.28),
-                    rgba(6, 8, 12, 0.76)
-                ),
-                url("assets/skeldvik-background.png");
+            /*
+               WICHTIG:
+               Das scharfe Motiv wird NICHT mehr einfach mit "cover"
+               auf die ganze Fläche gezwungen. Dadurch wurde der
+               Leuchtturm auf schmaleren Fenstern abgeschnitten.
 
-            background-size: cover;
-            background-position: 68% center;
-            background-repeat: no-repeat;
+               Stattdessen gibt es:
+               1. eine dunkle, weich vergrößerte Hintergrundebene
+               2. darüber das eigentliche Motiv leicht herausgezoomt.
+            */
+
+            background:
+                radial-gradient(
+                    circle at 50% 42%,
+                    rgba(26, 33, 38, 0.36),
+                    transparent 46%
+                ),
+                linear-gradient(
+                    rgba(4, 6, 10, 0.34),
+                    rgba(6, 8, 12, 0.86)
+                ),
+                #06080c;
         }
 
 
+        /* Weiche Vollbild-Ebene als Füllung */
         .cinematic-hero::before {
             content: "";
 
             position: absolute;
-            inset: 0;
+            inset: -22px;
+
+            z-index: 0;
 
             background:
-                radial-gradient(
-                    circle at center,
-                    transparent 20%,
-                    rgba(6,8,12,0.20) 58%,
-                    rgba(6,8,12,0.80) 100%
-                );
+                linear-gradient(
+                    rgba(6, 8, 12, 0.48),
+                    rgba(6, 8, 12, 0.68)
+                ),
+                url("assets/skeldvik-background.png");
+
+            background-size: cover;
+            background-position: right center;
+            background-repeat: no-repeat;
+
+            filter: blur(14px);
+
+            opacity: 0.55;
+
+            transform: scale(1.035);
 
             pointer-events: none;
+        }
+
+
+        /*
+           Scharfe Hauptebene.
+           88 % Höhe = etwas herausgezoomt.
+           Rechts verankert = Leuchtturm bleibt vollständig sichtbar.
+           Die weichen Masken vermeiden harte Bildkanten.
+        */
+        .hero-picture {
+            position: absolute;
+            inset: 0;
+
+            z-index: 1;
+
+            pointer-events: none;
+
+            background:
+                linear-gradient(
+                    rgba(4, 6, 10, 0.08),
+                    rgba(6, 8, 12, 0.25)
+                ),
+                url("assets/skeldvik-background.png");
+
+            background-size: auto 88%;
+            background-position: right center;
+            background-repeat: no-repeat;
+
+            -webkit-mask-image:
+                linear-gradient(
+                    to bottom,
+                    transparent 0%,
+                    #000 8%,
+                    #000 88%,
+                    transparent 100%
+                );
+
+            mask-image:
+                linear-gradient(
+                    to bottom,
+                    transparent 0%,
+                    #000 8%,
+                    #000 88%,
+                    transparent 100%
+                );
         }
 
 
@@ -628,6 +697,8 @@
             left: 0;
             right: 0;
             bottom: 0;
+
+            z-index: 2;
 
             height: 34%;
 
@@ -645,7 +716,7 @@
             position: absolute;
             inset: -20%;
 
-            z-index: 0;
+            z-index: 2;
 
             pointer-events: none;
 
@@ -663,7 +734,7 @@
         .cinematic-inner {
             position: relative;
 
-            z-index: 2;
+            z-index: 3;
 
             max-width: 920px;
 
@@ -1953,14 +2024,28 @@
 
         /* =========================================================
            SEHR BREITE BILDSCHIRME
-           Dorf und Leuchtturm bleiben gemeinsam im Bild.
         ========================================================= */
 
         @media (min-width: 1500px) {
 
-            .page-background,
-            .cinematic-hero {
-                background-position: 62% center;
+            .hero-picture {
+                background-size: auto 94%;
+            }
+
+        }
+
+
+        /*
+           SCHMALE / HOHE FENSTER:
+           Hier war das eigentliche Problem am stärksten.
+           Das Motiv wird weiter herausgezoomt, damit Leuchtturm
+           UND Felsen vollständig sichtbar bleiben.
+        */
+        @media (max-aspect-ratio: 4 / 3) {
+
+            .hero-picture {
+                background-size: auto 68%;
+                background-position: right center;
             }
 
         }
@@ -1978,7 +2063,7 @@
 
 
             .page-background {
-                background-position: 82% center;
+                background-position: right center;
             }
 
 
@@ -2090,7 +2175,31 @@
                     65px;
 
                 background-position:
-                    82% center;
+                    right center;
+            }
+
+
+            .hero-picture {
+                background-size: auto 64%;
+                background-position: right center;
+
+                -webkit-mask-image:
+                    linear-gradient(
+                        to bottom,
+                        transparent 0%,
+                        #000 6%,
+                        #000 91%,
+                        transparent 100%
+                    );
+
+                mask-image:
+                    linear-gradient(
+                        to bottom,
+                        transparent 0%,
+                        #000 6%,
+                        #000 91%,
+                        transparent 100%
+                    );
             }
 
 
@@ -2391,6 +2500,12 @@
         class="cinematic-hero"
         id="start"
     >
+
+        <div
+            class="hero-picture"
+            aria-hidden="true"
+        ></div>
+
 
         <div
             class="hero-light"
