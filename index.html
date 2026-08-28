@@ -1,250 +1,467 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/base.css">
-    <link rel="stylesheet" href="/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="/css/owl.theme.default.css">
-    <link rel="stylesheet" href="/css/print.css" media="print">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Cinzel:400,700&amp;display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/50e9b64021.js" crossorigin="anonymous"></script>
-    <script src="/js/svg_loader.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <meta property="og:type" content="website"/>
-    <meta property="og:title" content="Senior Webdesigner & Programmierer | SKELDVIK"/>
-    <meta property="og:description" content="Offizielles Portfolio für SKELDVIK und kosmische Horror-Architektur."/>
-    <meta property="og:url" content="https://github.io/index.html"/>
-    <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:title" content="Senior Webdesigner & Programmierer | SKELDVIK"/>
-    <meta name="twitter:description" content="Offizielles Portfolio für SKELDVIK und kosmische Horror-Architektur."/>
-    <link rel="shortcut icon" type="image/png" href="/favicon.png">
-    <link rel="icon" type="image/png" href="/favicon.png">
-    <title>SKELDVIK | Kosmischer Horror & Code-Architektur</title>
-    <meta name="description" content="20 Jahre Erfahrung in Webdesign, Programmierung und atmosphärischer Code-Architektur.">
-    <meta http-equiv="Content-Language" content="de-de">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P.J. Blackwood | Offizielle Autoren-Webseite</title>
     <style>
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 140px; /* Verhindert, dass der fixe Header den Inhalt verdeckt */
+        }
+
         :root {
-            --bg-void: #030407;
-            --bg-card: #0d1117;
-            --border-color: #21262d;
-            --text-main: #c9d1d9;
-            --text-heading: #f0f6fc;
+            --bg-color: #06080c;
+            --card-bg: rgba(16, 20, 29, 0.90);
+            --text-main: #c5c6c7;
+            --text-heading: #ffffff;
             --accent-bordeaux: #800020;
-            --accent-glow: #a81c37;
-            --text-muted: #8b949e;
+            --accent-red-bright: #a81c37;
+            --text-muted: #94a3b8;
+            --border-color: #1f2833;
         }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            background-color: var(--bg-void) !important;
-            color: var(--text-main) !important;
-            font-family: 'Source Sans Pro', sans-serif;
-        }
-        h1, h2, h3, h4, .navbar-brand, .nav-link {
-            font-family: 'Cinzel', serif !important;
-        }
-        #mainNav, #sticky-nav, footer {
-            background-color: var(--bg-void);
-            border-bottom: 1px solid var(--border-color);
-        }
-        .nav-link {
-            color: var(--text-main) !important;
-        }
-        .nav-link:hover {
-            color: var(--accent-glow) !important;
-        }
-        .content-block, .card {
-            background-color: var(--bg-card) !important;
-            border: 1px solid var(--border-color) !important;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            background-image: linear-gradient(rgba(6, 8, 12, 0.88), rgba(6, 8, 12, 0.94)), url('Skeldvik.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             color: var(--text-main);
+            line-height: 1.8;
+            min-height: 100vh;
         }
-        h2, h4 {
-            color: var(--text-heading) !important;
+
+        /* HEADER & NAVIGATION (Stephen King Style) */
+        header.site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(6, 8, 12, 0.96);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
         }
-        .text-link {
-            color: #ff7b72 !important;
+
+        .header-top {
+            text-align: center;
+            padding: 1.2rem 1rem 0.5rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .author-logo {
+            font-family: 'Trajan Pro', Georgia, serif;
+            font-size: 1.8rem;
+            color: var(--text-heading);
+            letter-spacing: 4px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .author-subtitle {
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            color: var(--accent-bordeaux);
+            text-transform: uppercase;
+            margin-top: 0.2rem;
+            font-weight: 700;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            padding: 0.8rem 1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-red-bright);
+        }
+
+        /* MAIN CONTAINER */
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 10rem 1.5rem 4rem 1.5rem;
+        }
+
+        /* HERO SEKTION - AKTUELLES BILD / FEATURED BOOK */
+        .hero-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+            margin-bottom: 5rem;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .hero-content {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+            .hero-cover {
+                flex: 0 0 270px;
+            }
+            .hero-text {
+                flex: 1;
+            }
+        }
+
+        .hero-cover img {
+            width: 100%;
+            border-radius: 4px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.9);
+            border: 1px solid #2c3542;
+        }
+
+        .release-badge {
+            display: inline-block;
+            background-color: var(--accent-bordeaux);
+            color: #ffffff;
+            padding: 0.3rem 0.9rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 3px;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        h1.book-title {
+            font-family: 'Trajan Pro', Georgia, serif;
+            font-size: 3rem;
+            color: var(--text-heading);
+            margin-bottom: 0.5rem;
+            letter-spacing: 3px;
+            line-height: 1.1;
+        }
+
+        .book-tagline {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .hero-text p {
+            margin-bottom: 1.2rem;
+            color: #b3b3b3;
+        }
+
+        .btn-status {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.8rem 1.8rem;
+            background: transparent;
+            border: 2px solid var(--accent-bordeaux);
+            color: var(--text-heading);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        /* SEKTIONEN TYPOGRAFIE */
+        section {
+            margin-bottom: 5rem;
+        }
+
+        .section-title {
+            font-family: 'Trajan Pro', Georgia, serif;
+            font-size: 2rem;
+            color: var(--text-heading);
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* BÜCHER & WERKE (BIBLIOGRAPHIE) GRID */
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .work-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 6px;
+        }
+
+        .work-status {
+            color: var(--accent-red-bright);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .work-card h3 {
+            font-family: 'Trajan Pro', Georgia, serif;
+            color: var(--text-heading);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        /* NEUIGKEITEN & AKTUELLES */
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .news-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 6px;
+            border-left: 4px solid var(--accent-bordeaux);
+        }
+
+        .news-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.3rem;
+        }
+
+        .news-item h3 {
+            color: var(--text-heading);
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ÜBER DEN AUTOR */
+        .about-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 3rem;
+            border-radius: 6px;
+        }
+
+        .about-card p {
+            margin-bottom: 1.3rem;
+            font-size: 1.05rem;
+            color: #c5c6c7;
+        }
+
+        .about-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* KONTAKT & NEWSLETTER */
+        .contact-box {
+            background: linear-gradient(135deg, rgba(16, 20, 29, 0.95), rgba(8, 10, 15, 0.98));
+            border: 1px solid var(--border-color);
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .contact-box h3 {
+            font-family: 'Trajan Pro', Georgia, serif;
+            color: var(--text-heading);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .email-link {
+            display: inline-block;
+            color: var(--accent-red-bright);
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            margin: 1rem 0 2rem 0;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .email-link:hover {
+            color: #ffffff;
+        }
+
+        .social-placeholders {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .social-placeholders span {
+            border: 1px dashed var(--border-color);
+            padding: 0.4rem 1rem;
+            border-radius: 4px;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 3rem 1.5rem;
+            border-top: 1px solid var(--border-color);
+            background: rgba(6, 8, 12, 0.95);
+            font-size: 0.85rem;
+            color: #666;
         }
     </style>
 </head>
-<body class="layout_home">
-    <div id="black-out">
-      <div class="image-viewer">
-        <a href="#" class="close">
-          <div class="sprite-wrapper">
-            <svg data-url="/assets/images/sprites/close_sprite.svg"></svg>
-           </div>
-        </a>
-      </div>
-    </div>
-    
-    <div id="mainNav" class="container-fluid">
-      <div class="nav container">
-        <a class="site-logo" href="#">		
-            <span class="lightmode"><svg data-url="/assets/images/sprites/logo_sprite_light.svg"></svg></span>		
-            <span class="darkmode"><svg data-url="/assets/images/sprites/logo_sprite_dark--small.svg"></svg></span>
-        </a>
-        <span class="nav justify-content-end align-items-center">
-              <span class="nav-item navlink-works">
-                <a class="nav-link" href="#werke">Release</a>
-              </span>
-              <span class="nav-item navlink-upcoming">
-                <a class="nav-link" href="#kommend">In Entwicklung</a>
-              </span>
-              <span class="nav-item navlink-author">
-                <a class="nav-link" href="#ueber-mich">Über den Autor</a>
-              </span>
-              <span class="nav-item">
-                <a class="nav-link" href="#" target="_blank">GitHub</a>
-              </span>
-        </span>
-      </div>
-    </div>
+<body>
 
-    <div id="header-carousel" class="container-fluid">
-	<div class="container">
-		<div class="row">
-			<div class="carousel owl-carousel">
-            <div>		
-		        <a class="header-carousel" href="#" target="_blank">			    
-                    <img src="skeldvik_cover.png" alt="SKELDVIK - Release Herbst 2026. Kosmischer Horror und atmosphärische Mystery.">
-		        </a>	        
-            </div>
-	      </div>	    
-	    </div>
-	</div>  
-    <div class="divider"></div>
-    </div>
-
-    <div id="werke" class="container-fluid main-content">
-      <div id="section-header" class="full-width">
-        <div class="container">
-          <div class="row">
-            <div class="col header-wrapper">
-              <h2>Aktueller Release</h2>
-              <div class="section-header-links">
-                <div class="header-links-inner">
-                    <a href="#" class="section-header-link text-link">Details</a>
-                </div>
-              </div>
-            </div>
-          </div>
+    <!-- HEADER / NAVIGATION (im Stephen King Stil) -->
+    <header class="site-header">
+        <div class="header-top">
+            <a href="#" class="author-logo">P.J. Blackwood</a>
+            <div class="author-subtitle">Kosmischer Horror &bull; Atmosphärische Mystery</div>
         </div>
-      </div>
-      
-      <div class="container">
-        <div class="row">
-          <div class="col-12 col-sm-12 col-md-6 col-lg-4 content-block featured col-lg-12">
-            <div class="content-image">
-              <div class="content-background">
-                <div class="content-blur" style="background-image: url('skeldvik_cover.png');"></div>
-                <div class="content-blur-wrapper"></div>
-                <span class="content-splatter"></span>
-              </div>
-              <img src="skeldvik_cover.png" class="image-zoom" alt="SKELDVIK Cover Art">
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#hauptwerk">Debütroman</a></li>
+                <li><a href="#werke">Werke</a></li>
+                <li><a href="#aktuelles">Aktuelles</a></li>
+                <li><a href="#autor">Über den Autor</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <!-- HERO SEKTION: HAUPTWERK (SKELDVIK) -->
+        <section class="hero-card" id="hauptwerk">
+            <div class="hero-content">
+                <div class="hero-cover">
+                    <!-- Erwartet die Datei cover.jpg -->
+                    <img src="cover.jpg" alt="SKELDVIK Buchcover" onerror="this.style.display='none'">
+                </div>
+                <div class="hero-text">
+                    <span class="release-badge">Veröffentlichung: HERBST 2026</span>
+                    <h1 class="book-title">SKELDVIK</h1>
+                    <div class="book-tagline">Das Schweigen wird immer lauter</div>
+                    
+                    <p>Ein anonymer Brief führt den Privatdetektiv Elias Johann Vane in das abgelegene Küstendorf Skeldvik. Der Umschlag ist feucht vom Salzwasser, der Absender fehlt, und die Nachricht besteht aus nur wenigen Zeilen:</p>
+                    <p><em>„Fragen Sie nach dem Leuchtturm. Das Schweigen wird jeden Tag lauter.“</em></p>
+                    <p>In Skeldvik scheint nichts zu stimmen. Namen verschwinden aus alten Registern. Fotografien zeigen Menschen, an die sich niemand erinnert. Karten widersprechen der Wirklichkeit, und die Bewohner meiden Fragen, auf die es keine Antworten geben dürfte.</p>
+
+                    <div class="btn-status">In Vorbereitung für Herbst 2026</div>
+                </div>
             </div>
-            <div class="content-block-content">
-              <p class="format">Hauptwerk / Debüt</p>
-              <h4>SKELDVIK</h4>
-              <p class="content-date">Offizieller Release: Herbst 2026</p>
-              <div class="content-description">
-                <p>
-                Ein anonymer Brief führt in ein nebelverhangenes Fjorddorf, in dem Karten der Wirklichkeit widersprechen und Namen aus Registern getilgt sind. Eine kompromisslose Reise an die Grenzen des Begreifbaren und der menschlichen Wahrnehmung.<br><br>
-                <strong><a class="text-link" style="display:inline;" href="#" rel="noopener">Mehr zum Buch erfahren</a></strong><br>
-                </p>
-                <span class="content-blend"></span>
-              </div>
-              <div class="content-links">
-                <a href="#" class="text-link">Zum Repository</a>
-              </div>
+        </section>
+
+        <!-- SEKTION 2: BÜCHER & WERKE (BIBLIOGRAPHIE) -->
+        <section id="werke">
+            <h2 class="section-title">Werke & Projekte</h2>
+            <div class="works-grid">
+                
+                <div class="work-card">
+                    <div class="work-status">Debütroman &bull; Herbst 2026</div>
+                    <h3>SKELDVIK</h3>
+                    <p>Ein atmosphärischer Mystery-Roman über Erinnerung, Wahrheit und den Moment, in dem das Unbekannte beginnt, die vertraute Welt zu verändern. Der Auftakt einer literarischen Reise in die Grenzbereiche der Wirklichkeit.</p>
+                </div>
+
+                <div class="work-card">
+                    <div class="work-status">In Arbeit &bull; Novellen-Trilogie</div>
+                    <h3>Die Archive von SKELDVIK</h3>
+                    <p>Eine 3-bändige Novellen-Reihe, die tiefer in die verborgenen Geschichten, die vergessenen Dokumente und die düsteren Ereignisse rund um das Fjorddorf eintaucht.</p>
+                </div>
+
             </div>
-          </div>
-        </div>
-      </div>
+        </section>
+
+        <!-- SEKTION 3: AKTUELLES / NEWS -->
+        <section id="aktuelles">
+            <h2 class="section-title">Aktuelles</h2>
+            <div class="news-list">
+                
+                <div class="news-item">
+                    <div class="news-date">Projekt-Update</div>
+                    <h3>Arbeit an der Trilogie „Die Archive von SKELDVIK“</h3>
+                    <p>Parallel zu den Vorbereitungen für den Debütroman läuft aktuell die Arbeit an einer 3-bändigen Novellen-Reihe, welche die Mythologie rund um Skeldvik weiter ausbauen wird.</p>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-date">Ankündigung</div>
+                    <h3>Veröffentlichungstermin für SKELDVIK steht fest</h3>
+                    <p>Der Debütroman „SKELDVIK“ wird im **Herbst 2026** offiziell erscheinen. Weitere Informationen zu Vorbestellungen folgen in Kürze.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SEKTION 4: ÜBER DEN AUTOR -->
+        <section id="autor">
+            <h2 class="section-title">Über den Autor</h2>
+            <div class="about-card">
+                <p><strong>P. J. Blackwood</strong> ist das Pseudonym eines deutschen Autors, der sich auf atmosphärische Mystery-Romane mit Elementen des kosmischen Horrors spezialisiert.</p>
+                
+                <p>Im Mittelpunkt seiner Geschichten stehen nicht klassische Horrorfiguren oder spektakuläre Schockeffekte, sondern die schleichende Erkenntnis, dass die Wirklichkeit mehr verbirgt, als der Mensch begreifen kann. Seine Romane verbinden sorgfältig aufgebaute Ermittlungen mit psychologischer Spannung, geheimnisvollen Schauplätzen und einer dichten, unheimlichen Atmosphäre.</p>
+                
+                <p>Die literarische Inspiration reicht von den Werken H. P. Lovecrafts bis zu klassischen Mystery- und Detektivgeschichten. Daraus entwickelt P. J. Blackwood jedoch einen eigenständigen Stil, der den kosmischen Horror vor allem durch Erinnerung, Wahrnehmung und die Auflösung scheinbar sicherer Gewissheiten erfahrbar macht.</p>
+                
+                <p>Mit <strong>SKELDVIK</strong> veröffentlicht P. J. Blackwood seinen Debütroman – den Auftakt einer literarischen Reise in die Grenzbereiche zwischen Wirklichkeit, Erinnerung und dem Unbekannten.</p>
+            </div>
+        </section>
+
+        <!-- SEKTION 5: KONTAKT & SOCIAL MEDIA -->
+        <section id="kontakt">
+            <div class="contact-box">
+                <h3>Kontakt & Anfragen</h3>
+                <p>Für Anfragen, Rezensionsexemplare oder Leserpost erreichen Sie den Autor direkt per E-Mail:</p>
+                
+                <a href="mailto:P.J.BLACKWOOD@GMX.DE" class="email-link">P.J.BLACKWOOD@GMX.DE</a>
+
+                <div class="social-placeholders">
+                    <span>TikTok (demnächst)</span>
+                    <span>Instagram (demnächst)</span>
+                </div>
+            </div>
+        </section>
+
     </div>
 
-    <div class="container-fluid main-content" id="kommend">
-      <div class="container">
-        <div class="row">
-          <div id="coming-soon" class="col-12 col-lg-8">
-            <div id="section-header" class="row">
-              <div class="col">
-                <h2>In Entwicklung</h2>
-              </div>
-              <div class="col section-header-links">
-                <a href="#" class="section-header-link text-link">Roadmap</a>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-12 col-sm-12 col-md-6 col-lg-4 content-block col-lg-6 coming-soon">
-                <div class="content-image">
-                  <div class="content-background">
-                    <div class="content-blur" style="background-image: url('skeldvik_cover.png');"></div>
-                    <div class="content-blur-wrapper"></div>
-                    <span class="content-splatter"></span>
-                  </div>
-                  <img src="skeldvik_cover.png" class="image-zoom" alt="Die Archive von Skeldvik">
-                </div>
-                <div class="content-block-content">
-                  <p class="format">Novellen-Trilogie</p>
-                  <h4>Die Archive von Skeldvik</h4>
-                  <p class="content-date">Status: In Arbeit</p>
-                  <div class="content-description">
-                    <p>Ergänzende Aufzeichnungen, vergilbte Dokumente und Protokolle, die tief in die Mythologie und die geheimnisvollen Anomalien rund um die Küste eintauchen.</p>
-                    <p><a class="text-link" href="#">Entwicklung verfolgen</a></p>
-                  </div>
-                  <div class="content-links">
-                    <a href="#" class="text-link">Details</a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-12 col-sm-12 col-md-6 col-lg-4 content-block col-lg-6 coming-soon" id="ueber-mich">
-                <div class="content-image">
-                  <div class="content-background">
-                    <div class="content-blur" style="background-image: url('skeldvik_cover.png');"></div>
-                    <div class="content-blur-wrapper"></div>
-                    <span class="content-splatter"></span>
-                  </div>
-                  <img src="skeldvik_cover.png" class="image-zoom" alt="Über den Autor">
-                </div>
-                <div class="content-block-content">
-                  <p class="format">Profil & Ästhetik</p>
-                  <h4>Über das Projekt</h4>
-                  <p class="content-date">20 Jahre Erfahrung</p>
-                  <div class="content-description">
-                    <p>Konzipiert mit der gestalterischen und technischen Präzision aus zwei Jahrzehnten Webdesign und Software-Architektur. Kein oberflächlicher Horror, sondern pure, atmosphärische Tiefe.</p>
-                    <p><a class="text-link" href="#">GitHub Profil</a></p>
-                  </div>
-                  <div class="content-links">
-                    <a href="#" class="text-link">Kontakt</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div id="latest-news" class="col-12 col-lg-4">
-            <div id="section-header" class="row">
-              <div class="col">
-                <h2>Updates & Status</h2>
-              </div>
-            </div>
-            <div class="content-block p-3">
-                <p><strong>[Herbst 2026]</strong> Der Countdown für SKELDVIK läuft. Manuskriptstrukturen und Layouts werden finalisiert.</p>
-                <hr style="border-color: var(--border-color);">
-                <p><strong>[Trilogie]</strong> Vorbereitende Code-Strukturen und Hintergrundrecherchen für <em>Die Archive von Skeldvik</em> gestartet.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <footer class="container-fluid py-4 text-center">
-        <div class="container">
-            <p>&copy; 2026 SKELDVIK. Hosted on GitHub Pages. Alle Rechte vorbehalten.</p>
-        </div>
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 P.J. Blackwood. Alle Rechte vorbehalten.</p>
     </footer>
+
 </body>
 </html>
