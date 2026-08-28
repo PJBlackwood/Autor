@@ -975,6 +975,9 @@
             position: relative;
 
             perspective: 1200px;
+
+            /* Korrigierte Buchcover-Größe */
+            width: min(300px, 78vw);
         }
 
 
@@ -1004,6 +1007,7 @@
 
         .hero-cover img {
             width: 100%;
+            height: auto;
 
             border-radius: 4px;
 
@@ -1932,7 +1936,9 @@
                 flex:
                     0
                     0
-                    270px;
+                    300px;
+
+                width: 300px;
             }
 
 
