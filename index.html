@@ -665,8 +665,8 @@
                 ),
                 url("assets/skeldvik-background.png");
 
-            background-size: auto 88%;
-            background-position: right center;
+            background-size: 100% auto;
+            background-position: center top;
             background-repeat: no-repeat;
 
             -webkit-mask-image:
@@ -739,6 +739,12 @@
             max-width: 920px;
 
             margin: auto;
+
+            /*
+               Freier Sichtbereich für den Leuchtturm:
+               Der Schriftblock beginnt bewusst etwas tiefer.
+            */
+            padding-top: clamp(90px, 13vh, 150px);
         }
 
 
@@ -2029,7 +2035,8 @@
         @media (min-width: 1500px) {
 
             .hero-picture {
-                background-size: auto 94%;
+                background-size: 100% auto;
+                background-position: center top;
             }
 
         }
@@ -2044,11 +2051,28 @@
         @media (max-aspect-ratio: 4 / 3) {
 
             .hero-picture {
-                background-size: auto 68%;
-                background-position: right center;
+                background-size: 100% auto;
+                background-position: center top;
+            }
+
+            /*
+               Der Titel sitzt etwas tiefer.
+               So bleibt der Leuchtturm oberhalb des Titels frei sichtbar.
+            */
+            .cinematic-inner {
+                padding-top: clamp(150px, 25vh, 260px);
             }
 
         }
+
+
+        /*
+           LEUCHTTURM-SAFE-ZONE
+           Das eigentliche scharfe Motiv wird in voller Breite angezeigt.
+           So bleibt der komplette Leuchtturm im Bild, unabhängig von
+           der Fensterbreite. Die vergrößerte unscharfe Ebene dahinter
+           füllt nur die freien Flächen.
+        */
 
 
         /* =========================================================
@@ -2180,8 +2204,8 @@
 
 
             .hero-picture {
-                background-size: auto 64%;
-                background-position: right center;
+                background-size: 100% auto;
+                background-position: center top;
 
                 -webkit-mask-image:
                     linear-gradient(
@@ -2200,6 +2224,11 @@
                         #000 91%,
                         transparent 100%
                     );
+            }
+
+
+            .cinematic-inner {
+                padding-top: clamp(120px, 22vh, 190px);
             }
 
 
