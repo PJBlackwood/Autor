@@ -2418,6 +2418,32 @@
             }
         }
 
+    
+        /* =========================================================
+           STARTSEITEN-TEXT ETWAS TIEFER
+           Nur der Textblock wird etwas nach unten gesetzt,
+           damit P.J. BLACKWOOD, SKELDVIK und die weiteren Zeilen
+           besser lesbar über dem Hintergrund liegen.
+           Hintergrundbild und Leuchtturm bleiben unverändert.
+        ========================================================= */
+
+        .cinematic-inner {
+            padding-top: clamp(70px, 11vh, 130px);
+        }
+
+        @media (max-width: 760px) {
+            .cinematic-inner {
+                padding-top: clamp(85px, 14vh, 140px);
+            }
+        }
+
+        @media (max-width: 420px) {
+            .cinematic-inner {
+                padding-top: clamp(95px, 16vh, 145px);
+            }
+        }
+
+
     </style>
 
 </head>
