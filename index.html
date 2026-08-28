@@ -631,10 +631,10 @@
                 url("assets/skeldvik-background.png");
 
             background-size: cover;
-            background-position: right center;
+            background-position: 72% center;
             background-repeat: no-repeat;
 
-            filter: blur(14px);
+            filter: blur(18px);
 
             opacity: 0.55;
 
@@ -652,7 +652,16 @@
         */
         .hero-picture {
             position: absolute;
-            inset: 0;
+
+            /*
+               Das eigentliche Motiv beginnt unterhalb des festen Headers.
+               Dadurch kann der obere Teil des Leuchtturms nicht mehr
+               hinter der Navigation verschwinden.
+            */
+            top: var(--header-height);
+            right: 0;
+            bottom: 0;
+            left: 0;
 
             z-index: 1;
 
@@ -660,30 +669,40 @@
 
             background:
                 linear-gradient(
-                    rgba(4, 6, 10, 0.08),
-                    rgba(6, 8, 12, 0.25)
+                    rgba(4, 6, 10, 0.05),
+                    rgba(6, 8, 12, 0.22)
                 ),
                 url("assets/skeldvik-background.png");
 
-            background-size: 100% auto;
+            /*
+               ENTSCHEIDENDE ÄNDERUNG:
+               "contain" statt "cover" / Prozent-Zoom.
+               Damit wird das komplette Originalbild sichtbar:
+               inklusive Spitze, Laterne und Felsen des Leuchtturms.
+            */
+            background-size: contain;
             background-position: center top;
             background-repeat: no-repeat;
+
+            /*
+               Die darunterliegende unscharfe Cover-Ebene füllt
+               freie Bereiche, sodass keine störenden Balken entstehen.
+            */
+            filter: none;
 
             -webkit-mask-image:
                 linear-gradient(
                     to bottom,
-                    transparent 0%,
-                    #000 8%,
-                    #000 88%,
+                    #000 0%,
+                    #000 86%,
                     transparent 100%
                 );
 
             mask-image:
                 linear-gradient(
                     to bottom,
-                    transparent 0%,
-                    #000 8%,
-                    #000 88%,
+                    #000 0%,
+                    #000 86%,
                     transparent 100%
                 );
         }
@@ -712,26 +731,7 @@
         }
 
 
-        .hero-light {
-            position: absolute;
-            inset: -20%;
-
-            z-index: 2;
-
-            pointer-events: none;
-
-            background:
-                radial-gradient(
-                    circle at
-                    var(--mouse-x, 50%)
-                    var(--mouse-y, 45%),
-                    rgba(220, 225, 230, 0.07),
-                    transparent 20%
-                );
-        }
-
-
-        .cinematic-inner {
+.cinematic-inner {
             position: relative;
 
             z-index: 3;
@@ -2035,38 +2035,63 @@
         @media (min-width: 1500px) {
 
             .hero-picture {
-                background-size: 100% auto;
+                background-size: contain;
                 background-position: center top;
+            }
+
+
+            /* =========================================================
+           GLOBALER MAUSLICHTKEGEL
+           Folgt dem Mauszeiger über die GESAMTE Homepage,
+           einschließlich Header, Karten und Footer.
+        ========================================================= */
+
+        .global-mouse-light {
+            position: fixed;
+            inset: 0;
+
+            z-index: 5500;
+
+            pointer-events: none;
+
+            background:
+                radial-gradient(
+                    circle 240px at
+                    var(--mouse-x, 50vw)
+                    var(--mouse-y, 40vh),
+
+                    rgba(235, 240, 242, 0.095) 0%,
+                    rgba(205, 215, 220, 0.050) 28%,
+                    rgba(160, 175, 182, 0.020) 48%,
+                    transparent 72%
+                );
+
+            mix-blend-mode: screen;
+
+            opacity: 0.90;
+
+            transition:
+                opacity 0.25s ease;
+        }
+
+
+        @media (pointer: coarse) {
+
+            .global-mouse-light {
+                display: none;
             }
 
         }
 
 
-        /*
-           SCHMALE / HOHE FENSTER:
-           Hier war das eigentliche Problem am stärksten.
-           Das Motiv wird weiter herausgezoomt, damit Leuchtturm
-           UND Felsen vollständig sichtbar bleiben.
-        */
-        @media (max-aspect-ratio: 4 / 3) {
-
-            .hero-picture {
-                background-size: 100% auto;
-                background-position: center top;
-            }
-
-            /*
-               Der Titel sitzt etwas tiefer.
-               So bleibt der Leuchtturm oberhalb des Titels frei sichtbar.
-            */
-            .cinematic-inner {
+        .cinematic-inner {
                 padding-top: clamp(150px, 25vh, 260px);
             }
 
         }
 
 
-        /*
+/*
            LEUCHTTURM-SAFE-ZONE
            Das eigentliche scharfe Motiv wird in voller Breite angezeigt.
            So bleibt der komplette Leuchtturm im Bild, unabhängig von
@@ -2439,6 +2464,13 @@
     ></div>
 
 
+    <div
+        class="global-mouse-light"
+        id="globalMouseLight"
+        aria-hidden="true"
+    ></div>
+
+
     <!-- =========================================================
          HEADER / NAVIGATION
     ========================================================= -->
@@ -2534,16 +2566,7 @@
             class="hero-picture"
             aria-hidden="true"
         ></div>
-
-
-        <div
-            class="hero-light"
-            id="heroLight"
-            aria-hidden="true"
-        ></div>
-
-
-        <div class="cinematic-inner">
+<div class="cinematic-inner">
 
             <div class="cinematic-author">
                 P.J. BLACKWOOD
@@ -3045,14 +3068,9 @@
                 "backToTop"
             );
 
-        const cinematicHero =
+        const globalMouseLight =
             document.getElementById(
-                "start"
-            );
-
-        const heroLight =
-            document.getElementById(
-                "heroLight"
+                "globalMouseLight"
             );
 
 
@@ -3503,7 +3521,8 @@
 
 
         /* =========================================================
-           SUBTILER LICHTEFFEKT AUF STARTSEITE
+           GLOBALER MAUSLICHTKEGEL
+           Der Lichtkegel folgt dem Cursor auf der gesamten Website.
         ========================================================= */
 
         const finePointer =
@@ -3515,67 +3534,95 @@
         if (
             finePointer.matches
             &&
-            cinematicHero
-            &&
-            heroLight
+            globalMouseLight
         ) {
 
-            cinematicHero.addEventListener(
+            let mouseX =
+                window.innerWidth / 2;
+
+            let mouseY =
+                window.innerHeight / 2;
+
+            let framePending =
+                false;
+
+
+            function paintMouseLight() {
+
+                globalMouseLight.style
+                    .setProperty(
+                        "--mouse-x",
+                        mouseX + "px"
+                    );
+
+
+                globalMouseLight.style
+                    .setProperty(
+                        "--mouse-y",
+                        mouseY + "px"
+                    );
+
+
+                framePending =
+                    false;
+
+            }
+
+
+            document.addEventListener(
                 "pointermove",
                 event => {
 
-                    const rect =
-                        cinematicHero
-                            .getBoundingClientRect();
+                    mouseX =
+                        event.clientX;
+
+                    mouseY =
+                        event.clientY;
 
 
-                    const x =
-                        (
-                            (
-                                event.clientX
-                                -
-                                rect.left
-                            )
-                            /
-                            rect.width
-                        )
-                        *
-                        100;
+                    if (
+                        !framePending
+                    ) {
 
+                        framePending =
+                            true;
 
-                    const y =
-                        (
-                            (
-                                event.clientY
-                                -
-                                rect.top
-                            )
-                            /
-                            rect.height
-                        )
-                        *
-                        100;
-
-
-                    heroLight.style
-                        .setProperty(
-                            "--mouse-x",
-                            x
-                            +
-                            "%"
+                        requestAnimationFrame(
+                            paintMouseLight
                         );
 
+                    }
 
-                    heroLight.style
-                        .setProperty(
-                            "--mouse-y",
-                            y
-                            +
-                            "%"
-                        );
+                },
+                {
+                    passive: true
+                }
+            );
+
+
+            document.addEventListener(
+                "pointerleave",
+                () => {
+
+                    globalMouseLight.style.opacity =
+                        "0";
 
                 }
             );
+
+
+            document.addEventListener(
+                "pointerenter",
+                () => {
+
+                    globalMouseLight.style.opacity =
+                        "0.90";
+
+                }
+            );
+
+
+            paintMouseLight();
 
         }
 
