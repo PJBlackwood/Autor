@@ -1589,40 +1589,55 @@
         }
 
 
+        /* Dezenter Lichtschein hinter dem persönlichen Monogramm */
         .about-card::before {
-            content: "PJB";
+            content: "";
 
             position: absolute;
 
-            right: -0.35rem;
-            bottom: -1.4rem;
+            width: 300px;
+            height: 300px;
 
-            font-family:
-                "Trajan Pro",
-                Georgia,
-                serif;
+            right: -85px;
+            top: -95px;
 
-            font-size:
-                clamp(
-                    5rem,
-                    14vw,
-                    9rem
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(128, 0, 32, 0.10),
+                    rgba(128, 0, 32, 0.025) 45%,
+                    transparent 72%
                 );
-
-            letter-spacing: 0.20em;
-
-            color:
-                rgba(255,255,255,0.025);
 
             pointer-events: none;
         }
 
 
-        .about-card p {
+        .about-card-inner {
             position: relative;
 
             z-index: 1;
 
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1fr)
+                clamp(125px, 14vw, 155px);
+
+            gap: 2.6rem;
+
+            align-items: start;
+        }
+
+
+        .about-copy {
+            min-width: 0;
+        }
+
+
+        .about-card p {
             margin-bottom: 1.3rem;
 
             font-size: 1.05rem;
@@ -1633,6 +1648,82 @@
 
         .about-card p:last-child {
             margin-bottom: 0;
+        }
+
+
+        /* =========================================================
+           PJB-MONOGRAMM
+           Persönliches Siegel im Autorenbereich – bewusst klein,
+           dezent und nicht als dominantes Logo eingesetzt.
+        ========================================================= */
+
+        .author-monogram {
+            position: relative;
+
+            width: 100%;
+
+            max-width: 155px;
+
+            justify-self: end;
+
+            margin-top: 0.25rem;
+
+            opacity: 0.78;
+
+            filter:
+                saturate(0.86)
+                brightness(0.90)
+                contrast(1.04);
+
+            transition:
+                opacity 0.35s ease,
+                filter 0.35s ease,
+                transform 0.35s ease;
+        }
+
+
+        .author-monogram::after {
+            content: "";
+
+            position: absolute;
+            inset: 8% 10%;
+
+            z-index: -1;
+
+            border-radius: 50%;
+
+            background:
+                rgba(128, 0, 32, 0.12);
+
+            filter: blur(24px);
+        }
+
+
+        .author-monogram img {
+            width: 100%;
+            height: auto;
+
+            object-fit: contain;
+
+            filter:
+                drop-shadow(
+                    0 12px 18px
+                    rgba(0, 0, 0, 0.52)
+                );
+        }
+
+
+        .author-monogram:hover {
+            opacity: 0.96;
+
+            filter:
+                saturate(1)
+                brightness(1)
+                contrast(1.04);
+
+            transform:
+                translateY(-2px)
+                scale(1.02);
         }
 
 
@@ -2317,6 +2408,27 @@
             }
 
 
+            .about-card-inner {
+                grid-template-columns: 1fr;
+                gap: 1.8rem;
+            }
+
+
+            .author-monogram {
+                width: 118px;
+                max-width: 118px;
+
+                justify-self: center;
+
+                order: -1;
+
+                margin-top: 0;
+                margin-bottom: 0.2rem;
+
+                opacity: 0.82;
+            }
+
+
             .contact-box {
                 padding:
                     2rem
@@ -2828,24 +2940,48 @@
 
             <div class="about-card">
 
-                <p>
-                    <strong>P. J. Blackwood</strong> ist das Pseudonym eines deutschen Autors, der sich auf atmosphärische Mystery-Romane mit Elementen des kosmischen Horrors spezialisiert.
-                </p>
+                <div class="about-card-inner">
+
+                    <div class="about-copy">
+
+                        <p>
+                            <strong>P. J. Blackwood</strong> ist das Pseudonym eines deutschen Autors, der sich auf atmosphärische Mystery-Romane mit Elementen des kosmischen Horrors spezialisiert.
+                        </p>
 
 
-                <p>
-                    Im Mittelpunkt seiner Geschichten stehen nicht klassische Horrorfiguren oder spektakuläre Schockeffekte, sondern die schleichende Erkenntnis, dass die Wirklichkeit mehr verbirgt, als der Mensch begreifen kann. Seine Romane verbinden sorgfältig aufgebaute Ermittlungen mit psychologischer Spannung, geheimnisvollen Schauplätzen und einer dichten, unheimlichen Atmosphäre.
-                </p>
+                        <p>
+                            Im Mittelpunkt seiner Geschichten stehen nicht klassische Horrorfiguren oder spektakuläre Schockeffekte, sondern die schleichende Erkenntnis, dass die Wirklichkeit mehr verbirgt, als der Mensch begreifen kann. Seine Romane verbinden sorgfältig aufgebaute Ermittlungen mit psychologischer Spannung, geheimnisvollen Schauplätzen und einer dichten, unheimlichen Atmosphäre.
+                        </p>
 
 
-                <p>
-                    Die literarische Inspiration reicht von den Werken H. P. Lovecrafts bis zu klassischen Mystery- und Detektivgeschichten. Daraus entwickelt P. J. Blackwood jedoch einen eigenständigen Stil, der den kosmischen Horror vor allem durch Erinnerung, Wahrnehmung und die Auflösung scheinbar sicherer Gewissheiten erfahrbar macht.
-                </p>
+                        <p>
+                            Die literarische Inspiration reicht von den Werken H. P. Lovecrafts bis zu klassischen Mystery- und Detektivgeschichten. Daraus entwickelt P. J. Blackwood jedoch einen eigenständigen Stil, der den kosmischen Horror vor allem durch Erinnerung, Wahrnehmung und die Auflösung scheinbar sicherer Gewissheiten erfahrbar macht.
+                        </p>
 
 
-                <p>
-                    Mit <strong>SKELDVIK</strong> veröffentlicht P. J. Blackwood seinen Debütroman – den Auftakt einer literarischen Reise in die Grenzbereiche zwischen Wirklichkeit, Erinnerung und dem Unbekannten.
-                </p>
+                        <p>
+                            Mit <strong>SKELDVIK</strong> veröffentlicht P. J. Blackwood seinen Debütroman – den Auftakt einer literarischen Reise in die Grenzbereiche zwischen Wirklichkeit, Erinnerung und dem Unbekannten.
+                        </p>
+
+                    </div>
+
+
+                    <div
+                        class="author-monogram"
+                        aria-label="PJB-Monogramm von P. J. Blackwood"
+                    >
+
+                        <img
+                            src="assets/pjb-monogram.png"
+                            alt="PJB-Monogramm von P. J. Blackwood"
+                            width="1500"
+                            height="1524"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                </div>
 
             </div>
 
