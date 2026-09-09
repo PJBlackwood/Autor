@@ -4545,20 +4545,22 @@ console.error("JSON:", JSON.stringify(error, null, 2));
 
                     if (ownResult.data) {
 
-                        const removeResult =
-                            await readerClient
-                                .from("site_followers")
-                                .delete()
-                                .eq(
-                                    "user_id",
-                                    anonymousUser.id
-                                );
+                       const { data: removedFollower, error: removeError } =
+    await readerClient
+        .from("site_followers")
+        .delete()
+        .eq("user_id", anonymousUser.id)
+        .select();
 
+if (removeError) {
+    throw removeError;
+}
 
-                        if (removeResult.error) {
-                            throw removeResult.error;
-                        }
-
+if (!removedFollower || removedFollower.length === 0) {
+    throw new Error(
+        "Der Follower-Datensatz konnte nicht entfernt werden."
+    );
+}
 
                         setReaderMessage(
                             followStatus,
