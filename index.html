@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="de">
 
@@ -1567,6 +1568,228 @@
         }
 
 
+
+        /* =========================================================
+           LESERBEREICH
+        ========================================================= */
+
+        .reader-grid {
+            display: grid;
+            grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1.45fr);
+            gap: 1.5rem;
+            align-items: stretch;
+        }
+
+        .reader-card {
+            position: relative;
+            overflow: hidden;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .reader-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(
+                135deg,
+                rgba(128, 0, 32, 0.07),
+                transparent 42%
+            );
+        }
+
+        .reader-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .reader-card h3 {
+            font-family: "Trajan Pro", Georgia, serif;
+            color: var(--text-heading);
+            font-size: 1.45rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .reader-eyebrow {
+            color: var(--accent-red-bright);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 1.8px;
+            margin-bottom: 0.6rem;
+        }
+
+        .follow-button,
+        .guestbook-submit {
+            appearance: none;
+            border: 1px solid var(--accent-bordeaux);
+            background: linear-gradient(
+                135deg,
+                rgba(128, 0, 32, 0.92),
+                rgba(168, 28, 55, 0.82)
+            );
+            color: #ffffff;
+            padding: 0.8rem 1.4rem;
+            border-radius: 5px;
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                opacity 0.25s ease;
+        }
+
+        .follow-button:hover,
+        .guestbook-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(128, 0, 32, 0.25);
+        }
+
+        .follow-button:disabled,
+        .guestbook-submit:disabled {
+            opacity: 0.55;
+            cursor: wait;
+            transform: none;
+        }
+
+        .follow-button.following {
+            background: rgba(255,255,255,0.045);
+            border-color: rgba(168, 28, 55, 0.75);
+            color: var(--text-main);
+        }
+
+        .follower-count {
+            margin-top: 1rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .follow-status,
+        .guestbook-status {
+            min-height: 1.4em;
+            margin-top: 0.8rem;
+            color: var(--text-muted);
+            font-size: 0.88rem;
+        }
+
+        .guestbook-form {
+            display: grid;
+            gap: 0.85rem;
+            margin-top: 1.25rem;
+        }
+
+        .guestbook-form label {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .guestbook-form input,
+        .guestbook-form textarea {
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid var(--border-color);
+            background: rgba(6, 8, 12, 0.72);
+            color: var(--text-main);
+            border-radius: 5px;
+            padding: 0.75rem 0.85rem;
+            font: inherit;
+            outline: none;
+            transition:
+                border-color 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .guestbook-form input:focus,
+        .guestbook-form textarea:focus {
+            border-color: var(--accent-bordeaux);
+            box-shadow: 0 0 0 3px rgba(128, 0, 32, 0.12);
+        }
+
+        .guestbook-form textarea {
+            min-height: 125px;
+            resize: vertical;
+        }
+
+        .guestbook-note {
+            margin-top: 0.8rem;
+            color: var(--text-muted);
+            font-size: 0.78rem;
+        }
+
+        .guestbook-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+            margin-top: 1.5rem;
+        }
+
+        .guestbook-entry {
+            padding: 1rem 1.1rem;
+            background: rgba(6, 8, 12, 0.55);
+            border: 1px solid rgba(31, 40, 51, 0.95);
+            border-left: 3px solid var(--accent-bordeaux);
+            border-radius: 5px;
+        }
+
+        .guestbook-entry-head {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.35rem;
+        }
+
+        .guestbook-entry-name {
+            color: var(--text-heading);
+            font-weight: 700;
+        }
+
+        .guestbook-entry-date {
+            color: var(--text-muted);
+            font-size: 0.78rem;
+        }
+
+        .guestbook-entry-message {
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+        }
+
+        .guestbook-empty {
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .honeypot-field {
+            position: absolute !important;
+            width: 1px !important;
+            height: 1px !important;
+            padding: 0 !important;
+            margin: -1px !important;
+            overflow: hidden !important;
+            clip: rect(0, 0, 0, 0) !important;
+            white-space: nowrap !important;
+            border: 0 !important;
+        }
+
+        @media (max-width: 760px) {
+            .reader-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .reader-card {
+                padding: 1.35rem;
+            }
+
+            .follow-button,
+            .guestbook-submit {
+                width: 100%;
+            }
+        }
+
         /* =========================================================
            ÜBER DEN AUTOR
         ========================================================= */
@@ -2696,6 +2919,12 @@
                 </li>
 
                 <li>
+                    <a href="#leserbereich">
+                        Leserbereich
+                    </a>
+                </li>
+
+                <li>
                     <a href="#autor">
                         Über den Autor
                     </a>
@@ -2947,6 +3176,162 @@
         </section>
 
 
+
+        <!-- =========================================================
+             LESERBEREICH
+        ========================================================= -->
+
+        <section
+            class="content-section reveal"
+            id="leserbereich"
+        >
+
+            <h2 class="section-title">
+                Leserbereich
+            </h2>
+
+
+            <div class="reader-grid">
+
+                <article class="reader-card">
+
+                    <div class="reader-eyebrow">
+                        Direkt auf dieser Homepage
+                    </div>
+
+
+                    <h3>
+                        P. J. Blackwood folgen
+                    </h3>
+
+
+                    <p>
+                        Wenn du über Neuigkeiten zu SKELDVIK und kommende Veröffentlichungen informiert bleiben möchtest, kannst du P. J. Blackwood hier direkt folgen – ohne E-Mail-Adresse und ohne sichtbares Benutzerkonto.
+                    </p>
+
+
+                    <button
+                        class="follow-button"
+                        id="followButton"
+                        type="button"
+                    >
+                        Folgen
+                    </button>
+
+
+                    <div class="follower-count">
+                        <strong id="followerCount">–</strong>
+                        <span>Personen folgen P. J. Blackwood</span>
+                    </div>
+
+
+                    <div
+                        class="follow-status"
+                        id="followStatus"
+                        role="status"
+                        aria-live="polite"
+                    ></div>
+
+                </article>
+
+
+                <article class="reader-card">
+
+                    <div class="reader-eyebrow">
+                        Fragen &amp; Leserpost
+                    </div>
+
+
+                    <h3>
+                        Gästebuch
+                    </h3>
+
+
+                    <p>
+                        Gedanken zum Buch, Fragen, Grüße oder Hinweise zu Neuigkeiten? Hier kannst du ohne Anmeldung und ohne Verpflichtung einen Eintrag hinterlassen.
+                    </p>
+
+
+                    <form
+                        class="guestbook-form"
+                        id="guestbookForm"
+                    >
+
+                        <label for="guestbookName">
+                            Name oder Pseudonym <span aria-hidden="true">(optional)</span>
+                        </label>
+
+                        <input
+                            id="guestbookName"
+                            name="name"
+                            type="text"
+                            maxlength="40"
+                            autocomplete="nickname"
+                            placeholder="z. B. Nordlicht"
+                        >
+
+
+                        <label for="guestbookMessage">
+                            Deine Nachricht
+                        </label>
+
+                        <textarea
+                            id="guestbookMessage"
+                            name="message"
+                            maxlength="1000"
+                            required
+                            placeholder="Schreibe hier deine Frage, deinen Gedanken oder einen Gruß …"
+                        ></textarea>
+
+
+                        <input
+                            class="honeypot-field"
+                            id="guestbookWebsite"
+                            name="website"
+                            type="text"
+                            tabindex="-1"
+                            autocomplete="off"
+                            aria-hidden="true"
+                        >
+
+
+                        <button
+                            class="guestbook-submit"
+                            id="guestbookSubmit"
+                            type="submit"
+                        >
+                            Eintrag senden
+                        </button>
+
+                    </form>
+
+
+                    <div
+                        class="guestbook-status"
+                        id="guestbookStatus"
+                        role="status"
+                        aria-live="polite"
+                    ></div>
+
+
+                    <p class="guestbook-note">
+                        Es werden keine E-Mail-Adressen abgefragt. Einträge können aus Sicherheitsgründen moderiert oder entfernt werden.
+                    </p>
+
+
+                    <div
+                        class="guestbook-list"
+                        id="guestbookList"
+                        aria-live="polite"
+                    ></div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
         <!-- =========================================================
              ÜBER DEN AUTOR
         ========================================================= -->
@@ -3053,7 +3438,7 @@
 
 
                     <a
-                        href="https://www.instagram.com/pjblackwood_autor?stkn=Y21veGJmYmRpMGs0"
+                        href="https://www.instagram.com/p.j.blackwood?igsi=MTlzbno4ZXVseWtnaQ=="
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="P. J. Blackwood auf Instagram"
@@ -3145,6 +3530,11 @@
                     </p>
 
 
+                    <p>
+                        Für den freiwilligen Leserbereich dieser Website wird Supabase als technischer Dienst für anonyme Anmeldung, Follower-Zählung und Gästebucheinträge eingesetzt. Die Datenschutzerklärung muss vor dem öffentlichen Start entsprechend ergänzt werden.
+                    </p>
+
+
                     <p class="legal-note">
                         Die Datenschutzerklärung muss vor Veröffentlichung an die tatsächlich eingesetzten Dienste und Inhalte angepasst werden.
                     </p>
@@ -3216,6 +3606,9 @@
     <!-- =========================================================
          JAVASCRIPT
     ========================================================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 
     <script>
 
@@ -3801,6 +4194,531 @@
             paintMouseLight();
 
         }
+
+
+
+        /* =========================================================
+           LESERBEREICH: SUPABASE
+           ---------------------------------------------------------
+           Nach Erstellung des Supabase-Projekts hier URL und
+           Publishable Key eintragen.
+           NIEMALS den service_role-Schlüssel hier eintragen.
+        ========================================================= */
+
+        const SUPABASE_URL =
+            "https://ngjfxgdhzehaqofvptws.supabase.co";
+
+        const SUPABASE_PUBLISHABLE_KEY =
+            "sb_publishable_VZ6AXtqCiSHp4bd4gh0YLw_It7j1QUs";
+
+
+        const readerIsConfigured =
+            window.supabase
+            &&
+            !SUPABASE_URL.startsWith("DEINE_")
+            &&
+            !SUPABASE_PUBLISHABLE_KEY.startsWith("DEIN_");
+
+
+        const followButton =
+            document.getElementById("followButton");
+
+        const followerCount =
+            document.getElementById("followerCount");
+
+        const followStatus =
+            document.getElementById("followStatus");
+
+        const guestbookForm =
+            document.getElementById("guestbookForm");
+
+        const guestbookSubmit =
+            document.getElementById("guestbookSubmit");
+
+        const guestbookStatus =
+            document.getElementById("guestbookStatus");
+
+        const guestbookList =
+            document.getElementById("guestbookList");
+
+
+        let readerClient = null;
+        let anonymousUser = null;
+
+
+        function setReaderMessage(element, message) {
+            if (element) {
+                element.textContent = message;
+            }
+        }
+
+
+        function formatGuestbookDate(value) {
+            try {
+                return new Intl.DateTimeFormat(
+                    "de-DE",
+                    {
+                        dateStyle: "medium",
+                        timeStyle: "short"
+                    }
+                ).format(new Date(value));
+            } catch (error) {
+                return "";
+            }
+        }
+
+
+        function renderGuestbookEntries(entries) {
+
+            guestbookList.textContent = "";
+
+
+            if (!entries.length) {
+
+                const empty =
+                    document.createElement("div");
+
+                empty.className =
+                    "guestbook-empty";
+
+                empty.textContent =
+                    "Noch keine Einträge. Vielleicht möchtest du den ersten hinterlassen?";
+
+                guestbookList.appendChild(empty);
+
+                return;
+            }
+
+
+            entries.forEach(entry => {
+
+                const wrapper =
+                    document.createElement("article");
+
+                wrapper.className =
+                    "guestbook-entry";
+
+
+                const head =
+                    document.createElement("div");
+
+                head.className =
+                    "guestbook-entry-head";
+
+
+                const name =
+                    document.createElement("span");
+
+                name.className =
+                    "guestbook-entry-name";
+
+                name.textContent =
+                    entry.display_name || "Leser";
+
+
+                const date =
+                    document.createElement("span");
+
+                date.className =
+                    "guestbook-entry-date";
+
+                date.textContent =
+                    formatGuestbookDate(entry.created_at);
+
+
+                const message =
+                    document.createElement("div");
+
+                message.className =
+                    "guestbook-entry-message";
+
+                message.textContent =
+                    entry.message;
+
+
+                head.appendChild(name);
+                head.appendChild(date);
+
+                wrapper.appendChild(head);
+                wrapper.appendChild(message);
+
+                guestbookList.appendChild(wrapper);
+
+            });
+        }
+
+
+        async function refreshFollowerState() {
+
+            const countResult =
+                await readerClient
+                    .from("site_followers")
+                    .select("user_id", {
+                        count: "exact",
+                        head: true
+                    });
+
+
+            if (countResult.error) {
+                throw countResult.error;
+            }
+
+
+            followerCount.textContent =
+                String(countResult.count || 0);
+
+
+            const ownResult =
+                await readerClient
+                    .from("site_followers")
+                    .select("user_id")
+                    .eq("user_id", anonymousUser.id)
+                    .maybeSingle();
+
+
+            if (ownResult.error) {
+                throw ownResult.error;
+            }
+
+
+            const following =
+                Boolean(ownResult.data);
+
+
+            followButton.classList.toggle(
+                "following",
+                following
+            );
+
+            followButton.textContent =
+                following
+                    ? "Du folgst bereits"
+                    : "Folgen";
+        }
+
+
+        async function refreshGuestbook() {
+
+            const result =
+                await readerClient
+                    .from("guestbook_entries")
+                    .select(
+                        "display_name, message, created_at"
+                    )
+                    .eq("approved", true)
+                    .order(
+                        "created_at",
+                        {
+                            ascending: false
+                        }
+                    )
+                    .limit(30);
+
+
+            if (result.error) {
+                throw result.error;
+            }
+
+
+            renderGuestbookEntries(
+                result.data || []
+            );
+        }
+
+
+        async function initializeReaderArea() {
+
+            if (!readerIsConfigured) {
+
+                setReaderMessage(
+                    followStatus,
+                    "Nach der Supabase-Einrichtung wird der Leserbereich aktiviert."
+                );
+
+                setReaderMessage(
+                    guestbookStatus,
+                    "Technisch vorbereitet – die Datenbank ist noch nicht verbunden."
+                );
+
+                followButton.disabled = true;
+                guestbookSubmit.disabled = true;
+
+                return;
+            }
+
+
+            readerClient =
+                window.supabase.createClient(
+                    SUPABASE_URL,
+                    SUPABASE_PUBLISHABLE_KEY
+                );
+
+
+            try {
+
+                const authResult =
+                    await readerClient.auth.signInAnonymously();
+
+
+                if (
+                    authResult.error
+                    ||
+                    !authResult.data.user
+                ) {
+                    throw (
+                        authResult.error
+                        ||
+                        new Error(
+                            "Anonyme Anmeldung konnte nicht erstellt werden."
+                        )
+                    );
+                }
+
+
+                anonymousUser =
+                    authResult.data.user;
+
+
+                await refreshFollowerState();
+                await refreshGuestbook();
+
+            } catch (error) {
+
+                console.error(
+                    "Leserbereich:",
+                    error
+                );
+
+                setReaderMessage(
+                    followStatus,
+                    "Der Leserbereich konnte gerade nicht geladen werden."
+                );
+
+                setReaderMessage(
+                    guestbookStatus,
+                    "Bitte später noch einmal versuchen."
+                );
+
+                followButton.disabled = true;
+                guestbookSubmit.disabled = true;
+            }
+        }
+
+
+        followButton.addEventListener(
+            "click",
+            async () => {
+
+                if (!readerClient || !anonymousUser) {
+                    return;
+                }
+
+
+                followButton.disabled = true;
+
+                setReaderMessage(
+                    followStatus,
+                    "Einen Moment …"
+                );
+
+
+                try {
+
+                    const ownResult =
+                        await readerClient
+                            .from("site_followers")
+                            .select("user_id")
+                            .eq(
+                                "user_id",
+                                anonymousUser.id
+                            )
+                            .maybeSingle();
+
+
+                    if (ownResult.error) {
+                        throw ownResult.error;
+                    }
+
+
+                    if (ownResult.data) {
+
+                        const removeResult =
+                            await readerClient
+                                .from("site_followers")
+                                .delete()
+                                .eq(
+                                    "user_id",
+                                    anonymousUser.id
+                                );
+
+
+                        if (removeResult.error) {
+                            throw removeResult.error;
+                        }
+
+
+                        setReaderMessage(
+                            followStatus,
+                            "Du folgst P. J. Blackwood jetzt nicht mehr."
+                        );
+
+                    } else {
+
+                        const insertResult =
+                            await readerClient
+                                .from("site_followers")
+                                .insert({
+                                    user_id:
+                                        anonymousUser.id
+                                });
+
+
+                        if (insertResult.error) {
+                            throw insertResult.error;
+                        }
+
+
+                        setReaderMessage(
+                            followStatus,
+                            "Danke fürs Folgen."
+                        );
+                    }
+
+
+                    await refreshFollowerState();
+
+                } catch (error) {
+
+                    console.error(
+                        "Follower:",
+                        error
+                    );
+
+                    setReaderMessage(
+                        followStatus,
+                        "Das Folgen konnte gerade nicht gespeichert werden."
+                    );
+
+                } finally {
+
+                    followButton.disabled = false;
+
+                }
+            }
+        );
+
+
+        guestbookForm.addEventListener(
+            "submit",
+            async event => {
+
+                event.preventDefault();
+
+
+                if (!readerClient || !anonymousUser) {
+                    return;
+                }
+
+
+                const nameInput =
+                    document.getElementById(
+                        "guestbookName"
+                    );
+
+                const messageInput =
+                    document.getElementById(
+                        "guestbookMessage"
+                    );
+
+                const websiteInput =
+                    document.getElementById(
+                        "guestbookWebsite"
+                    );
+
+
+                if (websiteInput.value.trim()) {
+                    return;
+                }
+
+
+                const displayName =
+                    nameInput.value.trim().slice(0, 40);
+
+                const message =
+                    messageInput.value.trim().slice(0, 1000);
+
+
+                if (!message) {
+
+                    setReaderMessage(
+                        guestbookStatus,
+                        "Bitte schreibe eine Nachricht."
+                    );
+
+                    return;
+                }
+
+
+                guestbookSubmit.disabled = true;
+
+                setReaderMessage(
+                    guestbookStatus,
+                    "Eintrag wird gesendet …"
+                );
+
+
+                try {
+
+                    const result =
+                        await readerClient
+                            .from("guestbook_entries")
+                            .insert({
+                                user_id:
+                                    anonymousUser.id,
+                                display_name:
+                                    displayName || null,
+                                message,
+                                approved: true
+                            });
+
+
+                    if (result.error) {
+                        throw result.error;
+                    }
+
+
+                    guestbookForm.reset();
+
+                    setReaderMessage(
+                        guestbookStatus,
+                        "Danke! Dein Eintrag ist jetzt im Gästebuch."
+                    );
+
+
+                    await refreshGuestbook();
+
+                } catch (error) {
+
+                    console.error(
+                        "Gästebuch:",
+                        error
+                    );
+
+                    setReaderMessage(
+                        guestbookStatus,
+                        "Der Eintrag konnte gerade nicht gespeichert werden."
+                    );
+
+                } finally {
+
+                    guestbookSubmit.disabled = false;
+
+                }
+            }
+        );
+
+
+        initializeReaderArea();
 
 
         /* =========================================================
