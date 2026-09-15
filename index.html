@@ -2805,7 +2805,7 @@
     
 
         /* =========================================================
-           VERÖFFENTLICHUNG / 1920ER-GOLDRAHMEN
+           VERÖFFENTLICHUNG / SCHMALER SILBERRAHMEN
         ========================================================= */
         .release-showcase {
             position: relative;
@@ -2830,60 +2830,76 @@
             margin: 0 auto;
             padding: 42px 52px;
         }
-        /* Neuer schmaler Silberrahmen – klassisch, leicht barock angehaucht */
         .antique-frame {
             position: relative;
-            padding: 11px;
+            padding: 27px;
             background:
-                linear-gradient(135deg,
-                    #34383d 0%,
-                    #8e959c 9%,
-                    #d0d3d5 18%,
-                    #6d7379 29%,
-                    #b8bdc1 43%,
-                    #4a4f54 55%,
-                    #c3c7ca 69%,
-                    #777d82 83%,
-                    #303439 100%);
-            border: 1px solid #202328;
+                linear-gradient(135deg, #2b1d0d 0%, #6b4a20 5%, #b58b47 11%, #5c3e19 18%, #d0ad68 26%, #795522 34%, #c59b52 43%, #4a3012 51%, #b88d45 61%, #72501f 70%, #d2ae67 79%, #5a3b17 89%, #2a1c0c 100%);
+            border: 1px solid #211608;
             box-shadow:
-                inset 0 0 0 1px rgba(245,247,248,.38),
-                inset 0 0 0 3px rgba(48,52,57,.95),
-                inset 0 0 0 5px rgba(205,210,214,.32),
-                inset 0 0 8px rgba(0,0,0,.70),
-                0 24px 48px rgba(0,0,0,.72),
-                0 0 24px rgba(205,215,220,.05);
+                inset 0 0 0 2px rgba(229,196,124,.38),
+                inset 0 0 0 6px rgba(42,27,10,.88),
+                inset 0 0 0 9px rgba(190,148,70,.44),
+                inset 0 0 0 14px rgba(48,31,12,.92),
+                inset 0 0 0 18px rgba(210,171,92,.28),
+                inset 0 0 30px rgba(0,0,0,.86),
+                0 32px 62px rgba(0,0,0,.78),
+                0 0 50px rgba(190,139,55,.09);
         }
         .antique-frame::before {
             content: "";
             position: absolute;
-            inset: 4px;
+            inset: 8px;
             pointer-events: none;
-            border: 1px solid rgba(230,233,235,.45);
-            box-shadow:
-                inset 0 0 0 1px rgba(30,33,37,.82),
-                inset 0 0 5px rgba(255,255,255,.10);
+            border: 1px solid rgba(235,201,126,.48);
+            outline: 1px solid rgba(40,25,8,.72);
+            outline-offset: 3px;
+            background:
+                linear-gradient(135deg, rgba(255,226,151,.16), transparent 18%, transparent 82%, rgba(41,25,8,.28));
+            box-shadow: inset 0 0 14px rgba(0,0,0,.45);
         }
         .antique-frame::after {
-            content: "";
+            content: "◇  ─────  ◇  ─────  ◇";
             position: absolute;
-            inset: 7px;
+            left: 50%;
+            top: 6px;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            color: rgba(224,190,111,.78);
+            font-family: Georgia, serif;
+            font-size: .56rem;
+            letter-spacing: .12rem;
+            text-shadow: 0 1px 1px #241606;
             pointer-events: none;
-            border: 1px solid rgba(92,98,104,.85);
-            /* Nur eine feine klassische Profilierung – keine Ornamente */
         }
         .antique-frame img {
             position: relative;
             z-index: 1;
             width: 100%;
             height: auto;
-            border: 3px solid #111419;
-            outline: 1px solid rgba(196,201,205,.48);
+            border: 5px solid #15100a;
+            outline: 1px solid rgba(211,171,89,.50);
             box-shadow:
-                0 0 0 1px rgba(42,46,51,.96),
-                0 0 15px rgba(0,0,0,.72);
+                0 0 0 2px rgba(54,35,13,.95),
+                0 0 22px rgba(0,0,0,.75);
         }
-        .antique-frame .frame-corner { display: none !important; }
+        .antique-frame .frame-corner {
+            position: absolute;
+            z-index: 3;
+            width: 36px;
+            height: 36px;
+            pointer-events: none;
+            opacity: .88;
+            background:
+                linear-gradient(45deg, transparent 43%, rgba(218,181,101,.78) 44% 48%, transparent 49%),
+                linear-gradient(-45deg, transparent 43%, rgba(105,72,27,.9) 44% 48%, transparent 49%);
+            border: 1px solid rgba(198,157,78,.46);
+            box-shadow: inset 0 0 8px rgba(0,0,0,.45);
+        }
+        .frame-corner.tl { top:7px; left:7px; }
+        .frame-corner.tr { top:7px; right:7px; transform:rotate(90deg); }
+        .frame-corner.bl { bottom:7px; left:7px; transform:rotate(-90deg); }
+        .frame-corner.br { bottom:7px; right:7px; transform:rotate(180deg); }
         .wall-candle {
             position: absolute;
             top: 44%;
@@ -3091,78 +3107,77 @@
         }
 
         /* =========================================================
-           ORNAMENTRAHMEN – dunkles Altgold, geschnitzte Historik
-           Nach Vorbild eines schweren historischen Bilderrahmens.
+           VERÖFFENTLICHUNG – NEUER SCHMALER SILBERRAHMEN
+           Klassisch, leicht barock angehaucht, ohne Schnörkel.
         ========================================================= */
+        .release-showcase {
+            background:
+                radial-gradient(circle at 28% 48%, rgba(190, 200, 210, 0.045), transparent 34%),
+                linear-gradient(145deg, rgba(15, 19, 27, 0.97), rgba(7, 9, 14, 0.99));
+        }
+
         .antique-frame {
-            padding: 31px !important;
-            border: 2px solid #241708 !important;
-            border-radius: 2px;
+            position: relative;
+            padding: 13px !important;
+            border: 1px solid #34383d !important;
+            border-radius: 1px !important;
             background:
-                repeating-linear-gradient(135deg, rgba(255,225,145,.10) 0 2px, transparent 2px 8px),
-                linear-gradient(135deg, #211507 0%, #70501f 7%, #c69b4d 13%, #4b3212 20%, #d1aa5d 29%, #74501d 39%, #b8893d 50%, #3b260d 61%, #c89b4b 72%, #664516 84%, #261807 100%) !important;
+                linear-gradient(135deg,
+                    #2b2e32 0%,
+                    #777d83 9%,
+                    #c0c4c7 18%,
+                    #696e73 29%,
+                    #d2d5d7 39%,
+                    #858a8f 50%,
+                    #babec1 61%,
+                    #62676c 73%,
+                    #c8cccf 84%,
+                    #555a5f 93%,
+                    #292c30 100%) !important;
             box-shadow:
-                inset 0 0 0 3px #38240c,
-                inset 0 0 0 6px rgba(226,190,104,.72),
-                inset 0 0 0 10px #4a3010,
-                inset 0 0 0 14px rgba(198,151,67,.75),
-                inset 0 0 0 19px #2d1c09,
-                inset 0 0 0 23px rgba(219,174,82,.48),
-                inset 0 0 24px rgba(0,0,0,.92),
-                0 28px 60px rgba(0,0,0,.82),
-                0 0 36px rgba(174,119,37,.13) !important;
+                inset 0 0 0 1px rgba(239,242,244,.55),
+                inset 0 0 0 3px rgba(68,72,77,.95),
+                inset 0 0 0 5px rgba(194,199,203,.48),
+                inset 0 0 0 7px rgba(45,48,52,.88),
+                inset 0 0 10px rgba(0,0,0,.65),
+                0 24px 48px rgba(0,0,0,.72) !important;
         }
+
         .antique-frame::before {
-            inset: 5px !important;
-            border: 2px ridge rgba(222,181,91,.72) !important;
-            outline: 2px solid rgba(48,29,8,.95) !important;
-            outline-offset: 5px !important;
-            background:
-                radial-gradient(circle at 10px 10px, rgba(244,210,125,.35) 0 2px, transparent 3px),
-                radial-gradient(circle at calc(100% - 10px) 10px, rgba(244,210,125,.35) 0 2px, transparent 3px),
-                radial-gradient(circle at 10px calc(100% - 10px), rgba(244,210,125,.35) 0 2px, transparent 3px),
-                radial-gradient(circle at calc(100% - 10px) calc(100% - 10px), rgba(244,210,125,.35) 0 2px, transparent 3px),
-                linear-gradient(135deg, rgba(255,230,158,.15), transparent 22%, transparent 78%, rgba(30,18,5,.38)) !important;
-            box-shadow: inset 0 0 18px rgba(0,0,0,.65) !important;
+            content: "" !important;
+            position: absolute;
+            inset: 4px !important;
+            pointer-events: none;
+            border: 1px solid rgba(225,229,232,.52) !important;
+            outline: 1px solid rgba(52,56,61,.85) !important;
+            outline-offset: 2px !important;
+            background: linear-gradient(135deg, rgba(255,255,255,.09), transparent 25%, transparent 75%, rgba(0,0,0,.18)) !important;
+            box-shadow: inset 0 0 5px rgba(0,0,0,.35) !important;
         }
+
         .antique-frame::after {
-            content: "✦  ❧  ✦" !important;
-            top: 7px !important;
-            font-size: .78rem !important;
-            letter-spacing: .28rem !important;
-            color: rgba(229,190,98,.88) !important;
-            text-shadow: 0 1px 0 #120b03, 0 0 5px rgba(255,208,102,.22) !important;
+            content: "" !important;
+            display: none !important;
         }
+
         .antique-frame .frame-corner {
-            width: 48px !important;
-            height: 48px !important;
-            opacity: .96 !important;
-            border: 1px solid rgba(222,179,86,.65) !important;
-            border-radius: 48% 8% 48% 8%;
-            background:
-                radial-gradient(circle at 50% 50%, #d2a553 0 8%, #654315 9% 17%, transparent 18%),
-                conic-gradient(from 45deg, #3c260b, #c99b49, #5b3b12, #ddb564, #3c260b) !important;
-            box-shadow:
-                inset 0 0 0 3px rgba(48,29,8,.8),
-                inset 0 0 9px rgba(0,0,0,.65),
-                0 1px 4px rgba(0,0,0,.7) !important;
+            display: none !important;
         }
-        .frame-corner.tl { top:5px !important; left:5px !important; }
-        .frame-corner.tr { top:5px !important; right:5px !important; }
-        .frame-corner.bl { bottom:5px !important; left:5px !important; }
-        .frame-corner.br { bottom:5px !important; right:5px !important; }
+
         .antique-frame img {
-            border: 6px solid #100b06 !important;
-            outline: 2px solid rgba(196,148,62,.62) !important;
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: auto;
+            border: 3px solid #111419 !important;
+            outline: 1px solid rgba(194,199,204,.55) !important;
             box-shadow:
-                0 0 0 3px #39240d,
-                0 0 0 5px rgba(218,172,78,.42),
-                0 0 25px rgba(0,0,0,.88) !important;
+                0 0 0 1px rgba(48,52,57,.95),
+                0 0 15px rgba(0,0,0,.72) !important;
         }
 
         @media (max-width: 760px) {
-            .antique-frame { padding: 24px !important; }
-            .antique-frame .frame-corner { width: 38px !important; height: 38px !important; }
+            .antique-frame { padding: 10px !important; }
             #hauptwerk .hero-text { max-width: 100%; }
         }
 
@@ -3376,6 +3391,7 @@
                     <div class="framed-cover-stage" aria-label="SKELDVIK Cover in schmalem historischem Silberrahmen">
                         <div class="wall-candle left" aria-hidden="true"><span class="candle-glow"></span></div>
                         <div class="antique-frame">
+                            <span class="frame-corner tl" aria-hidden="true"></span><span class="frame-corner tr" aria-hidden="true"></span><span class="frame-corner bl" aria-hidden="true"></span><span class="frame-corner br" aria-hidden="true"></span>
                             <img src="assets/skeldvik-cover.png" alt="Cover des Romans SKELDVIK von P. J. Blackwood" width="540" height="810">
                         </div>
                         <div class="wall-candle right" aria-hidden="true"><span class="candle-glow"></span></div>
