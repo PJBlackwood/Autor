@@ -3021,11 +3021,12 @@
         @keyframes followerCardIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
 
         /* Touch-Licht: auf Mobilgeräten sichtbar, ohne Scrollen zu blockieren */
-        @media (pointer: coarse) {
+        @media (pointer: coarse), (hover: none), (max-width: 760px) {
             .global-mouse-light {
                 display: block !important;
                 opacity: 0;
-                background: radial-gradient(circle 180px at var(--mouse-x,50vw) var(--mouse-y,50vh), rgba(235,240,242,.085) 0%, rgba(205,215,220,.042) 30%, rgba(160,175,182,.016) 50%, transparent 72%);
+                background: radial-gradient(circle 190px at var(--mouse-x,50vw) var(--mouse-y,50vh), rgba(245,224,175,.13) 0%, rgba(226,194,126,.075) 28%, rgba(190,150,85,.030) 50%, transparent 74%);
+                transition: opacity .32s ease;
             }
         }
         @media (max-width: 760px) {
@@ -3268,7 +3269,7 @@
                         <p><em>Das Schweigen wird jeden Tag lauter.</em></p>
                         <div class="release-dates">
                             <div class="release-date-box"><span>Hardcover</span><strong>24. Oktober 2026</strong></div>
-                            
+                            <div class="release-date-box"><span>Offizieller Release</span><strong>31. Oktober 2026</strong></div>
                         </div>
                         <div class="release-countdown" id="releaseCountdown" aria-live="polite">Der Countdown wird geladen …</div>
                         <span class="btn-status order-placeholder" id="orderPlaceholder">Bestelllink folgt</span>
@@ -4448,30 +4449,43 @@
                 }
             }, { passive: true });
 
-            document.addEventListener("touchstart", event => {
-                const touch = event.touches[0];
-                if (!touch) return;
-                clearTimeout(touchFadeTimer);
-                moveGlobalLight(touch.clientX, touch.clientY, true);
-            }, { passive: true });
+            let touchLightActive = false;
 
-            document.addEventListener("touchmove", event => {
-                const touch = event.touches[0];
+            function updateTouchLight(event) {
+                const touch = event.touches && event.touches[0];
                 if (!touch) return;
+                touchLightActive = true;
                 clearTimeout(touchFadeTimer);
                 moveGlobalLight(touch.clientX, touch.clientY, true);
+            }
+
+            // Auf window + capture lauschen: so bleibt der Lichtkegel auch während
+            // eines normalen mobilen Scrollvorgangs sichtbar. passive:true sorgt
+            // dafür, dass das Scrollen niemals durch den Effekt blockiert wird.
+            window.addEventListener("touchstart", updateTouchLight, { passive: true, capture: true });
+            window.addEventListener("touchmove", updateTouchLight, { passive: true, capture: true });
+
+            // Falls der Browser während des nativen Scrollens weniger touchmove-
+            // Ereignisse liefert, wird die zuletzt bekannte Fingerposition beim
+            // Scrollen erneut gezeichnet.
+            window.addEventListener("scroll", () => {
+                if (touchLightActive) {
+                    clearTimeout(touchFadeTimer);
+                    moveGlobalLight(lightX, lightY, true);
+                }
             }, { passive: true });
 
             function fadeTouchLight() {
+                touchLightActive = false;
                 clearTimeout(touchFadeTimer);
                 touchFadeTimer = setTimeout(() => {
-                    if (window.matchMedia("(pointer: coarse)").matches) {
+                    if (window.matchMedia("(pointer: coarse), (hover: none), (max-width: 760px)").matches) {
                         globalMouseLight.style.opacity = "0";
                     }
-                }, 180);
+                }, 420);
             }
-            document.addEventListener("touchend", fadeTouchLight, { passive: true });
-            document.addEventListener("touchcancel", fadeTouchLight, { passive: true });
+            window.addEventListener("touchend", fadeTouchLight, { passive: true, capture: true });
+            window.addEventListener("touchcancel", fadeTouchLight, { passive: true, capture: true });
 
             if (window.matchMedia("(pointer: fine)").matches) {
                 document.addEventListener("pointerleave", () => { globalMouseLight.style.opacity = "0"; });
