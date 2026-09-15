@@ -2830,69 +2830,60 @@
             margin: 0 auto;
             padding: 42px 52px;
         }
-        /* Dezenter klassischer Goldrahmen */
+        /* Neuer schmaler Silberrahmen – klassisch, leicht barock angehaucht */
         .antique-frame {
             position: relative;
             padding: 11px;
             background:
                 linear-gradient(135deg,
-                    #34373a 0%,
-                    #85898d 12%,
-                    #4b4f53 27%,
-                    #b8bcc0 45%,
-                    #666a6e 62%,
-                    #9a9ea2 80%,
-                    #303336 100%);
-            border: 1px solid #202326;
+                    #34383d 0%,
+                    #8e959c 9%,
+                    #d0d3d5 18%,
+                    #6d7379 29%,
+                    #b8bdc1 43%,
+                    #4a4f54 55%,
+                    #c3c7ca 69%,
+                    #777d82 83%,
+                    #303439 100%);
+            border: 1px solid #202328;
             box-shadow:
-                inset 0 0 0 1px rgba(232, 235, 238, .42),
-                inset 0 0 0 3px rgba(48, 51, 54, .70),
-                inset 0 0 0 5px rgba(180, 184, 188, .20),
-                inset 0 0 10px rgba(0, 0, 0, .42),
-                0 22px 46px rgba(0, 0, 0, .72),
-                0 0 22px rgba(190, 198, 205, .045);
+                inset 0 0 0 1px rgba(245,247,248,.38),
+                inset 0 0 0 3px rgba(48,52,57,.95),
+                inset 0 0 0 5px rgba(205,210,214,.32),
+                inset 0 0 8px rgba(0,0,0,.70),
+                0 24px 48px rgba(0,0,0,.72),
+                0 0 24px rgba(205,215,220,.05);
         }
-
-        /* Schmale, nur leicht barock angehauchte Innenprofilierung. */
         .antique-frame::before {
             content: "";
             position: absolute;
-            inset: 5px;
+            inset: 4px;
             pointer-events: none;
-            border: 1px solid rgba(220, 224, 228, .42);
-            border-radius: 1px;
+            border: 1px solid rgba(230,233,235,.45);
             box-shadow:
-                inset 0 0 0 1px rgba(37, 40, 43, .66),
-                inset 0 0 5px rgba(0, 0, 0, .30);
+                inset 0 0 0 1px rgba(30,33,37,.82),
+                inset 0 0 5px rgba(255,255,255,.10);
         }
-
         .antique-frame::after {
             content: "";
             position: absolute;
-            inset: 8px;
+            inset: 7px;
             pointer-events: none;
-            border: 1px solid rgba(117, 122, 127, .68);
-            /* ganz dezente historische Profilkante statt Ornament-Überladung */
-            box-shadow:
-                0 0 0 1px rgba(215, 219, 223, .08),
-                inset 0 0 4px rgba(15, 17, 19, .44);
+            border: 1px solid rgba(92,98,104,.85);
+            /* Nur eine feine klassische Profilierung – keine Ornamente */
         }
-
         .antique-frame img {
             position: relative;
             z-index: 1;
             width: 100%;
             height: auto;
-            border: 3px solid #151719;
-            outline: 1px solid rgba(194, 199, 204, .40);
-            box-shadow: 0 0 13px rgba(0, 0, 0, .68);
+            border: 3px solid #111419;
+            outline: 1px solid rgba(196,201,205,.48);
+            box-shadow:
+                0 0 0 1px rgba(42,46,51,.96),
+                0 0 15px rgba(0,0,0,.72);
         }
-
-        /* Keine großen Verzierungen: nur das schmale Silberprofil bleibt sichtbar. */
-        .antique-frame .frame-corner {
-            display: none;
-        }
-
+        .antique-frame .frame-corner { display: none !important; }
         .wall-candle {
             position: absolute;
             top: 44%;
@@ -3382,10 +3373,9 @@
             <h2 class="section-title">Veröffentlichung</h2>
             <div class="release-showcase">
                 <div class="release-showcase-grid">
-                    <div class="framed-cover-stage" aria-label="SKELDVIK Cover in historischem Goldrahmen">
+                    <div class="framed-cover-stage" aria-label="SKELDVIK Cover in schmalem historischem Silberrahmen">
                         <div class="wall-candle left" aria-hidden="true"><span class="candle-glow"></span></div>
                         <div class="antique-frame">
-                            <span class="frame-corner tl" aria-hidden="true"></span><span class="frame-corner tr" aria-hidden="true"></span><span class="frame-corner bl" aria-hidden="true"></span><span class="frame-corner br" aria-hidden="true"></span>
                             <img src="assets/skeldvik-cover.png" alt="Cover des Romans SKELDVIK von P. J. Blackwood" width="540" height="810">
                         </div>
                         <div class="wall-candle right" aria-hidden="true"><span class="candle-glow"></span></div>
