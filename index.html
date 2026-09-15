@@ -3071,10 +3071,10 @@
                 pointer-events: none !important;
                 opacity: 0;
                 background: radial-gradient(circle at center,
-                    rgba(255, 239, 198, .30) 0%,
-                    rgba(239, 207, 139, .19) 24%,
-                    rgba(206, 164, 92, .10) 43%,
-                    rgba(168, 121, 56, .045) 59%,
+                    rgba(255, 239, 198, .20) 0%,
+                    rgba(239, 207, 139, .125) 24%,
+                    rgba(206, 164, 92, .065) 43%,
+                    rgba(168, 121, 56, .028) 59%,
                     transparent 76%) !important;
                 mix-blend-mode: screen !important;
                 transform: translate3d(-700px,-700px,0);
@@ -4468,8 +4468,8 @@
                 raf = 0;
                 if (!mobileLight.matches) return;
                 // Sehr geringe Glaettung: sichtbar weich, aber ohne Nachziehen.
-                currentX += (targetX - currentX) * 0.72;
-                currentY += (targetY - currentY) * 0.72;
+                currentX += (targetX - currentX) * 0.48;
+                currentY += (targetY - currentY) * 0.48;
                 globalMouseLight.style.transform =
                     `translate3d(${currentX - LIGHT_RADIUS}px, ${currentY - LIGHT_RADIUS}px, 0)`;
                 if (active && (Math.abs(targetX-currentX) > .25 || Math.abs(targetY-currentY) > .25)) {
@@ -4482,7 +4482,7 @@
                 if (immediate || !active) { currentX = x; currentY = y; }
                 active = true;
                 clearTimeout(fadeTimer);
-                globalMouseLight.style.opacity = "1";
+                globalMouseLight.style.opacity = "0.78";
                 if (!raf) raf = requestAnimationFrame(renderMobileLight);
             }
 
@@ -4824,27 +4824,30 @@
 
             try {
 
-                const authResult =
-                    await readerClient.auth.signInAnonymously();
+                // Vorhandene anonyme Supabase-Sitzung wiederverwenden.
+                // Dadurch bleibt der Follower-Status nach einem Reload erhalten.
+                const sessionResult = await readerClient.auth.getSession();
 
-
-                if (
-                    authResult.error
-                    ||
-                    !authResult.data.user
-                ) {
-                    throw (
-                        authResult.error
-                        ||
-                        new Error(
-                            "Anonyme Anmeldung konnte nicht erstellt werden."
-                        )
-                    );
+                if (sessionResult.error) {
+                    throw sessionResult.error;
                 }
 
+                if (sessionResult.data.session?.user) {
+                    anonymousUser = sessionResult.data.session.user;
+                } else {
+                    const authResult = await readerClient.auth.signInAnonymously();
 
-                anonymousUser =
-                    authResult.data.user;
+                    if (authResult.error || !authResult.data.user) {
+                        throw (
+                            authResult.error
+                            || new Error(
+                                "Anonyme Anmeldung konnte nicht erstellt werden."
+                            )
+                        );
+                    }
+
+                    anonymousUser = authResult.data.user;
+                }
 
 
                 await refreshFollowerState();
