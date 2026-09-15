@@ -3020,26 +3020,13 @@
         .follower-release-card .follower-countdown { color:#d9d4c8; font-weight:700; }
         @keyframes followerCardIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
 
-        /* Touch-Licht: GPU-beschleunigt für flüssiges Scrollen auf Smartphones.
-           Statt den Verlauf bei jeder Fingerbewegung neu zu berechnen, wird
-           nur eine feste Lichtfläche per transform verschoben. */
+        /* Touch-Licht: auf Mobilgeräten sichtbar, ohne Scrollen zu blockieren */
         @media (pointer: coarse), (hover: none), (max-width: 760px) {
             .global-mouse-light {
                 display: block !important;
-                inset: auto !important;
-                top: 0 !important;
-                left: 0 !important;
-                width: 410px !important;
-                height: 410px !important;
-                border-radius: 50%;
                 opacity: 0;
-                background: radial-gradient(circle at center, rgba(245,224,175,.14) 0%, rgba(226,194,126,.08) 28%, rgba(190,150,85,.032) 50%, transparent 74%);
-                transform: translate3d(-999px,-999px,0);
-                will-change: transform, opacity;
-                contain: strict;
-                transition: opacity .22s ease;
-                mix-blend-mode: screen;
-                pointer-events: none;
+                background: radial-gradient(circle 190px at var(--mouse-x,50vw) var(--mouse-y,50vh), rgba(245,224,175,.13) 0%, rgba(226,194,126,.075) 28%, rgba(190,150,85,.030) 50%, transparent 74%);
+                transition: opacity .32s ease;
             }
         }
         @media (max-width: 760px) {
@@ -3059,6 +3046,43 @@
         }
         @media (prefers-reduced-motion: reduce) {
             .wall-candle::after, .candle-glow { animation:none !important; }
+        }
+
+    
+
+        /* =========================================================
+           MOBILE TOUCH-LICHT – ROBUSTER FIX
+           Eigenstaendige fixed Ebene, damit der Schein auf der gesamten
+           Seite sichtbar bleibt – auch in Chrome/HyperOS beim Scrollen.
+        ========================================================= */
+        @media (pointer: coarse), (hover: none), (max-width: 760px) {
+            .global-mouse-light {
+                display: block !important;
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: auto !important;
+                bottom: auto !important;
+                inset: auto !important;
+                width: 560px !important;
+                height: 560px !important;
+                z-index: 6500 !important;
+                border-radius: 50% !important;
+                pointer-events: none !important;
+                opacity: 0;
+                background: radial-gradient(circle at center,
+                    rgba(255, 239, 198, .30) 0%,
+                    rgba(239, 207, 139, .19) 24%,
+                    rgba(206, 164, 92, .10) 43%,
+                    rgba(168, 121, 56, .045) 59%,
+                    transparent 76%) !important;
+                mix-blend-mode: screen !important;
+                transform: translate3d(-700px,-700px,0);
+                will-change: transform, opacity;
+                backface-visibility: hidden;
+                -webkit-backface-visibility: hidden;
+                transition: opacity .14s linear;
+            }
         }
 
     </style>
@@ -4430,99 +4454,79 @@
 
         /* =========================================================
            GLOBALER LICHTKEGEL: MAUS + TOUCH
-           Desktop: folgt der Maus. Smartphone/Tablet: folgt dem Finger,
-           ohne das normale Scrollen zu blockieren.
+           Mobil: feste GPU-Ebene folgt Finger; bleibt waehrend nativen
+           Scrollens sichtbar. Desktop: folgt weiterhin der Maus.
         ========================================================= */
         if (globalMouseLight) {
             const mobileLight = window.matchMedia("(pointer: coarse), (hover: none), (max-width: 760px)");
-            let targetX = window.innerWidth / 2;
-            let targetY = window.innerHeight / 2;
-            let currentX = targetX;
-            let currentY = targetY;
-            let touchLightActive = false;
-            let touchFadeTimer = null;
-            let animationRunning = false;
+            const LIGHT_RADIUS = 280;
+            let targetX = innerWidth / 2, targetY = innerHeight / 2;
+            let currentX = targetX, currentY = targetY;
+            let active = false, raf = 0, fadeTimer = 0;
 
-            // Auf Mobilgeräten wird die Lichtfläche mit transform verschoben.
-            // Das ist deutlich günstiger als den radial-gradient pro Frame neu zu zeichnen.
-            function animateTouchLight() {
-                if (!mobileLight.matches) {
-                    animationRunning = false;
-                    return;
-                }
-
-                currentX += (targetX - currentX) * 0.34;
-                currentY += (targetY - currentY) * 0.34;
-
+            function renderMobileLight() {
+                raf = 0;
+                if (!mobileLight.matches) return;
+                // Sehr geringe Glaettung: sichtbar weich, aber ohne Nachziehen.
+                currentX += (targetX - currentX) * 0.72;
+                currentY += (targetY - currentY) * 0.72;
                 globalMouseLight.style.transform =
-                    `translate3d(${currentX - 205}px, ${currentY - 205}px, 0)`;
-
-                const stillMoving =
-                    Math.abs(targetX - currentX) > 0.15 ||
-                    Math.abs(targetY - currentY) > 0.15;
-
-                if (touchLightActive || stillMoving) {
-                    requestAnimationFrame(animateTouchLight);
-                } else {
-                    animationRunning = false;
+                    `translate3d(${currentX - LIGHT_RADIUS}px, ${currentY - LIGHT_RADIUS}px, 0)`;
+                if (active && (Math.abs(targetX-currentX) > .25 || Math.abs(targetY-currentY) > .25)) {
+                    raf = requestAnimationFrame(renderMobileLight);
                 }
             }
 
-            function ensureTouchAnimation() {
-                if (!animationRunning) {
-                    animationRunning = true;
-                    requestAnimationFrame(animateTouchLight);
-                }
+            function showTouchLight(x, y, immediate = false) {
+                targetX = x; targetY = y;
+                if (immediate || !active) { currentX = x; currentY = y; }
+                active = true;
+                clearTimeout(fadeTimer);
+                globalMouseLight.style.opacity = "1";
+                if (!raf) raf = requestAnimationFrame(renderMobileLight);
             }
 
-            function updateTouchLight(event) {
-                const touch = event.touches && event.touches[0];
-                if (!touch) return;
-
-                targetX = touch.clientX;
-                targetY = touch.clientY;
-
-                if (!touchLightActive) {
-                    // Beim ersten Kontakt sofort an den Finger springen; danach weich folgen.
-                    currentX = targetX;
-                    currentY = targetY;
-                }
-
-                touchLightActive = true;
-                clearTimeout(touchFadeTimer);
-                globalMouseLight.style.opacity = "0.90";
-                ensureTouchAnimation();
+            function fromTouch(e) {
+                const t = e.touches && e.touches[0];
+                if (t) showTouchLight(t.clientX, t.clientY, e.type === "touchstart");
             }
 
-            window.addEventListener("touchstart", updateTouchLight, { passive: true, capture: true });
-            window.addEventListener("touchmove", updateTouchLight, { passive: true, capture: true });
+            window.addEventListener("touchstart", fromTouch, {passive:true, capture:true});
+            window.addEventListener("touchmove", fromTouch, {passive:true, capture:true});
 
-            function fadeTouchLight() {
-                touchLightActive = false;
-                clearTimeout(touchFadeTimer);
-                touchFadeTimer = setTimeout(() => {
+            // Pointer Events helfen auf Android/HyperOS, wenn Touchmove beim nativen
+            // Scrollen vom Browser staerker gedrosselt wird.
+            window.addEventListener("pointerdown", e => {
+                if (mobileLight.matches && e.pointerType === "touch") showTouchLight(e.clientX, e.clientY, true);
+            }, {passive:true, capture:true});
+            window.addEventListener("pointermove", e => {
+                if (mobileLight.matches && e.pointerType === "touch" && active) showTouchLight(e.clientX, e.clientY);
+            }, {passive:true, capture:true});
+
+            function hideTouchLight() {
+                active = false;
+                clearTimeout(fadeTimer);
+                fadeTimer = setTimeout(() => {
                     if (mobileLight.matches) globalMouseLight.style.opacity = "0";
-                }, 260);
+                }, 180);
             }
+            window.addEventListener("touchend", hideTouchLight, {passive:true, capture:true});
+            window.addEventListener("touchcancel", hideTouchLight, {passive:true, capture:true});
+            window.addEventListener("pointercancel", hideTouchLight, {passive:true, capture:true});
 
-            window.addEventListener("touchend", fadeTouchLight, { passive: true, capture: true });
-            window.addEventListener("touchcancel", fadeTouchLight, { passive: true, capture: true });
-
-            // Desktop bleibt wie bisher: Licht folgt direkt und präzise der Maus.
-            document.addEventListener("pointermove", event => {
-                if (!mobileLight.matches && (event.pointerType === "mouse" || event.pointerType === "pen")) {
-                    globalMouseLight.style.setProperty("--mouse-x", event.clientX + "px");
-                    globalMouseLight.style.setProperty("--mouse-y", event.clientY + "px");
+            document.addEventListener("pointermove", e => {
+                if (!mobileLight.matches && (e.pointerType === "mouse" || e.pointerType === "pen")) {
+                    globalMouseLight.style.setProperty("--mouse-x", e.clientX + "px");
+                    globalMouseLight.style.setProperty("--mouse-y", e.clientY + "px");
                     globalMouseLight.style.opacity = "0.90";
                 }
-            }, { passive: true });
+            }, {passive:true});
 
             if (window.matchMedia("(pointer: fine)").matches) {
-                document.addEventListener("pointerleave", () => { globalMouseLight.style.opacity = "0"; });
-                document.addEventListener("pointerenter", () => { globalMouseLight.style.opacity = "0.90"; });
+                document.addEventListener("pointerleave", () => globalMouseLight.style.opacity = "0");
+                document.addEventListener("pointerenter", () => globalMouseLight.style.opacity = "0.90");
             }
         }
-
 
         /* =========================================================
            RELEASE-COUNTDOWN
