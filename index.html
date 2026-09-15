@@ -2802,6 +2802,212 @@
         }
 
 
+    
+
+        /* =========================================================
+           VERÖFFENTLICHUNG / 1920ER-GOLDRAHMEN
+        ========================================================= */
+        .release-showcase {
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 28% 48%, rgba(184, 128, 42, 0.055), transparent 34%),
+                linear-gradient(145deg, rgba(15, 19, 27, 0.97), rgba(7, 9, 14, 0.99));
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: clamp(1.5rem, 4vw, 3.2rem);
+            box-shadow: var(--shadow-heavy);
+        }
+        .release-showcase-grid {
+            display: grid;
+            grid-template-columns: minmax(320px, .9fr) minmax(0, 1.1fr);
+            gap: clamp(2rem, 6vw, 5rem);
+            align-items: center;
+        }
+        .framed-cover-stage {
+            position: relative;
+            width: min(100%, 470px);
+            margin: 0 auto;
+            padding: 42px 52px;
+        }
+        .antique-frame {
+            position: relative;
+            padding: 18px;
+            background:
+                linear-gradient(135deg, #5b421d 0%, #b38a42 16%, #6d4c1d 31%, #d0aa61 49%, #765322 67%, #b4873e 84%, #4b3517 100%);
+            border: 2px solid #3d2b14;
+            box-shadow:
+                inset 0 0 0 3px rgba(255,225,151,.18),
+                inset 0 0 0 8px rgba(42,27,10,.48),
+                inset 0 0 22px rgba(0,0,0,.75),
+                0 28px 55px rgba(0,0,0,.72),
+                0 0 45px rgba(184,128,42,.08);
+        }
+        .antique-frame::before,
+        .antique-frame::after {
+            content: "◆";
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #d1aa5d;
+            text-shadow: 0 1px 2px #1f1408;
+            font-size: .8rem;
+        }
+        .antique-frame::before { top: 2px; }
+        .antique-frame::after { bottom: 2px; }
+        .antique-frame img {
+            width: 100%;
+            height: auto;
+            border: 1px solid rgba(20,14,8,.95);
+            box-shadow: inset 0 0 20px rgba(0,0,0,.4);
+        }
+        .wall-candle {
+            position: absolute;
+            top: 44%;
+            width: 18px;
+            height: 92px;
+            transform: translateY(-50%);
+            z-index: 3;
+            pointer-events: none;
+        }
+        .wall-candle.left { left: 10px; }
+        .wall-candle.right { right: 10px; }
+        .wall-candle::before {
+            content: "";
+            position: absolute;
+            left: 3px;
+            bottom: 0;
+            width: 12px;
+            height: 64px;
+            border-radius: 3px 3px 1px 1px;
+            background: linear-gradient(90deg, #7b6847, #d5c49b 48%, #8c7650);
+            box-shadow: 0 0 8px rgba(230,183,91,.18);
+        }
+        .wall-candle::after {
+            content: "";
+            position: absolute;
+            left: 4px;
+            top: 3px;
+            width: 10px;
+            height: 22px;
+            border-radius: 55% 45% 55% 45%;
+            transform-origin: 50% 100%;
+            background: radial-gradient(ellipse at 50% 72%, #fff3b0 0 16%, #e7a43d 35%, #a54d1d 62%, transparent 68%);
+            filter: drop-shadow(0 0 5px rgba(255,190,70,.95));
+            animation: candleFlickerLeft 1.7s ease-in-out infinite alternate;
+        }
+        .wall-candle.right::after { animation: candleFlickerRight 2.15s ease-in-out infinite alternate; }
+        .candle-glow {
+            position: absolute;
+            width: 145px;
+            height: 145px;
+            top: -58px;
+            left: -64px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,181,70,.18), rgba(196,116,30,.07) 38%, transparent 70%);
+            filter: blur(4px);
+            animation: candleGlow 2.4s ease-in-out infinite alternate;
+        }
+        .wall-candle.right .candle-glow { animation-delay: -.9s; }
+        @keyframes candleFlickerLeft {
+            0% { transform: rotate(-2deg) scale(.94,1.03); opacity:.84; }
+            35% { transform: rotate(2deg) scale(1.03,.96); opacity:1; }
+            68% { transform: rotate(-1deg) scale(.97,1.06); opacity:.9; }
+            100% { transform: rotate(3deg) scale(1.05,.93); opacity:.96; }
+        }
+        @keyframes candleFlickerRight {
+            0% { transform: rotate(2deg) scale(1,.95); opacity:.9; }
+            45% { transform: rotate(-3deg) scale(.95,1.06); opacity:1; }
+            100% { transform: rotate(1deg) scale(1.04,.97); opacity:.86; }
+        }
+        @keyframes candleGlow {
+            from { opacity:.62; transform: scale(.94); }
+            to { opacity:1; transform: scale(1.08); }
+        }
+        .release-copy .release-kicker,
+        .follower-release-card .release-kicker {
+            color: var(--accent-red-bright);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: .78rem;
+            font-weight: 700;
+            margin-bottom: .7rem;
+        }
+        .release-copy h2 {
+            font-family: "Trajan Pro", Georgia, serif;
+            color: var(--text-heading);
+            font-size: clamp(2.2rem, 5vw, 3.6rem);
+            letter-spacing: 3px;
+            line-height: 1.05;
+            margin-bottom: .6rem;
+        }
+        .release-dates {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0,1fr));
+            gap: .8rem;
+            margin: 1.5rem 0;
+        }
+        .release-date-box {
+            border: 1px solid var(--border-color);
+            background: rgba(6,8,12,.55);
+            padding: 1rem;
+            border-radius: 5px;
+        }
+        .release-date-box span { display:block; color:var(--text-muted); font-size:.72rem; text-transform:uppercase; letter-spacing:1.4px; }
+        .release-date-box strong { display:block; color:#e7e1d5; margin-top:.25rem; font-family:"Trajan Pro",Georgia,serif; }
+        .release-countdown {
+            margin: 1.2rem 0 1.5rem;
+            padding: 1rem 1.15rem;
+            border-left: 3px solid var(--accent-bordeaux);
+            background: rgba(128,0,32,.055);
+            color: #d9d4c8;
+            font-weight: 700;
+        }
+        .order-placeholder { opacity:.72; cursor:default; }
+
+        /* Follower-Releasekarte: nur sichtbar, wenn wirklich gefolgt wird */
+        .follower-release-card {
+            display: none;
+            margin-top: 1.25rem;
+            padding: 1.15rem;
+            border: 1px solid rgba(179,138,66,.38);
+            border-left: 3px solid #9b7437;
+            border-radius: 5px;
+            background: linear-gradient(135deg, rgba(99,72,28,.10), rgba(128,0,32,.055));
+        }
+        .follower-release-card.visible { display:block; animation: followerCardIn .45s ease both; }
+        .follower-release-card h4 { font-family:"Trajan Pro",Georgia,serif; color:#eee8db; letter-spacing:1.5px; margin-bottom:.45rem; }
+        .follower-release-card p { margin:.35rem 0; color:var(--text-muted); font-size:.92rem; }
+        .follower-release-card .follower-countdown { color:#d9d4c8; font-weight:700; }
+        @keyframes followerCardIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+
+        /* Touch-Licht: auf Mobilgeräten sichtbar, ohne Scrollen zu blockieren */
+        @media (pointer: coarse) {
+            .global-mouse-light {
+                display: block !important;
+                opacity: 0;
+                background: radial-gradient(circle 180px at var(--mouse-x,50vw) var(--mouse-y,50vh), rgba(235,240,242,.085) 0%, rgba(205,215,220,.042) 30%, rgba(160,175,182,.016) 50%, transparent 72%);
+            }
+        }
+        @media (max-width: 760px) {
+            .release-showcase-grid { grid-template-columns:1fr; gap:2rem; }
+            .framed-cover-stage { width:min(100%,390px); padding:34px 42px; }
+            .wall-candle.left { left:4px; }
+            .wall-candle.right { right:4px; }
+            .release-dates { grid-template-columns:1fr; }
+            .release-copy { text-align:center; }
+            .release-countdown { text-align:left; }
+        }
+        @media (max-width: 420px) {
+            .framed-cover-stage { padding:28px 30px; }
+            .wall-candle { transform:translateY(-50%) scale(.82); }
+            .wall-candle.left { left:-2px; }
+            .wall-candle.right { right:-2px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .wall-candle::after, .candle-glow { animation:none !important; }
+        }
+
     </style>
 
 </head>
@@ -2901,6 +3107,12 @@
             >
 
                 <li>
+                    <a href="#veroeffentlichung">
+                        Veröffentlichung
+                    </a>
+                </li>
+
+                <li>
                     <a href="#hauptwerk">
                         Debütroman
                     </a>
@@ -2969,7 +3181,7 @@
 
 
             <p class="cinematic-tagline">
-                Das Schweigen wird jeden Tag immer lauter
+                Das Schweigen wird jeden Tag lauter
             </p>
 
 
@@ -2994,6 +3206,36 @@
         class="container"
         id="hauptinhalt"
     >
+
+
+        <!-- =========================================================
+             VERÖFFENTLICHUNG
+        ========================================================= -->
+        <section class="content-section reveal" id="veroeffentlichung">
+            <h2 class="section-title">Veröffentlichung</h2>
+            <div class="release-showcase">
+                <div class="release-showcase-grid">
+                    <div class="framed-cover-stage" aria-label="SKELDVIK Cover in historischem Goldrahmen">
+                        <div class="wall-candle left" aria-hidden="true"><span class="candle-glow"></span></div>
+                        <div class="antique-frame">
+                            <img src="assets/skeldvik-cover.png" alt="Cover des Romans SKELDVIK von P. J. Blackwood" width="540" height="810">
+                        </div>
+                        <div class="wall-candle right" aria-hidden="true"><span class="candle-glow"></span></div>
+                    </div>
+                    <div class="release-copy">
+                        <div class="release-kicker">Der Debütroman von P. J. Blackwood</div>
+                        <h2>SKELDVIK</h2>
+                        <p><em>Das Schweigen wird jeden Tag lauter.</em></p>
+                        <div class="release-dates">
+                            <div class="release-date-box"><span>Hardcover</span><strong>24. Oktober 2026</strong></div>
+                            <div class="release-date-box"><span>Offizieller Release</span><strong>31. Oktober 2026</strong></div>
+                        </div>
+                        <div class="release-countdown" id="releaseCountdown" aria-live="polite">Der Countdown wird geladen …</div>
+                        <span class="btn-status order-placeholder" id="orderPlaceholder">Bestelllink folgt</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
 
         <!-- =========================================================
@@ -3033,7 +3275,7 @@
 
 
                     <div class="book-tagline">
-                        Das Schweigen wird jeden Tag immer lauter
+                        Das Schweigen wird jeden Tag lauter
                     </div>
 
 
@@ -3231,6 +3473,13 @@
                         role="status"
                         aria-live="polite"
                     ></div>
+
+                    <div class="follower-release-card" id="followerReleaseCard" aria-live="polite">
+                        <div class="release-kicker">Follower-Info</div>
+                        <h4>SKELDVIK</h4>
+                        <p>Hardcover · 24.10.2026<br>Offizieller Release · 31.10.2026</p>
+                        <p class="follower-countdown" id="followerReleaseCountdown"></p>
+                    </div>
 
                 </article>
 
@@ -3943,9 +4192,11 @@
 
         const sectionIds =
             [
+                "veroeffentlichung",
                 "hauptwerk",
                 "werke",
                 "aktuelles",
+                "leserbereich",
                 "autor",
                 "kontakt"
             ];
@@ -4125,111 +4376,102 @@
 
 
         /* =========================================================
-           GLOBALER MAUSLICHTKEGEL
-           Der Lichtkegel folgt dem Cursor auf der gesamten Website.
+           GLOBALER LICHTKEGEL: MAUS + TOUCH
+           Desktop: folgt der Maus. Smartphone/Tablet: folgt dem Finger,
+           ohne das normale Scrollen zu blockieren.
         ========================================================= */
+        if (globalMouseLight) {
+            let lightX = window.innerWidth / 2;
+            let lightY = window.innerHeight / 2;
+            let lightFramePending = false;
+            let touchFadeTimer = null;
 
-        const finePointer =
-            window.matchMedia(
-                "(pointer: fine)"
-            );
-
-
-        if (
-            finePointer.matches
-            &&
-            globalMouseLight
-        ) {
-
-            let mouseX =
-                window.innerWidth / 2;
-
-            let mouseY =
-                window.innerHeight / 2;
-
-            let framePending =
-                false;
-
-
-            function paintMouseLight() {
-
-                globalMouseLight.style
-                    .setProperty(
-                        "--mouse-x",
-                        mouseX + "px"
-                    );
-
-
-                globalMouseLight.style
-                    .setProperty(
-                        "--mouse-y",
-                        mouseY + "px"
-                    );
-
-
-                framePending =
-                    false;
-
+            function paintGlobalLight() {
+                globalMouseLight.style.setProperty("--mouse-x", lightX + "px");
+                globalMouseLight.style.setProperty("--mouse-y", lightY + "px");
+                lightFramePending = false;
             }
 
+            function moveGlobalLight(x, y, isTouch) {
+                lightX = x;
+                lightY = y;
+                if (isTouch) globalMouseLight.style.opacity = "0.88";
+                if (!lightFramePending) {
+                    lightFramePending = true;
+                    requestAnimationFrame(paintGlobalLight);
+                }
+            }
 
-            document.addEventListener(
-                "pointermove",
-                event => {
+            document.addEventListener("pointermove", event => {
+                if (event.pointerType === "mouse" || event.pointerType === "pen") {
+                    moveGlobalLight(event.clientX, event.clientY, false);
+                    globalMouseLight.style.opacity = "0.90";
+                }
+            }, { passive: true });
 
-                    mouseX =
-                        event.clientX;
+            document.addEventListener("touchstart", event => {
+                const touch = event.touches[0];
+                if (!touch) return;
+                clearTimeout(touchFadeTimer);
+                moveGlobalLight(touch.clientX, touch.clientY, true);
+            }, { passive: true });
 
-                    mouseY =
-                        event.clientY;
+            document.addEventListener("touchmove", event => {
+                const touch = event.touches[0];
+                if (!touch) return;
+                clearTimeout(touchFadeTimer);
+                moveGlobalLight(touch.clientX, touch.clientY, true);
+            }, { passive: true });
 
-
-                    if (
-                        !framePending
-                    ) {
-
-                        framePending =
-                            true;
-
-                        requestAnimationFrame(
-                            paintMouseLight
-                        );
-
+            function fadeTouchLight() {
+                clearTimeout(touchFadeTimer);
+                touchFadeTimer = setTimeout(() => {
+                    if (window.matchMedia("(pointer: coarse)").matches) {
+                        globalMouseLight.style.opacity = "0";
                     }
+                }, 180);
+            }
+            document.addEventListener("touchend", fadeTouchLight, { passive: true });
+            document.addEventListener("touchcancel", fadeTouchLight, { passive: true });
 
-                },
-                {
-                    passive: true
-                }
-            );
-
-
-            document.addEventListener(
-                "pointerleave",
-                () => {
-
-                    globalMouseLight.style.opacity =
-                        "0";
-
-                }
-            );
-
-
-            document.addEventListener(
-                "pointerenter",
-                () => {
-
-                    globalMouseLight.style.opacity =
-                        "0.90";
-
-                }
-            );
-
-
-            paintMouseLight();
-
+            if (window.matchMedia("(pointer: fine)").matches) {
+                document.addEventListener("pointerleave", () => { globalMouseLight.style.opacity = "0"; });
+                document.addEventListener("pointerenter", () => { globalMouseLight.style.opacity = "0.90"; });
+            }
+            paintGlobalLight();
         }
 
+
+        /* =========================================================
+           RELEASE-COUNTDOWN
+        ========================================================= */
+        const hardcoverRelease = new Date("2026-10-24T00:00:00+02:00");
+        const officialRelease = new Date("2026-10-31T00:00:00+01:00");
+        const releaseCountdown = document.getElementById("releaseCountdown");
+        const followerReleaseCountdown = document.getElementById("followerReleaseCountdown");
+        const followerReleaseCard = document.getElementById("followerReleaseCard");
+
+        function getReleaseMessage() {
+            const now = new Date();
+            const day = 1000 * 60 * 60 * 24;
+            if (now < hardcoverRelease) {
+                const days = Math.ceil((hardcoverRelease - now) / day);
+                return `Noch ${days} ${days === 1 ? "Tag" : "Tage"} bis zum Hardcover.`;
+            }
+            if (now < officialRelease) {
+                const days = Math.ceil((officialRelease - now) / day);
+                return `Das Hardcover ist erschienen. Noch ${days} ${days === 1 ? "Tag" : "Tage"} bis zum offiziellen Release.`;
+            }
+            return "SKELDVIK ist erschienen.";
+        }
+
+        function updateReleaseCountdowns() {
+            const message = getReleaseMessage();
+            if (releaseCountdown) releaseCountdown.textContent = message;
+            if (followerReleaseCountdown) followerReleaseCountdown.textContent = message;
+        }
+        updateReleaseCountdowns();
+        window.setInterval(updateReleaseCountdowns, 60000);
 
 
         /* =========================================================
@@ -4429,6 +4671,11 @@
                 following
                     ? "Du folgst bereits"
                     : "Folgen";
+
+            if (followerReleaseCard) {
+                followerReleaseCard.classList.toggle("visible", following);
+            }
+            updateReleaseCountdowns();
         }
 
 
