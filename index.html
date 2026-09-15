@@ -3048,7 +3048,55 @@
             .wall-candle::after, .candle-glow { animation:none !important; }
         }
 
-    </style>
+    
+
+        /* =========================================================
+           FIX 15.09.2026 – MOBILER LICHTKEGEL (XIAOMI / CHROME)
+           Die Grundklasse lag zuvor innerhalb @media(min-width:1500px).
+           Dadurch fehlten auf Smartphones position:fixed und inset:0.
+        ========================================================= */
+        .global-mouse-light {
+            position: fixed !important;
+            top: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            height: 100dvh !important;
+            z-index: 5500 !important;
+            pointer-events: none !important;
+            display: block !important;
+            background: radial-gradient(
+                circle 240px at var(--mouse-x, 50vw) var(--mouse-y, 40vh),
+                rgba(235, 240, 242, 0.095) 0%,
+                rgba(205, 215, 220, 0.050) 28%,
+                rgba(160, 175, 182, 0.020) 48%,
+                transparent 72%
+            );
+            mix-blend-mode: screen;
+            opacity: 0.90;
+            transition: opacity 0.25s ease;
+            will-change: opacity, background;
+            transform: translateZ(0);
+        }
+
+        @media (pointer: coarse), (hover: none), (max-width: 760px) {
+            .global-mouse-light {
+                display: block !important;
+                opacity: 0;
+                background: radial-gradient(
+                    circle 205px at var(--mouse-x, 50vw) var(--mouse-y, 50vh),
+                    rgba(255, 232, 178, 0.22) 0%,
+                    rgba(238, 202, 132, 0.13) 27%,
+                    rgba(196, 151, 79, 0.055) 50%,
+                    transparent 74%
+                );
+                mix-blend-mode: screen;
+                transition: opacity 0.20s ease;
+            }
+        }
+</style>
 
 </head>
 
