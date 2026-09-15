@@ -2833,43 +2833,49 @@
         /* Dezenter klassischer Goldrahmen */
         .antique-frame {
             position: relative;
-            padding: 18px;
+            padding: 11px;
             background:
                 linear-gradient(135deg,
-                    #6f5428 0%,
-                    #b99555 13%,
-                    #806331 28%,
-                    #d0b06d 46%,
-                    #8d6b35 64%,
-                    #b99655 82%,
-                    #604820 100%);
-            border: 1px solid #3a2b15;
+                    #34373a 0%,
+                    #85898d 12%,
+                    #4b4f53 27%,
+                    #b8bcc0 45%,
+                    #666a6e 62%,
+                    #9a9ea2 80%,
+                    #303336 100%);
+            border: 1px solid #202326;
             box-shadow:
-                inset 0 0 0 2px rgba(240, 215, 155, .32),
-                inset 0 0 0 5px rgba(65, 45, 19, .55),
-                inset 0 0 0 7px rgba(205, 170, 96, .24),
-                inset 0 0 18px rgba(0, 0, 0, .45),
-                0 24px 48px rgba(0, 0, 0, .72),
-                0 0 28px rgba(190, 145, 65, .07);
+                inset 0 0 0 1px rgba(232, 235, 238, .42),
+                inset 0 0 0 3px rgba(48, 51, 54, .70),
+                inset 0 0 0 5px rgba(180, 184, 188, .20),
+                inset 0 0 10px rgba(0, 0, 0, .42),
+                0 22px 46px rgba(0, 0, 0, .72),
+                0 0 22px rgba(190, 198, 205, .045);
         }
 
+        /* Schmale, nur leicht barock angehauchte Innenprofilierung. */
         .antique-frame::before {
             content: "";
             position: absolute;
-            inset: 8px;
+            inset: 5px;
             pointer-events: none;
-            border: 1px solid rgba(225, 195, 126, .48);
+            border: 1px solid rgba(220, 224, 228, .42);
+            border-radius: 1px;
             box-shadow:
-                inset 0 0 0 2px rgba(49, 34, 15, .52),
-                inset 0 0 8px rgba(0, 0, 0, .38);
+                inset 0 0 0 1px rgba(37, 40, 43, .66),
+                inset 0 0 5px rgba(0, 0, 0, .30);
         }
 
         .antique-frame::after {
             content: "";
             position: absolute;
-            inset: 13px;
+            inset: 8px;
             pointer-events: none;
-            border: 1px solid rgba(116, 82, 35, .72);
+            border: 1px solid rgba(117, 122, 127, .68);
+            /* ganz dezente historische Profilkante statt Ornament-Überladung */
+            box-shadow:
+                0 0 0 1px rgba(215, 219, 223, .08),
+                inset 0 0 4px rgba(15, 17, 19, .44);
         }
 
         .antique-frame img {
@@ -2877,12 +2883,12 @@
             z-index: 1;
             width: 100%;
             height: auto;
-            border: 4px solid #17120b;
-            outline: 1px solid rgba(211, 176, 103, .46);
-            box-shadow: 0 0 16px rgba(0, 0, 0, .68);
+            border: 3px solid #151719;
+            outline: 1px solid rgba(194, 199, 204, .40);
+            box-shadow: 0 0 13px rgba(0, 0, 0, .68);
         }
 
-        /* Die früheren Eckornamente bleiben im HTML, werden aber bewusst ausgeblendet. */
+        /* Keine großen Verzierungen: nur das schmale Silberprofil bleibt sichtbar. */
         .antique-frame .frame-corner {
             display: none;
         }
