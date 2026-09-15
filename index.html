@@ -3182,6 +3182,179 @@
             #hauptwerk .hero-text { max-width: 100%; }
         }
 
+    
+
+        /* =========================================================
+           FINALER BAROCKRAHMEN – verwittertes Holz / Altgold
+           Schwerer geschnitzter Galerierahmen statt geometrischem Rahmen.
+        ========================================================= */
+        .framed-cover-stage {
+            padding: 58px 64px 54px !important;
+        }
+
+        .antique-frame {
+            position: relative;
+            isolation: isolate;
+            padding: 36px !important;
+            border: 0 !important;
+            border-radius: 5px 5px 8px 8px !important;
+            background:
+                /* kleine Fraß-/Alterungspunkte */
+                radial-gradient(circle at 8% 16%, rgba(12,8,4,.85) 0 1px, transparent 2px),
+                radial-gradient(circle at 91% 23%, rgba(12,8,4,.75) 0 1.5px, transparent 2.5px),
+                radial-gradient(circle at 17% 76%, rgba(18,11,5,.9) 0 1px, transparent 2px),
+                radial-gradient(circle at 82% 87%, rgba(12,7,3,.8) 0 1.5px, transparent 2.5px),
+                /* abgeriebene Vergoldung */
+                repeating-linear-gradient(97deg, transparent 0 8px, rgba(255,218,133,.045) 9px 10px, transparent 11px 17px),
+                linear-gradient(100deg,
+                    #171008 0%, #3b2713 5%, #765126 10%, #b37d37 15%,
+                    #5a3a18 21%, #c49349 28%, #6d471d 36%, #2a1b0d 44%,
+                    #9b682d 52%, #c08a40 61%, #513317 69%, #a87332 78%,
+                    #402811 88%, #1a1108 100%) !important;
+            box-shadow:
+                inset 0 0 0 3px #120c06,
+                inset 0 0 0 7px rgba(177,119,48,.78),
+                inset 0 0 0 11px #29190b,
+                inset 0 0 0 16px rgba(211,153,65,.58),
+                inset 0 0 0 21px #3a230f,
+                inset 0 0 0 27px rgba(119,76,29,.85),
+                inset 0 0 28px 16px rgba(0,0,0,.72),
+                0 34px 68px rgba(0,0,0,.88),
+                0 0 38px rgba(174,112,35,.12) !important;
+            filter: saturate(.82) contrast(1.07);
+        }
+
+        /* geschnitzte Innenleiste */
+        .antique-frame::before {
+            content: "" !important;
+            position: absolute !important;
+            inset: 14px !important;
+            z-index: 2 !important;
+            pointer-events: none !important;
+            border: 3px ridge rgba(170,113,43,.92) !important;
+            outline: 2px solid rgba(31,18,7,.96) !important;
+            outline-offset: 5px !important;
+            background:
+                repeating-radial-gradient(ellipse at top, rgba(220,160,69,.18) 0 2px, transparent 3px 12px),
+                linear-gradient(135deg, rgba(231,177,83,.16), transparent 24%, transparent 76%, rgba(20,12,5,.38)) !important;
+            box-shadow:
+                inset 0 0 0 3px rgba(41,24,8,.9),
+                inset 0 0 13px rgba(0,0,0,.82),
+                0 0 4px rgba(221,159,67,.20) !important;
+        }
+
+        /* barocke Bekrönung oben – wie geschnitztes Akanthus-/Muschelornament */
+        .antique-frame::after {
+            content: "❧  ✦  ❧" !important;
+            position: absolute !important;
+            left: 50% !important;
+            top: -31px !important;
+            width: 154px !important;
+            height: 62px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            transform: translateX(-50%) !important;
+            z-index: 5 !important;
+            color: #a66f31 !important;
+            font-family: Georgia, serif !important;
+            font-size: 1.15rem !important;
+            letter-spacing: .34rem !important;
+            white-space: nowrap !important;
+            border: 2px solid #4a2d12 !important;
+            border-radius: 52% 52% 18% 18% / 72% 72% 28% 28% !important;
+            background:
+                radial-gradient(ellipse at 50% 76%, rgba(211,151,63,.72), rgba(104,66,25,.88) 38%, #2b1a0b 72%),
+                #3a230f !important;
+            box-shadow:
+                inset 0 0 0 3px rgba(210,150,61,.28),
+                inset 0 -10px 18px rgba(0,0,0,.62),
+                0 5px 10px rgba(0,0,0,.78) !important;
+            text-shadow: 1px 1px 0 #201206, 0 0 5px rgba(232,169,76,.18) !important;
+        }
+
+        /* vier schwere geschnitzte Eckstücke */
+        .antique-frame .frame-corner {
+            z-index: 6 !important;
+            width: 70px !important;
+            height: 70px !important;
+            opacity: 1 !important;
+            border: 2px solid #4a2c10 !important;
+            border-radius: 62% 12% 58% 16% !important;
+            background:
+                radial-gradient(ellipse at 34% 34%, rgba(223,163,71,.72) 0 7%, #815321 8% 18%, transparent 19%),
+                radial-gradient(ellipse at 68% 66%, rgba(180,119,45,.58) 0 9%, #4a2d11 10% 21%, transparent 22%),
+                conic-gradient(from 28deg, #26170a, #a66d2d, #d19a49, #563516, #bc7f35, #24160a) !important;
+            box-shadow:
+                inset 0 0 0 3px rgba(29,17,6,.82),
+                inset 4px 5px 10px rgba(224,163,73,.18),
+                inset -7px -8px 14px rgba(0,0,0,.78),
+                0 4px 9px rgba(0,0,0,.82) !important;
+            filter: saturate(.78) contrast(1.08);
+        }
+        .antique-frame .frame-corner::before,
+        .antique-frame .frame-corner::after {
+            content: "";
+            position: absolute;
+            background: linear-gradient(90deg, #3b230d, #b67a31 48%, #3a220d);
+            box-shadow: inset 0 0 5px rgba(0,0,0,.68);
+            opacity: .88;
+        }
+        .antique-frame .frame-corner::before {
+            width: 56px; height: 13px; left: 25px; top: 8px;
+            border-radius: 70% 12% 70% 12%; transform: rotate(-31deg);
+        }
+        .antique-frame .frame-corner::after {
+            width: 13px; height: 56px; left: 8px; top: 25px;
+            border-radius: 70% 12% 70% 12%; transform: rotate(31deg);
+        }
+        .frame-corner.tl { top:-13px !important; left:-13px !important; transform:none !important; }
+        .frame-corner.tr { top:-13px !important; right:-13px !important; transform:rotate(90deg) !important; }
+        .frame-corner.bl { bottom:-13px !important; left:-13px !important; transform:rotate(-90deg) !important; }
+        .frame-corner.br { bottom:-13px !important; right:-13px !important; transform:rotate(180deg) !important; }
+
+        .antique-frame img {
+            position: relative !important;
+            z-index: 1 !important;
+            border: 7px solid #0d0905 !important;
+            outline: 2px solid rgba(159,103,37,.78) !important;
+            box-shadow:
+                0 0 0 4px #2b190a,
+                0 0 0 7px rgba(147,94,34,.72),
+                inset 0 0 20px rgba(0,0,0,.7),
+                0 0 26px rgba(0,0,0,.92) !important;
+        }
+
+        /* warmer Kerzenschein darf die verwitterte Vergoldung leicht treffen */
+        .framed-cover-stage::before,
+        .framed-cover-stage::after {
+            content: "";
+            position: absolute;
+            top: 34%;
+            width: 105px;
+            height: 210px;
+            pointer-events: none;
+            z-index: 2;
+            background: radial-gradient(ellipse, rgba(218,139,48,.10), transparent 68%);
+            filter: blur(10px);
+        }
+        .framed-cover-stage::before { left: 0; }
+        .framed-cover-stage::after { right: 0; }
+
+        @media (max-width: 760px) {
+            .framed-cover-stage { padding: 48px 48px 42px !important; }
+            .antique-frame { padding: 28px !important; }
+            .antique-frame::after { top:-25px !important; width:126px !important; height:50px !important; font-size:.92rem !important; }
+            .antique-frame .frame-corner { width:54px !important; height:54px !important; }
+            .antique-frame .frame-corner::before { width:42px; height:10px; left:19px; top:6px; }
+            .antique-frame .frame-corner::after { width:10px; height:42px; left:6px; top:19px; }
+        }
+        @media (max-width: 420px) {
+            .framed-cover-stage { padding: 42px 36px 36px !important; }
+            .antique-frame { padding: 23px !important; }
+            .antique-frame .frame-corner { width:46px !important; height:46px !important; }
+        }
+
     </style>
 
 </head>
