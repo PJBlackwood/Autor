@@ -2832,35 +2832,74 @@
         }
         .antique-frame {
             position: relative;
-            padding: 18px;
+            padding: 27px;
             background:
-                linear-gradient(135deg, #5b421d 0%, #b38a42 16%, #6d4c1d 31%, #d0aa61 49%, #765322 67%, #b4873e 84%, #4b3517 100%);
-            border: 2px solid #3d2b14;
+                linear-gradient(135deg, #2b1d0d 0%, #6b4a20 5%, #b58b47 11%, #5c3e19 18%, #d0ad68 26%, #795522 34%, #c59b52 43%, #4a3012 51%, #b88d45 61%, #72501f 70%, #d2ae67 79%, #5a3b17 89%, #2a1c0c 100%);
+            border: 1px solid #211608;
             box-shadow:
-                inset 0 0 0 3px rgba(255,225,151,.18),
-                inset 0 0 0 8px rgba(42,27,10,.48),
-                inset 0 0 22px rgba(0,0,0,.75),
-                0 28px 55px rgba(0,0,0,.72),
-                0 0 45px rgba(184,128,42,.08);
+                inset 0 0 0 2px rgba(229,196,124,.38),
+                inset 0 0 0 6px rgba(42,27,10,.88),
+                inset 0 0 0 9px rgba(190,148,70,.44),
+                inset 0 0 0 14px rgba(48,31,12,.92),
+                inset 0 0 0 18px rgba(210,171,92,.28),
+                inset 0 0 30px rgba(0,0,0,.86),
+                0 32px 62px rgba(0,0,0,.78),
+                0 0 50px rgba(190,139,55,.09);
         }
-        .antique-frame::before,
+        .antique-frame::before {
+            content: "";
+            position: absolute;
+            inset: 8px;
+            pointer-events: none;
+            border: 1px solid rgba(235,201,126,.48);
+            outline: 1px solid rgba(40,25,8,.72);
+            outline-offset: 3px;
+            background:
+                linear-gradient(135deg, rgba(255,226,151,.16), transparent 18%, transparent 82%, rgba(41,25,8,.28));
+            box-shadow: inset 0 0 14px rgba(0,0,0,.45);
+        }
         .antique-frame::after {
-            content: "◆";
+            content: "◇  ─────  ◇  ─────  ◇";
             position: absolute;
             left: 50%;
+            top: 6px;
             transform: translateX(-50%);
-            color: #d1aa5d;
-            text-shadow: 0 1px 2px #1f1408;
-            font-size: .8rem;
+            white-space: nowrap;
+            color: rgba(224,190,111,.78);
+            font-family: Georgia, serif;
+            font-size: .56rem;
+            letter-spacing: .12rem;
+            text-shadow: 0 1px 1px #241606;
+            pointer-events: none;
         }
-        .antique-frame::before { top: 2px; }
-        .antique-frame::after { bottom: 2px; }
         .antique-frame img {
+            position: relative;
+            z-index: 1;
             width: 100%;
             height: auto;
-            border: 1px solid rgba(20,14,8,.95);
-            box-shadow: inset 0 0 20px rgba(0,0,0,.4);
+            border: 5px solid #15100a;
+            outline: 1px solid rgba(211,171,89,.50);
+            box-shadow:
+                0 0 0 2px rgba(54,35,13,.95),
+                0 0 22px rgba(0,0,0,.75);
         }
+        .antique-frame .frame-corner {
+            position: absolute;
+            z-index: 3;
+            width: 36px;
+            height: 36px;
+            pointer-events: none;
+            opacity: .88;
+            background:
+                linear-gradient(45deg, transparent 43%, rgba(218,181,101,.78) 44% 48%, transparent 49%),
+                linear-gradient(-45deg, transparent 43%, rgba(105,72,27,.9) 44% 48%, transparent 49%);
+            border: 1px solid rgba(198,157,78,.46);
+            box-shadow: inset 0 0 8px rgba(0,0,0,.45);
+        }
+        .frame-corner.tl { top:7px; left:7px; }
+        .frame-corner.tr { top:7px; right:7px; transform:rotate(90deg); }
+        .frame-corner.bl { bottom:7px; left:7px; transform:rotate(-90deg); }
+        .frame-corner.br { bottom:7px; right:7px; transform:rotate(180deg); }
         .wall-candle {
             position: absolute;
             top: 44%;
@@ -2880,8 +2919,8 @@
             width: 12px;
             height: 64px;
             border-radius: 3px 3px 1px 1px;
-            background: linear-gradient(90deg, #7b6847, #d5c49b 48%, #8c7650);
-            box-shadow: 0 0 8px rgba(230,183,91,.18);
+            background: linear-gradient(90deg, #7d6b4c, #e0d1ad 46%, #9a835c 72%, #655437);
+            box-shadow: 0 0 8px rgba(230,183,91,.18), inset -2px 0 3px rgba(70,52,29,.35);
         }
         .wall-candle::after {
             content: "";
@@ -3218,6 +3257,7 @@
                     <div class="framed-cover-stage" aria-label="SKELDVIK Cover in historischem Goldrahmen">
                         <div class="wall-candle left" aria-hidden="true"><span class="candle-glow"></span></div>
                         <div class="antique-frame">
+                            <span class="frame-corner tl" aria-hidden="true"></span><span class="frame-corner tr" aria-hidden="true"></span><span class="frame-corner bl" aria-hidden="true"></span><span class="frame-corner br" aria-hidden="true"></span>
                             <img src="assets/skeldvik-cover.png" alt="Cover des Romans SKELDVIK von P. J. Blackwood" width="540" height="810">
                         </div>
                         <div class="wall-candle right" aria-hidden="true"><span class="candle-glow"></span></div>
@@ -3265,7 +3305,7 @@
                 <div class="hero-text">
 
                     <span class="release-badge">
-                        HERBST 2026
+                        HARDCOVER · 24. OKTOBER 2026
                     </span>
 
 
@@ -3297,7 +3337,7 @@
                     <div class="hero-actions">
 
                         <span class="btn-status">
-                            In Vorbereitung für Herbst 2026
+                            Hardcover ab 24. Oktober 2026
                         </span>
 
 
@@ -3337,7 +3377,7 @@
                 <article class="work-card">
 
                     <div class="work-status">
-                        Debütroman &bull; Herbst 2026
+                        Debütroman &bull; Hardcover ab 24. Oktober 2026
                     </div>
 
 
@@ -3393,25 +3433,24 @@
 
             <div class="news-list">
 
+                <article class="news-item">
+                    <div class="news-date">15. September 2026 · Veröffentlichung</div>
+                    <h3>Veröffentlichungstermine für SKELDVIK stehen fest</h3>
+                    <p>
+                        Die Veröffentlichung von „SKELDVIK“ rückt näher. Die Hardcover-Ausgabe erscheint am <strong>24. Oktober 2026</strong>. Der offizielle Release des Romans folgt am <strong>31. Oktober 2026</strong>.
+                    </p>
+                    <p>
+                        Weitere Informationen zur Veröffentlichung und zu den Bestellmöglichkeiten werden in den kommenden Wochen auf dieser Website bekanntgegeben.
+                    </p>
+                </article>
 
-                        <article class="news-item">
-
-            <div class="news-date">
-                In Vorbereitung
-            </div>
-
-
-            <h3>
-                SKELDVIK – auf dem Weg zur Veröffentlichung
-            </h3>
-
-
-            <p>
-                Die Vorbereitungen für die Veröffentlichung von „SKELDVIK“ im Herbst 2026 laufen. Neuigkeiten, Leseproben, Termine und weitere Informationen zum Buch werden künftig an dieser Stelle bekanntgegeben.
-            </p>
-
-        </article>
-
+                <article class="news-item">
+                    <div class="news-date">September 2026 · In Vorbereitung</div>
+                    <h3>SKELDVIK – auf dem Weg zur Veröffentlichung</h3>
+                    <p>
+                        Die Vorbereitungen für die Veröffentlichung von „SKELDVIK“ laufen. Neuigkeiten, Leseproben, Termine und weitere Informationen zum Buch werden an dieser Stelle bekanntgegeben.
+                    </p>
+                </article>
 
             </div>
 
@@ -3475,10 +3514,10 @@
                     ></div>
 
                     <div class="follower-release-card" id="followerReleaseCard" aria-live="polite">
-                        <div class="release-kicker">Follower-Info</div>
-                        <h4>SKELDVIK</h4>
-                        <p>Hardcover · 24.10.2026<br>Offizieller Release · 31.10.2026</p>
-                        <p class="follower-countdown" id="followerReleaseCountdown"></p>
+                        <div class="release-kicker">Für Follower</div>
+                        <h4>Du folgst P. J. Blackwood</h4>
+                        <p>Willkommen im Leserbereich. Hier werden künftig besondere Inhalte, Einblicke und Neuigkeiten rund um SKELDVIK freigeschaltet.</p>
+                        <p class="follower-countdown">Erster Follower-Einblick folgt in Kürze.</p>
                     </div>
 
                 </article>
