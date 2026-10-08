@@ -3269,7 +3269,23 @@
         #veroeffentlichung .antique-frame .frame-corner { display:none !important; }
         #veroeffentlichung .antique-frame img { display:block; width:100%; height:auto; border:2px solid #1c2026; border-radius:0; }
         #veroeffentlichung .reveal-note { margin: 1rem 0 1.2rem; color: var(--text-muted); font-size:.94rem; line-height:1.7; }
+/* Alten Silberrahmen entfernen */
+#veroeffentlichung .antique-frame {
+    padding: 0 !important;
+    border: none !important;
+    outline: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+}
 
+#veroeffentlichung .antique-frame::before,
+#veroeffentlichung .antique-frame::after,
+#veroeffentlichung .frame-corner,
+#veroeffentlichung .frame-crest {
+    display: none !important;
+}
+        
     </style>
 
 </head>
