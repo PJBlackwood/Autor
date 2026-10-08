@@ -2805,7 +2805,7 @@
     
 
         /* =========================================================
-           VERÖFFENTLICHUNG / SCHMALER SILBERRAHMEN
+           VERÖFFENTLICHUNG / 1920ER-GOLDRAHMEN
         ========================================================= */
         .release-showcase {
             position: relative;
@@ -3107,79 +3107,168 @@
         }
 
         /* =========================================================
-           VERÖFFENTLICHUNG – NEUER SCHMALER SILBERRAHMEN
-           Klassisch, leicht barock angehaucht, ohne Schnörkel.
+           ORNAMENTRAHMEN – dunkles Altgold, geschnitzte Historik
+           Nach Vorbild eines schweren historischen Bilderrahmens.
         ========================================================= */
-        .release-showcase {
-            background:
-                radial-gradient(circle at 28% 48%, rgba(190, 200, 210, 0.045), transparent 34%),
-                linear-gradient(145deg, rgba(15, 19, 27, 0.97), rgba(7, 9, 14, 0.99));
-        }
-
         .antique-frame {
-            position: relative;
-            padding: 13px !important;
-            border: 1px solid #34383d !important;
-            border-radius: 1px !important;
+            padding: 31px !important;
+            border: 2px solid #241708 !important;
+            border-radius: 2px;
             background:
-                linear-gradient(135deg,
-                    #2b2e32 0%,
-                    #777d83 9%,
-                    #c0c4c7 18%,
-                    #696e73 29%,
-                    #d2d5d7 39%,
-                    #858a8f 50%,
-                    #babec1 61%,
-                    #62676c 73%,
-                    #c8cccf 84%,
-                    #555a5f 93%,
-                    #292c30 100%) !important;
+                repeating-linear-gradient(135deg, rgba(255,225,145,.10) 0 2px, transparent 2px 8px),
+                linear-gradient(135deg, #211507 0%, #70501f 7%, #c69b4d 13%, #4b3212 20%, #d1aa5d 29%, #74501d 39%, #b8893d 50%, #3b260d 61%, #c89b4b 72%, #664516 84%, #261807 100%) !important;
             box-shadow:
-                inset 0 0 0 1px rgba(239,242,244,.55),
-                inset 0 0 0 3px rgba(68,72,77,.95),
-                inset 0 0 0 5px rgba(194,199,203,.48),
-                inset 0 0 0 7px rgba(45,48,52,.88),
-                inset 0 0 10px rgba(0,0,0,.65),
-                0 24px 48px rgba(0,0,0,.72) !important;
+                inset 0 0 0 3px #38240c,
+                inset 0 0 0 6px rgba(226,190,104,.72),
+                inset 0 0 0 10px #4a3010,
+                inset 0 0 0 14px rgba(198,151,67,.75),
+                inset 0 0 0 19px #2d1c09,
+                inset 0 0 0 23px rgba(219,174,82,.48),
+                inset 0 0 24px rgba(0,0,0,.92),
+                0 28px 60px rgba(0,0,0,.82),
+                0 0 36px rgba(174,119,37,.13) !important;
         }
-
         .antique-frame::before {
-            content: "" !important;
-            position: absolute;
-            inset: 4px !important;
-            pointer-events: none;
-            border: 1px solid rgba(225,229,232,.52) !important;
-            outline: 1px solid rgba(52,56,61,.85) !important;
-            outline-offset: 2px !important;
-            background: linear-gradient(135deg, rgba(255,255,255,.09), transparent 25%, transparent 75%, rgba(0,0,0,.18)) !important;
-            box-shadow: inset 0 0 5px rgba(0,0,0,.35) !important;
+            inset: 5px !important;
+            border: 2px ridge rgba(222,181,91,.72) !important;
+            outline: 2px solid rgba(48,29,8,.95) !important;
+            outline-offset: 5px !important;
+            background:
+                radial-gradient(circle at 10px 10px, rgba(244,210,125,.35) 0 2px, transparent 3px),
+                radial-gradient(circle at calc(100% - 10px) 10px, rgba(244,210,125,.35) 0 2px, transparent 3px),
+                radial-gradient(circle at 10px calc(100% - 10px), rgba(244,210,125,.35) 0 2px, transparent 3px),
+                radial-gradient(circle at calc(100% - 10px) calc(100% - 10px), rgba(244,210,125,.35) 0 2px, transparent 3px),
+                linear-gradient(135deg, rgba(255,230,158,.15), transparent 22%, transparent 78%, rgba(30,18,5,.38)) !important;
+            box-shadow: inset 0 0 18px rgba(0,0,0,.65) !important;
         }
-
         .antique-frame::after {
-            content: "" !important;
-            display: none !important;
+            content: "✦  ❧  ✦" !important;
+            top: 7px !important;
+            font-size: .78rem !important;
+            letter-spacing: .28rem !important;
+            color: rgba(229,190,98,.88) !important;
+            text-shadow: 0 1px 0 #120b03, 0 0 5px rgba(255,208,102,.22) !important;
         }
-
         .antique-frame .frame-corner {
-            display: none !important;
-        }
-
-        .antique-frame img {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            height: auto;
-            border: 3px solid #111419 !important;
-            outline: 1px solid rgba(194,199,204,.55) !important;
+            width: 48px !important;
+            height: 48px !important;
+            opacity: .96 !important;
+            border: 1px solid rgba(222,179,86,.65) !important;
+            border-radius: 48% 8% 48% 8%;
+            background:
+                radial-gradient(circle at 50% 50%, #d2a553 0 8%, #654315 9% 17%, transparent 18%),
+                conic-gradient(from 45deg, #3c260b, #c99b49, #5b3b12, #ddb564, #3c260b) !important;
             box-shadow:
-                0 0 0 1px rgba(48,52,57,.95),
-                0 0 15px rgba(0,0,0,.72) !important;
+                inset 0 0 0 3px rgba(48,29,8,.8),
+                inset 0 0 9px rgba(0,0,0,.65),
+                0 1px 4px rgba(0,0,0,.7) !important;
+        }
+        .frame-corner.tl { top:5px !important; left:5px !important; }
+        .frame-corner.tr { top:5px !important; right:5px !important; }
+        .frame-corner.bl { bottom:5px !important; left:5px !important; }
+        .frame-corner.br { bottom:5px !important; right:5px !important; }
+        .antique-frame img {
+            border: 6px solid #100b06 !important;
+            outline: 2px solid rgba(196,148,62,.62) !important;
+            box-shadow:
+                0 0 0 3px #39240d,
+                0 0 0 5px rgba(218,172,78,.42),
+                0 0 25px rgba(0,0,0,.88) !important;
         }
 
         @media (max-width: 760px) {
-            .antique-frame { padding: 10px !important; }
+            .antique-frame { padding: 24px !important; }
+            .antique-frame .frame-corner { width: 38px !important; height: 38px !important; }
             #hauptwerk .hero-text { max-width: 100%; }
         }
+
+    
+
+        /* =========================================================
+           FINALER RAHMEN BEI VERÖFFENTLICHUNG
+           Schmaler, dezenter Silberrahmen – ersetzt ALLE alten
+           Gold-/Barock-Regeln unabhängig von deren Position im CSS.
+        ========================================================= */
+        #veroeffentlichung .antique-frame {
+            position: relative !important;
+            padding: 12px !important;
+            border: 1px solid #5f646a !important;
+            border-radius: 1px !important;
+            background: linear-gradient(135deg,
+                #2f3337 0%,
+                #8b9197 8%,
+                #c2c6c9 15%,
+                #6f757a 24%,
+                #d0d3d5 34%,
+                #777d82 46%,
+                #b2b7bb 58%,
+                #555b60 70%,
+                #aeb3b7 82%,
+                #34383c 100%) !important;
+            box-shadow:
+                inset 0 0 0 1px rgba(238,240,241,.55),
+                inset 0 0 0 3px rgba(60,65,70,.92),
+                inset 0 0 0 5px rgba(190,195,199,.48),
+                inset 0 0 0 7px rgba(44,48,52,.92),
+                0 18px 38px rgba(0,0,0,.72) !important;
+        }
+
+        #veroeffentlichung .antique-frame::before {
+            content: "" !important;
+            position: absolute !important;
+            inset: 4px !important;
+            border: 1px solid rgba(220,224,227,.58) !important;
+            outline: none !important;
+            background: transparent !important;
+            box-shadow: inset 0 0 7px rgba(0,0,0,.38) !important;
+            pointer-events: none !important;
+        }
+
+        #veroeffentlichung .antique-frame::after {
+            content: "" !important;
+            display: none !important;
+        }
+
+        #veroeffentlichung .antique-frame .frame-corner {
+            display: none !important;
+            width: 0 !important;
+            height: 0 !important;
+            border: 0 !important;
+            background: none !important;
+            box-shadow: none !important;
+        }
+
+        #veroeffentlichung .antique-frame img {
+            position: relative !important;
+            z-index: 1 !important;
+            width: 100% !important;
+            height: auto !important;
+            border: 3px solid #151719 !important;
+            outline: 1px solid rgba(184,189,193,.62) !important;
+            box-shadow:
+                0 0 0 1px #3b3f43,
+                0 10px 24px rgba(0,0,0,.68) !important;
+        }
+
+        @media (max-width: 760px) {
+            #veroeffentlichung .antique-frame {
+                padding: 9px !important;
+            }
+        }
+
+        /* Cover-Reveal-Ankündigung: schlichter schmaler Silberrahmen */
+        #veroeffentlichung .antique-frame {
+            padding: 11px !important;
+            border: 1px solid #81858b !important;
+            border-radius: 2px !important;
+            background: linear-gradient(135deg,#45494e 0%,#c1c5c8 18%,#72777d 34%,#e0e1df 49%,#777d83 67%,#34383e 100%) !important;
+            box-shadow: inset 0 0 0 2px #30343a, inset 0 0 0 5px #a5aab0, 0 17px 36px rgba(0,0,0,.65) !important;
+        }
+        #veroeffentlichung .antique-frame::before,
+        #veroeffentlichung .antique-frame::after,
+        #veroeffentlichung .antique-frame .frame-corner { display:none !important; }
+        #veroeffentlichung .antique-frame img { display:block; width:100%; height:auto; border:2px solid #1c2026; border-radius:0; }
+        #veroeffentlichung .reveal-note { margin: 1rem 0 1.2rem; color: var(--text-muted); font-size:.94rem; line-height:1.7; }
 
     </style>
 
@@ -3388,24 +3477,25 @@
             <h2 class="section-title">Veröffentlichung</h2>
             <div class="release-showcase">
                 <div class="release-showcase-grid">
-                    <div class="framed-cover-stage" aria-label="SKELDVIK Cover in schmalem historischem Silberrahmen">
+                    <div class="framed-cover-stage" aria-label="SKELDVIK Cover-Reveal-Ankündigung im Silberrahmen">
                         <div class="wall-candle left" aria-hidden="true"><span class="candle-glow"></span></div>
                         <div class="antique-frame">
                             <span class="frame-corner tl" aria-hidden="true"></span><span class="frame-corner tr" aria-hidden="true"></span><span class="frame-corner bl" aria-hidden="true"></span><span class="frame-corner br" aria-hidden="true"></span>
-                            <img src="assets/skeldvik-cover.png" alt="Cover des Romans SKELDVIK von P. J. Blackwood" width="540" height="810">
+                            <img src="assets/skeldvik-cover-reveal.png" alt="SKELDVIK Cover-Reveal am Sonntag, 11. Oktober 2026: verpacktes Buch mit PJB-Siegel" width="864" height="1536">
                         </div>
                         <div class="wall-candle right" aria-hidden="true"><span class="candle-glow"></span></div>
                     </div>
                     <div class="release-copy">
-                        <div class="release-kicker">Der Debütroman von P. J. Blackwood</div>
+                        <div class="release-kicker">Cover-Reveal · Sonntag, 11. Oktober 2026</div>
                         <h2>SKELDVIK</h2>
                         <p><em>Das Schweigen wird jeden Tag lauter.</em></p>
                         <div class="release-dates">
                             <div class="release-date-box"><span>Hardcover</span><strong>24. Oktober 2026</strong></div>
                             
                         </div>
-                        <div class="release-countdown" id="releaseCountdown" aria-live="polite">Der Countdown wird geladen …</div>
-                        <span class="btn-status order-placeholder" id="orderPlaceholder">Bestelllink folgt</span>
+                        <div class="release-countdown" id="revealCountdown" aria-live="polite">Cover-Reveal am 11. Oktober 2026</div>
+                        <p class="reveal-note">Am Sonntag enthülle ich das Hardcover-Cover. Anschließend folgen die bestätigten Vorbestelllinks zu tredition, Thalia und Hugendubel.</p>
+                        <span class="btn-status order-placeholder" id="orderPlaceholder">Vorbestellung ab Cover-Reveal geplant</span>
                     </div>
                 </div>
             </div>
@@ -4629,6 +4719,22 @@
             if (releaseCountdown) releaseCountdown.textContent = message;
             if (followerReleaseCountdown) followerReleaseCountdown.textContent = message;
         }
+        // Kein automatisches Enthüllen ohne festgelegte Uhrzeit:
+        // Das Ankündigungsbild bleibt sichtbar, bis es manuell ersetzt wird.
+        const revealCountdown = document.getElementById("revealCountdown");
+        const revealDate = new Date("2026-10-11T00:00:00+02:00");
+        function updateRevealCountdown() {
+            if (!revealCountdown) return;
+            const now = new Date();
+            if (now < revealDate) {
+                const days = Math.ceil((revealDate - now) / 86400000);
+                revealCountdown.textContent = `Noch ${days} ${days === 1 ? "Tag" : "Tage"} bis zum Cover-Reveal am Sonntag.`;
+            } else {
+                revealCountdown.textContent = "Cover-Reveal · Sonntag, 11. Oktober 2026";
+            }
+        }
+        updateRevealCountdown();
+        window.setInterval(updateRevealCountdown, 60000);
         updateReleaseCountdowns();
         window.setInterval(updateReleaseCountdowns, 60000);
 
