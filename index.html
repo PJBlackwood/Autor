@@ -3285,6 +3285,26 @@
 #veroeffentlichung .frame-crest {
     display: none !important;
 }
+
+        /* Äußeren silbernen Rahmen vollständig entfernen */
+#veroeffentlichung .framed-cover-stage,
+#veroeffentlichung .antique-frame,
+#veroeffentlichung .frame-inner,
+#veroeffentlichung .frame-art {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+}
+
+#veroeffentlichung .antique-frame {
+    padding: 0 !important;
+}
+
+#veroeffentlichung .frame-inner::before,
+#veroeffentlichung .frame-inner::after {
+    display: none !important;
+}
         
     </style>
 
